@@ -565,7 +565,7 @@ export default function Navbar() {
                             Partners
                           </div>
                           <div className="flex flex-col gap-2">
-                            <Link href="/solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/become-a-solution-partner" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-pink-50 text-pink-600 group-hover/item:bg-pink-100 transition-colors">
                                 {icons.layout}
                               </span>
@@ -768,7 +768,7 @@ export default function Navbar() {
                       >
                         <Link href="#learn-more" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>About Us</Link>
                         <Link href="/contact" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Contact Us</Link>
-                        <Link href="/solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Solution Partners</Link>
+                        <Link href="/become-a-solution-partner" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Solution Partners</Link>
                         <Link href="/become-a-technology-partner" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Technology Partners</Link>
                         <Link href="/blog" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Blog</Link>
                       </motion.div>
