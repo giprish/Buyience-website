@@ -237,7 +237,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.98 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[760px] max-w-[calc(100vw-40px)] bg-white border border-slate-100 rounded-3xl shadow-xl p-8 z-50"
+                      className="absolute top-[calc(100%+8px)] left-[-120px] w-[760px] max-w-[calc(100vw-40px)] bg-white border border-slate-100 rounded-3xl shadow-xl p-8 z-50"
                     >
                       <div className="grid grid-cols-2 gap-x-8 gap-y-6 text-left">
                         {/* Col 1 */}
@@ -246,7 +246,7 @@ export default function Navbar() {
                             Core Platform
                           </div>
                           <div className="flex flex-col gap-2">
-                            <Link href="#platform" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/platform" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-violet-50 text-violet-600 group-hover/item:bg-violet-100 transition-colors">
                                 {icons.overview}
                               </span>
@@ -255,7 +255,7 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-500 font-semibold mt-0.5 leading-relaxed">The complete B2B commerce platform</span>
                               </div>
                             </Link>
-                            <Link href="#solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/ai-quote-engine" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-blue-50 text-blue-600 group-hover/item:bg-blue-100 transition-colors">
                                 {icons.bolt}
                               </span>
@@ -264,7 +264,7 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-500 font-semibold mt-0.5 leading-relaxed">AI-powered pricing with win probability</span>
                               </div>
                             </Link>
-                            <Link href="#solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/digital-sales-room" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-pink-50 text-pink-600 group-hover/item:bg-pink-100 transition-colors">
                                 {icons.chat}
                               </span>
@@ -273,7 +273,7 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-500 font-semibold mt-0.5 leading-relaxed">Real-time negotiation &amp; deal rooms</span>
                               </div>
                             </Link>
-                            <Link href="#solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/product-configurator" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-orange-50 text-orange-600 group-hover/item:bg-orange-100 transition-colors">
                                 {icons.cog}
                               </span>
@@ -287,7 +287,7 @@ export default function Navbar() {
                           <div className="text-[10px] font-bold tracking-widest text-slate-400 uppercase font-mono border-b border-slate-50 pb-2 mb-3 mt-6">
                             Architecture
                           </div>
-                          <Link href="#mach-architecture" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                          <Link href="/mach-architecture" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                             <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-indigo-50 text-indigo-600 group-hover/item:bg-indigo-100 transition-colors">
                               {icons.code}
                             </span>
@@ -304,7 +304,7 @@ export default function Navbar() {
                             Operations
                           </div>
                           <div className="flex flex-col gap-2">
-                            <Link href="#solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-blue-50 text-blue-600 group-hover/item:bg-blue-100 transition-colors">
                                 {icons.write}
                               </span>
@@ -313,7 +313,7 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-500 font-semibold mt-0.5 leading-relaxed">Quote-to-order lifecycle</span>
                               </div>
                             </Link>
-                            <Link href="#solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/inventory-management" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-emerald-50 text-emerald-600 group-hover/item:bg-emerald-100 transition-colors">
                                 {icons.wallet}
                               </span>
@@ -322,7 +322,7 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-500 font-semibold mt-0.5 leading-relaxed">Multi-warehouse, real-time sync</span>
                               </div>
                             </Link>
-                            <Link href="#solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/supplier-management" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-violet-50 text-violet-600 group-hover/item:bg-violet-100 transition-colors">
                                 {icons.users}
                               </span>
@@ -331,7 +331,7 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-500 font-semibold mt-0.5 leading-relaxed">Onboarding, compliance &amp; logistics</span>
                               </div>
                             </Link>
-                            <Link href="#solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-pink-50 text-pink-600 group-hover/item:bg-pink-100 transition-colors">
                                 {icons.layout}
                               </span>
@@ -345,7 +345,7 @@ export default function Navbar() {
                           <div className="text-[10px] font-bold tracking-widest text-slate-400 uppercase font-mono border-b border-slate-50 pb-2 mb-3 mt-6">
                             Integration
                           </div>
-                          <Link href="#solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                          <Link href="/platform#wordpress" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                             <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-amber-50 text-amber-600 group-hover/item:bg-amber-100 transition-colors">
                               {icons.connect}
                             </span>
@@ -419,7 +419,7 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-500 font-semibold mt-0.5 leading-relaxed">Agent-drafted quotes, scored before send</span>
                               </div>
                             </Link>
-                            <Link href="#solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/digital-sales-room" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-pink-50 text-pink-600 group-hover/item:bg-pink-100 transition-colors">
                                 {icons.chat}
                               </span>
@@ -446,7 +446,7 @@ export default function Navbar() {
                             By Industry
                           </div>
                           <div className="flex flex-col gap-2">
-                            <Link href="#industries" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/corporate-gifting" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-orange-50 text-orange-600 group-hover/item:bg-orange-100 transition-colors">
                                 {icons.gift}
                               </span>
@@ -455,7 +455,7 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-500 font-semibold mt-0.5 leading-relaxed">Kitted quotes &amp; seasonal margin protection</span>
                               </div>
                             </Link>
-                            <Link href="#industries" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/industrial-packaging" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-indigo-50 text-indigo-600 group-hover/item:bg-indigo-100 transition-colors">
                                 {icons.box3d}
                               </span>
@@ -565,7 +565,7 @@ export default function Navbar() {
                             Partners
                           </div>
                           <div className="flex flex-col gap-2">
-                            <Link href="#partners" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-pink-50 text-pink-600 group-hover/item:bg-pink-100 transition-colors">
                                 {icons.layout}
                               </span>
@@ -574,7 +574,7 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-500 font-semibold mt-0.5 leading-relaxed">Agencies &amp; consultants</span>
                               </div>
                             </Link>
-                            <Link href="#partners" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/become-a-technology-partner" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-amber-50 text-amber-600 group-hover/item:bg-amber-100 transition-colors">
                                 {icons.code}
                               </span>
@@ -688,20 +688,20 @@ export default function Navbar() {
                         className="overflow-hidden pl-2 pb-4 flex flex-col gap-3"
                       >
                         <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase font-mono mt-2">Core Platform</div>
-                        <Link href="#platform" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Platform Overview</Link>
-                        <Link href="#solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>AI Quote Engine</Link>
-                        <Link href="#solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Digital Sales Room</Link>
-                        <Link href="#solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Product Configurator</Link>
+                        <Link href="/platform" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Platform Overview</Link>
+                        <Link href="/ai-quote-engine" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>AI Quote Engine</Link>
+                        <Link href="/digital-sales-room" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Digital Sales Room</Link>
+                        <Link href="/product-configurator" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Product Configurator</Link>
                         
                         <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase font-mono mt-2">Operations</div>
-                        <Link href="#solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Order Management</Link>
-                        <Link href="#solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Inventory Management</Link>
-                        <Link href="#solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Supplier Management</Link>
-                        <Link href="#solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>B2B Storefront</Link>
+                        <Link href="/solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Order Management</Link>
+                        <Link href="/inventory-management" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Inventory Management</Link>
+                        <Link href="/supplier-management" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Supplier Management</Link>
+                        <Link href="/solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>B2B Storefront</Link>
                         
                         <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase font-mono mt-2">Architecture &amp; Integration</div>
-                        <Link href="#mach-architecture" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>MACH Architecture</Link>
-                        <Link href="#solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>WordPress / WooCommerce</Link>
+                        <Link href="/mach-architecture" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>MACH Architecture</Link>
+                        <Link href="/platform#wordpress" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>WordPress / WooCommerce</Link>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -728,12 +728,12 @@ export default function Navbar() {
                         <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase font-mono mt-2">By Capability</div>
                         <Link href="/solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Unified B2B Commerce</Link>
                         <Link href="/ai-quote-engine" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>AI Quote Engine</Link>
-                        <Link href="/solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Digital Sales Room</Link>
+                        <Link href="/digital-sales-room" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Digital Sales Room</Link>
                         <Link href="/solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Pricing &amp; Margin Control</Link>
                         
                         <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase font-mono mt-2">By Industry</div>
-                        <Link href="/solutions#industries" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Corporate Gifting</Link>
-                        <Link href="/solutions#industries" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Industrial Packaging</Link>
+                        <Link href="/corporate-gifting" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Corporate Gifting</Link>
+                        <Link href="/industrial-packaging" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Industrial Packaging</Link>
                         <Link href="/solutions#industries" className="text-sm font-bold text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>All industries →</Link>
                       </motion.div>
                     )}
@@ -768,8 +768,8 @@ export default function Navbar() {
                       >
                         <Link href="#learn-more" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>About Us</Link>
                         <Link href="/contact" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Contact Us</Link>
-                        <Link href="#partners" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Solution Partners</Link>
-                        <Link href="#partners" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Technology Partners</Link>
+                        <Link href="/solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Solution Partners</Link>
+                        <Link href="/become-a-technology-partner" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Technology Partners</Link>
                         <Link href="/blog" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Blog</Link>
                       </motion.div>
                     )}

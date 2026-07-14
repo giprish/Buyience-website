@@ -19,10 +19,10 @@ export default function Footer() {
     {
       title: "More Solutions",
       links: [
-        { label: "Platform Overview", href: "/solutions" },
-        { label: "MACH Architecture", href: "/solutions" },
+        { label: "Platform Overview", href: "/platform" },
+        { label: "MACH Architecture", href: "/mach-architecture" },
         { label: "Digital Sales Room", href: "/solutions" },
-        { label: "Wordpress Plugin", href: "/solutions" },
+        { label: "Wordpress Plugin", href: "/platform#wordpress" },
         { label: "Integrations", href: "/integrations" },
       ],
     },
@@ -33,8 +33,8 @@ export default function Footer() {
         { label: "Solutions", href: "/solutions" },
         { label: "Pricing", href: "/pricing" },
         { label: "Contact", href: "/contact" },
-        { label: "Become a Solution Partner", href: "#partners" },
-        { label: "Become a Technology Partner", href: "#partners" },
+        { label: "Become a Solution Partner", href: "/solutions" },
+        { label: "Become a Technology Partner", href: "/become-a-technology-partner" },
       ],
     },
     {
