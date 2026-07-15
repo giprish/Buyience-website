@@ -72,7 +72,7 @@ export default function MachDivesSection() {
         </div>
 
         {/* Dive 2: Multi-Tenancy */}
-        <div className="dive reveal in">
+        <div className="dive reversed reveal in">
           <div>
             <p className="eyebrow">MULTI-TENANCY</p>
             <h2>Your data. Its own database.</h2>

@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import Button from "@/components/Button";
+import SectionCapsule from "@/components/SectionCapsule";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function QuoteHero() {
   const [winProb, setWinProb] = useState(0);
+  const { format } = useCurrency();
 
   useEffect(() => {
-    let start = 0;
     const end = 81;
     const duration = 1200;
     const startTime = performance.now();
@@ -36,11 +37,12 @@ export default function QuoteHero() {
   const strokeDashoffset = strokeDasharray - (strokeDasharray * winProb) / 100;
 
   return (
-    <header className="hero">
-      <div className="container hero-grid">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
+      <div className="container hero-grid relative z-10">
         {/* Left column */}
         <div className="text-left">
-          <p className="eyebrow">AI QUOTE ENGINE · NOW IN NOVA CORE</p>
+          <SectionCapsule>AI Quote Engine · Now in Nova Core</SectionCapsule>
           <h1>
             The AI quote engine built for B2B. <span className="grad-text">Built to win.</span>
           </h1>
@@ -49,10 +51,10 @@ export default function QuoteHero() {
             respond in seconds and win more deals. You stay in control; the AI does the maths.
           </p>
           <div className="cta-row">
-            <Button variant="primary" size="lg" href="#trial">
+            <Button variant="primary" size="lg" href="https://app.buyience.com/register">
               Start Free Trial
             </Button>
-            <Button variant="ghost" size="lg" href="#demo">
+            <Button variant="ghost" size="lg" href="/request-a-demo">
               Request Demo
             </Button>
           </div>
@@ -66,7 +68,7 @@ export default function QuoteHero() {
           <div className="cs-head">
             <div>
               <div className="cs-title">Quote QT-4402 · 500 units</div>
-              <div className="cs-sub font-mono">Gold-tier customer · 14 prior orders</div>
+              <div className="cs-sub font-mono">Gold-tier · 14 prior orders</div>
             </div>
             <span className="cs-badge">AI PRICED</span>
           </div>
@@ -75,7 +77,7 @@ export default function QuoteHero() {
             <div>
               <span className="lab">RECOMMENDED PRICE</span>
               <span className="val">
-                €23.40 <span className="unit">/ unit</span>
+                {format(23.4, 2)} <span className="unit">/ unit</span>
               </span>
             </div>
             <div className="text-right">

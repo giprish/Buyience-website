@@ -48,8 +48,10 @@ export default function MachComparisonSection() {
               {rows.map((row, idx) => (
                 <tr key={idx}>
                   <td>{row.aspect}</td>
-                  <td>{row.manual}</td>
-                  <td className="nc">{row.nc}</td>
+                  <td data-label="Traditional platform">{row.manual}</td>
+                  <td className="nc" data-label="Nova Core (MACH)">
+                    {row.nc}
+                  </td>
                 </tr>
               ))}
             </tbody>

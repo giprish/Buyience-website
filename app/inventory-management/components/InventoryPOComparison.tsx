@@ -49,8 +49,10 @@ export default function InventoryPOComparison() {
               {rows.map((row, idx) => (
                 <tr key={idx}>
                   <td>{row.process}</td>
-                  <td>{row.manual}</td>
-                  <td className="nc">{row.nc}</td>
+                  <td data-label="Manual method">{row.manual}</td>
+                  <td className="nc" data-label="With Nova Core">
+                    {row.nc}
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -1,22 +1,39 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function AnnouncementBar() {
+  const { format, prices } = useCurrency();
+
   return (
-    <div className="w-full bg-[#170d3f] text-slate-100 select-none border-b border-white/5 py-2.5">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-center flex-wrap gap-x-2 gap-y-1 text-xs font-semibold tracking-wide">
-        <span className="bg-white/10 text-white px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider uppercase">
-          🔔 Founder launch
+    <div className="announcement-bar relative w-full overflow-hidden select-none">
+      <div className="announcement-bar-glow" aria-hidden="true" />
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 px-4 py-3 text-center sm:flex-row sm:flex-wrap sm:gap-x-3 sm:gap-y-1 sm:px-5 sm:py-2.5">
+        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-white/25 bg-white/12 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.1em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] sm:px-3 sm:py-1 sm:text-[11px] sm:tracking-[0.08em]">
+          <span aria-hidden="true" className="text-[9px] opacity-90">
+            ✦
+          </span>
+          Founder launch
         </span>
-        <span className="text-slate-300">
-          First 50 customers get <b className="text-white font-bold">60% off for life</b> — $99/mo instead of $249 · 19 spots left ·{" "}
+        <p className="max-w-[20rem] text-[12.5px] font-medium leading-relaxed tracking-wide text-white/80 sm:max-w-none sm:text-[13px] sm:leading-snug">
+          lock in <b className="font-bold text-white">{format(prices.growMonthly)}/mo</b>
+          <span className="hidden sm:inline"> before standard pricing rises to $249</span>
+          <span className="mx-1.5 text-white/35" aria-hidden="true">
+            ·
+          </span>
+          <b className="font-semibold text-white">31 of 50</b> spots taken
+          <span className="mx-1.5 text-white/35" aria-hidden="true">
+            ·
+          </span>
           <Link
             href="/pricing"
-            className="text-violet-300 hover:text-white underline underline-offset-2 transition-colors font-bold"
+            className="font-semibold whitespace-nowrap text-white underline decoration-white/40 underline-offset-[3px] transition-colors hover:text-violet-200 hover:decoration-violet-200"
           >
             View Pricing
           </Link>
-        </span>
+        </p>
       </div>
     </div>
   );

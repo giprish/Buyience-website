@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import Button from "@/components/Button";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function GiftingHero() {
+  const { format } = useCurrency();
   const [winProb, setWinProb] = useState(0);
   const target = 78;
 
@@ -86,7 +88,7 @@ export default function GiftingHero() {
             </div>
             <div className="qc-line total">
               <span>Quote total</span>
-              <span>€11,340.00</span>
+              <span>{format(11340, 2)}</span>
             </div>
           </div>
           <div className="qc-foot">

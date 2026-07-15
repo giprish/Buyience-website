@@ -3,8 +3,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function PackagingPricing() {
+  const { format, prices } = useCurrency();
+
   return (
     <section className="pricing" id="pricing">
       <div className="container">
@@ -21,23 +24,23 @@ export default function PackagingPricing() {
         </motion.div>
 
         <div className="price-grid">
-          {/* Card 1 */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
             className="price-card reveal in"
           >
             <h3>Grow</h3>
             <div className="price">
-              $99<small>/mo</small>
+              {format(prices.growMonthly)}
+              <small>/mo</small>
             </div>
-            <p className="price-note">$990/yr — 2 months free</p>
+            <p className="price-note">{format(prices.growAnnual)}/yr — 2 months free</p>
             <div className="price-feat">
               Full commerce platform: quoting, CPQ, orders, inventory, customer portal.
               <br />
-              <b className="mt-2 block">AI Quote Engine</b> available as a $49/mo add-on.
+              <b className="mt-2 block">AI Quote Engine</b> available as a {format(prices.aiQuoteAddon)}/mo add-on.
             </div>
             <div className="mt-8">
               <Button variant="ghost" className="w-full" href="/contact">
@@ -46,10 +49,9 @@ export default function PackagingPricing() {
             </div>
           </motion.div>
 
-          {/* Card 2 */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
             className="price-card pro reveal in"
@@ -57,9 +59,10 @@ export default function PackagingPricing() {
             <span className="pill">MOST POPULAR</span>
             <h3>Pro</h3>
             <div className="price">
-              $179<small>/mo</small>
+              {format(prices.proMonthly)}
+              <small>/mo</small>
             </div>
-            <p className="price-note">$1,790/yr — 2 months free</p>
+            <p className="price-note">{format(prices.proAnnual)}/yr — 2 months free</p>
             <div className="price-feat">
               Everything in Grow.
               <br />
@@ -80,7 +83,7 @@ export default function PackagingPricing() {
           transition={{ duration: 0.5 }}
           className="launch-note reveal in"
         >
-          $99 is the launch price — it moves to $249/mo. Lock it in for life.
+          {format(prices.growMonthly)} is the launch price — it moves to $249/mo. Lock it in for life.
         </motion.p>
 
         <motion.p

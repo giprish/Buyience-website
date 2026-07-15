@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import Button from "@/components/Button";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function PackagingHero() {
+  const { format } = useCurrency();
   const [winProb, setWinProb] = useState(0);
   const target = 73;
 
@@ -85,18 +87,18 @@ export default function PackagingHero() {
             <tbody>
               <tr>
                 <td>1,000</td>
-                <td>€0.92</td>
-                <td>€920.00</td>
+                <td>{format(0.92, 2)}</td>
+                <td>{format(920, 2)}</td>
               </tr>
               <tr className="rec">
                 <td>5,000</td>
-                <td>€0.71</td>
-                <td>€3,550.00</td>
+                <td>{format(0.71, 2)}</td>
+                <td>{format(3550, 2)}</td>
               </tr>
               <tr>
                 <td>10,000</td>
-                <td>€0.64</td>
-                <td>€6,400.00</td>
+                <td>{format(0.64, 2)}</td>
+                <td>{format(6400, 2)}</td>
               </tr>
             </tbody>
           </table>

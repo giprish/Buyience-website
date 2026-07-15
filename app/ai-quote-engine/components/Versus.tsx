@@ -3,8 +3,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function Versus() {
+  const { format, prices } = useCurrency();
   const manualFeatures = [
     { label: "Quote generation", value: "Spreadsheets and templates, many minutes per quote" },
     { label: "Win visibility", value: "No view of likelihood — you find out after" },
@@ -34,8 +36,8 @@ export default function Versus() {
         <div className="vs-grid">
           {/* Manual Column */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.55 }}
             className="vs-col manual text-left"
@@ -51,8 +53,8 @@ export default function Versus() {
 
           {/* AI Column */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.55 }}
             className="vs-col ai text-left"
@@ -76,17 +78,22 @@ export default function Versus() {
           transition={{ duration: 0.55 }}
           className="callout text-left"
         >
-          <span className="zap" aria-hidden="true">
-            ⚡
-          </span>
-          <div className="txt">
-            <b>Enterprise CPQ power, without the enterprise price.</b>
-            <p>
-              Enterprise CPQ suites like Salesforce, Oracle and SAP typically involve per-user pricing, months of
-              implementation, and a dedicated IT team. Nova Core starts from $99/month and goes live in days.
-            </p>
+          <div className="callout-body">
+            <span className="zap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" />
+              </svg>
+            </span>
+            <div className="txt">
+              <b>Enterprise CPQ power, without the enterprise price.</b>
+              <p>
+                Enterprise CPQ suites like Salesforce, Oracle and SAP typically involve per-user pricing, months of
+                implementation, and a dedicated IT team. Nova Core starts from{" "}
+                <strong>{format(prices.growMonthly)}/month</strong> and goes live in days.
+              </p>
+            </div>
           </div>
-          <Button variant="ghost" href="#pricing">
+          <Button variant="ghost" href="#pricing" className="callout-cta">
             See pricing
           </Button>
         </motion.div>

@@ -51,7 +51,7 @@ export default function PackagingDivesSection() {
         </div>
 
         {/* Dive 2: Spec-driven CPQ */}
-        <div className="dive reveal in" id="dive-2">
+        <div className="dive reversed reveal in" id="dive-2">
           <div>
             <p className="eyebrow">SPEC-DRIVEN CPQ</p>
             <h2>The plate charge that never gets forgotten.</h2>
@@ -143,7 +143,7 @@ export default function PackagingDivesSection() {
         </div>
 
         {/* Dive 4: Replenishment */}
-        <div className="dive reveal in" id="dive-4">
+        <div className="dive reversed reveal in" id="dive-4">
           <div>
             <p className="eyebrow">REPLENISHMENT</p>
             <h2>Your best customers shouldn't have to email you.</h2>

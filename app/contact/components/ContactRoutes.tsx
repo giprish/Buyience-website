@@ -88,7 +88,7 @@ export default function ContactRoutes({ selectedReason, onSelectReason }: Contac
   };
 
   return (
-    <section className="routes">
+    <div className="routes">
       <div className="container">
         <div className="route-grid">
           {routes.map((route, idx) => (
@@ -113,6 +113,6 @@ export default function ContactRoutes({ selectedReason, onSelectReason }: Contac
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

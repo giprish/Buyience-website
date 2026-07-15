@@ -2,8 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function GiftingFAQ() {
+  const { format, prices } = useCurrency();
   const faqs = [
     {
       q: "Can Nova Core handle kitted or bundled gift products?",
@@ -27,7 +29,7 @@ export default function GiftingFAQ() {
     },
     {
       q: "What does it cost, and is there a trial?",
-      a: "Grow is $99/mo and Pro is $179/mo (the AI Quote Engine is included in Pro, or $49/mo on Grow). Annual plans get 2 months free. Every plan starts with a 14-day free trial — no card required.",
+      a: `Grow is ${format(prices.growMonthly)}/mo and Pro is ${format(prices.proMonthly)}/mo (the AI Quote Engine is included in Pro, or ${format(prices.aiQuoteAddon)}/mo on Grow). Annual plans get 2 months free. Every plan starts with a 14-day free trial — no card required.`,
     },
   ];
 

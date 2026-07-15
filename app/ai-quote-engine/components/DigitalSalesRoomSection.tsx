@@ -2,8 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function DigitalSalesRoomSection() {
+  const { format } = useCurrency();
   const features = [
     {
       title: "Real-Time Chat",
@@ -68,15 +70,15 @@ export default function DigitalSalesRoomSection() {
               
               <div className="mini-row done">
                 <span className="tag">BUYER</span>
-                <span>"Can you do €22.10?"</span>
+                <span>&quot;Can you do {format(22.1, 2)}?&quot;</span>
               </div>
               <div className="mini-row warn">
                 <span className="tag">FLOOR</span>
-                <span>€22.10 breaches floor — blocked</span>
+                <span>{format(22.1, 2)} breaches floor — blocked</span>
               </div>
               <div className="mini-row active">
                 <span className="tag">COUNTER</span>
-                <span>€22.90 proposed · one click</span>
+                <span>{format(22.9, 2)} proposed · one click</span>
               </div>
               <div className="mini-row">
                 <span className="tag">LOG</span>

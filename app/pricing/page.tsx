@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import PricingPageContent from "./PricingPageContent";
 
@@ -9,5 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default function PricingPage() {
-  return <PricingPageContent />;
+  return (
+    <Suspense fallback={null}>
+      <PricingPageContent />
+    </Suspense>
+  );
 }

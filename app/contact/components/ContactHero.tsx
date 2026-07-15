@@ -2,8 +2,15 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import SectionCapsule from "@/components/SectionCapsule";
+import ContactRoutes from "./ContactRoutes";
 
-export default function ContactHero() {
+interface ContactHeroProps {
+  selectedReason: string;
+  onSelectReason: (reason: string) => void;
+}
+
+export default function ContactHero({ selectedReason, onSelectReason }: ContactHeroProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -29,17 +36,19 @@ export default function ContactHero() {
         animate="visible"
         className="container"
       >
-        <motion.p variants={itemVariants} className="eyebrow">
-          GET IN TOUCH
-        </motion.p>
+        <motion.div variants={itemVariants}>
+          <SectionCapsule>Get in Touch</SectionCapsule>
+        </motion.div>
         <motion.h1 variants={itemVariants}>
           Talk to the people who <span className="grad-text">built the platform.</span>
         </motion.h1>
         <motion.p variants={itemVariants} className="lede">
-          We're a small team, so there's no call centre and no ticket maze. Pick what you need below and you'll reach
-          someone who can actually answer.
+          We&apos;re a small team, so there&apos;s no call centre and no ticket maze. Pick what you need below and you&apos;ll
+          reach someone who can actually answer.
         </motion.p>
       </motion.div>
+
+      <ContactRoutes selectedReason={selectedReason} onSelectReason={onSelectReason} />
     </header>
   );
 }

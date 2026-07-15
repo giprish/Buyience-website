@@ -2,8 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function GiftingDivesSection() {
+  const { format } = useCurrency();
   return (
     <section style={{ paddingTop: 0 }}>
       <div className="container">
@@ -51,7 +53,7 @@ export default function GiftingDivesSection() {
         </div>
 
         {/* Dive 2: CPQ + BOM */}
-        <div className="dive reveal in" id="dive-2">
+        <div className="dive reversed reveal in" id="dive-2">
           <div>
             <p className="eyebrow">CPQ + BOM</p>
             <h2>A gift box is a BOM. Treat it like one.</h2>
@@ -88,7 +90,7 @@ export default function GiftingDivesSection() {
               </div>
               <div className="mini-row done">
                 <span className="tag">PRICED</span>
-                <span>€45.36 / unit · 250 units</span>
+                <span>{format(45.36, 2)} / unit · 250 units</span>
               </div>
             </div>
           </motion.div>
@@ -142,7 +144,7 @@ export default function GiftingDivesSection() {
         </div>
 
         {/* Dive 4: Margin Protection */}
-        <div className="dive reveal in" id="dive-4">
+        <div className="dive reversed reveal in" id="dive-4">
           <div>
             <p className="eyebrow">MARGIN PROTECTION</p>
             <h2>December deals. January margins intact.</h2>

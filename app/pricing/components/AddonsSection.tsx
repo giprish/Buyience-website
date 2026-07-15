@@ -2,33 +2,45 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import {
+  CurrencyCode,
+  formatMoney,
+  getPlanPrices,
+} from "@/lib/pricing/currency";
 
-export default function AddonsSection() {
+interface AddonsSectionProps {
+  currency: CurrencyCode;
+}
+
+export default function AddonsSection({ currency }: AddonsSectionProps) {
+  const prices = getPlanPrices(currency);
+
   const addons = [
     {
       title: "AI Quote Engine",
-      description: "Add AI-powered pricing intelligence to the Grow plan. Included on Pro and Enterprise.",
-      price: "$49/mo",
+      description:
+        "Add AI-powered pricing intelligence to the Grow plan. Included on Pro and Enterprise.",
+      price: `${formatMoney(prices.aiQuoteAddon, currency)}/mo`,
     },
     {
       title: "Product Configurator (CPQ)",
       description: "Visual configuration builder with BOM generation. Included on Enterprise.",
-      price: "$99/mo",
+      price: `${formatMoney(prices.cpqAddon, currency)}/mo`,
     },
     {
       title: "Extra warehouses",
       description: "Additional warehouse locations beyond your plan limit.",
-      price: "$29/mo per location",
+      price: `${formatMoney(prices.warehouseAddon, currency)}/mo per location`,
     },
     {
       title: "Extra users",
       description: "Additional admin users beyond your plan limit.",
-      price: "$15/mo per user",
+      price: `${formatMoney(prices.extraUserAddon, currency)}/mo per user`,
     },
     {
       title: "Priority support",
       description: "4-hour response SLA with phone support included.",
-      price: "$99/mo",
+      price: `${formatMoney(prices.prioritySupportAddon, currency)}/mo`,
     },
   ];
 
@@ -48,7 +60,6 @@ export default function AddonsSection() {
   return (
     <section className="addons">
       <div className="container">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +74,6 @@ export default function AddonsSection() {
           </p>
         </motion.div>
 
-        {/* Add-ons Grid */}
         <div className="grid">
           {addons.map((addon, idx) => (
             <motion.a

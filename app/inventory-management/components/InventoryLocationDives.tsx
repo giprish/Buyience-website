@@ -65,7 +65,7 @@ export default function InventoryLocationDives() {
         </div>
 
         {/* Dive 2: Transfer Orders */}
-        <div className="dive reveal in">
+        <div className="dive reversed reveal in">
           <div>
             <p className="eyebrow">TRANSFER ORDERS</p>
             <h2>Move inventory between locations. Track every step.</h2>

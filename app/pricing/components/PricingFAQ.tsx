@@ -2,8 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function PricingFAQ() {
+  const { format, prices } = useCurrency();
   const faqs = [
     {
       q: "How does the 14-day free trial work?",
@@ -27,7 +29,7 @@ export default function PricingFAQ() {
     },
     {
       q: "What does \"lock in for life\" mean?",
-      a: "Founder-launch customers keep today's price for as long as their subscription remains active — when standard pricing rises to $249/mo, your rate doesn't change.",
+      a: `Founder-launch customers keep today's ${format(prices.growMonthly)}/mo price for as long as their subscription remains active — when standard pricing rises to $249/mo, your rate doesn't change.`,
     },
   ];
 

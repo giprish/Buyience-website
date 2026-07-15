@@ -22,14 +22,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Premium Unified Announcement Bar */}
+    <div className="flex min-h-screen flex-col bg-white">
       <AnnouncementBar />
-      
-      {/* Premium Unified Navbar */}
       <Navbar />
-
-      {/* Scoped Content Block */}
       <main className="quote-engine-page flex-grow">
         <QuoteHero />
         <Challenge />
@@ -42,8 +37,6 @@ export default function Home() {
         <FAQSection />
         <FinalCTASection />
       </main>
-
-      {/* Premium Unified Footer */}
       <Footer />
     </div>
   );

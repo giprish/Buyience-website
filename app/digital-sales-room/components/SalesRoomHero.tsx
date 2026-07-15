@@ -2,8 +2,11 @@
 
 import React from "react";
 import Button from "@/components/Button";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function SalesRoomHero() {
+  const { format } = useCurrency();
+
   return (
     <header className="hero overflow-hidden relative">
       <div className="container hero-grid">
@@ -49,10 +52,11 @@ export default function SalesRoomHero() {
             tee are still a bit high for our margins.
           </div>
           <div className="ai-card">
-            <div className="ai-h">✦ AI SUGGESTION · based on buyer's target costs &amp; your margin floor</div>
+            <div className="ai-h">✦ AI SUGGESTION · based on buyer&apos;s target costs &amp; your margin floor</div>
             <p>
-              Counter the robe at <b>$20.50</b> (24.6% margin) and hold the tee at <b>$8.80</b>. This raises win
-              probability to <b>81%</b> while staying above your <b>22% floor</b>.
+              Counter the robe at <b>{format(20.5, 2)}</b> (24.6% margin) and hold the tee at{" "}
+              <b>{format(8.8, 2)}</b>. This raises win probability to <b>81%</b> while staying above your{" "}
+              <b>22% floor</b>.
             </p>
             <div className="acts">
               <span>⇄ Build counter from this</span>
@@ -60,12 +64,12 @@ export default function SalesRoomHero() {
             </div>
           </div>
           <div className="msg you">
-            <span className="who">ALEX · YOU</span>Here's where I can land: robe $20.50, tee holds at $8.80. Sending a
-            formal counter now.
+            <span className="who">ALEX · YOU</span>Here&apos;s where I can land: robe {format(20.5, 2)}, tee holds at{" "}
+            {format(8.8, 2)}. Sending a formal counter now.
           </div>
           <div className="msg them">
-            <span className="who">RACHEL · BUYER</span>That works for the robe. Can you do $8.40 on the tee if we bump
-            qty to 30?
+            <span className="who">RACHEL · BUYER</span>That works for the robe. Can you do {format(8.4, 2)} on the tee if
+            we bump qty to 30?
           </div>
           <p className="typing">Rachel is typing…</p>
         </div>

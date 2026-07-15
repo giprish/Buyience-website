@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function FAQSection() {
+  const { format, prices } = useCurrency();
   const faqs = [
     {
       question: "How does the AI determine win probability?",
@@ -31,8 +33,7 @@ export default function FAQSection() {
     },
     {
       question: "How long does it take to set up?",
-      answer:
-        "The AI Quote Engine is part of Nova Core — signup takes about 2 minutes and most businesses are fully operational within 2 weeks. It's included in the Pro plan ($179/mo) or available as a $49/mo add-on on Grow, and every plan starts with a 14-day free trial.",
+      answer: `The AI Quote Engine is part of Nova Core — signup takes about 2 minutes and most businesses are fully operational within 2 weeks. It's included in the Pro plan (${format(prices.proMonthly)}/mo) or available as a ${format(prices.aiQuoteAddon)}/mo add-on on Grow, and every plan starts with a 14-day free trial.`,
     },
   ];
 

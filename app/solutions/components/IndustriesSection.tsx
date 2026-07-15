@@ -10,49 +10,49 @@ export default function IndustriesSection() {
       title: "Industrial Supplies / MRO",
       description: "High-SKU catalogs, contract pricing, and repeat replenishment quoting.",
       linkText: "Talk to us about MRO →",
-      linkHref: "#contact",
+      linkHref: "/mro-solutions",
     },
     {
       label: "Automotive",
       title: "Automotive Parts",
       description: "Fitment-heavy catalogs, dealer tiers, and fast counter-quoting.",
       linkText: "Talk to us about auto parts →",
-      linkHref: "#contact",
+      linkHref: "/automotive-solutions",
     },
     {
       label: "Construction",
       title: "Building Materials",
       description: "Project-based quoting, staged deliveries, and trade pricing.",
       linkText: "Talk to us →",
-      linkHref: "#contact",
+      linkHref: "/contact",
     },
     {
       label: "F&B",
       title: "Food & Beverage Distribution",
       description: "Fast-moving inventory, customer-specific price lists, standing orders.",
       linkText: "Talk to us →",
-      linkHref: "#contact",
+      linkHref: "/contact",
     },
     {
       label: "Medical",
       title: "Medical & Lab Supplies",
       description: "Approval workflows, institutional buyers, and compliance-aware quoting.",
       linkText: "Talk to us →",
-      linkHref: "#contact",
+      linkHref: "/contact",
     },
     {
       label: "Electronics",
       title: "Electronics",
       description: "Volume tiers, fast-changing costs, and configuration-heavy quotes.",
       linkText: "Talk to us →",
-      linkHref: "#contact",
+      linkHref: "/contact",
     },
     {
       label: "Chemicals",
       title: "Chemicals",
       description: "Spec-driven quoting, unit conversions, and documentation-heavy orders.",
       linkText: "Talk to us →",
-      linkHref: "#contact",
+      linkHref: "/contact",
     },
   ];
 
@@ -153,7 +153,7 @@ export default function IndustriesSection() {
           className="ind-note"
         >
           Don't see your industry? Every vertical gets the same core platform —{" "}
-          <a href="#contact">tell us how you sell</a> and we'll show you how it fits.
+          <a href="/contact">tell us how you sell</a> and we'll show you how it fits.
         </motion.p>
       </div>
     </section>

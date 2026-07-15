@@ -3,12 +3,20 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "@/components/Button";
+import {
+  CurrencyCode,
+  formatMoney,
+  getPlanPrices,
+} from "@/lib/pricing/currency";
 
 interface PricingPlansProps {
   billingPeriod: "monthly" | "annual";
+  currency: CurrencyCode;
 }
 
-export default function PricingPlans({ billingPeriod }: PricingPlansProps) {
+export default function PricingPlans({ billingPeriod, currency }: PricingPlansProps) {
+  const prices = getPlanPrices(currency);
+
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (index: number) => ({
@@ -26,7 +34,6 @@ export default function PricingPlans({ billingPeriod }: PricingPlansProps) {
     <section className="plans" id="plans">
       <div className="container">
         <div className="plan-grid">
-          {/* GROW PLAN */}
           <motion.div
             custom={0}
             initial="hidden"
@@ -44,30 +51,35 @@ export default function PricingPlans({ billingPeriod }: PricingPlansProps) {
               <AnimatePresence mode="wait">
                 {billingPeriod === "monthly" ? (
                   <motion.div
-                    key="grow-monthly"
+                    key={`grow-monthly-${currency}`}
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                     transition={{ duration: 0.2 }}
                   >
                     <div className="price">
-                      $99<small>/mo</small>
+                      {formatMoney(prices.growMonthly, currency)}
+                      <small>/mo</small>
                     </div>
-                    <div className="price-sub">or $990/yr billed annually — 2 months free</div>
+                    <div className="price-sub">
+                      or {formatMoney(prices.growAnnual, currency)}/yr billed annually — 2 months free
+                    </div>
                   </motion.div>
                 ) : (
                   <motion.div
-                    key="grow-annual"
+                    key={`grow-annual-${currency}`}
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                     transition={{ duration: 0.2 }}
                   >
                     <div className="price">
-                      $990<small>/year</small>
+                      {formatMoney(prices.growAnnual, currency)}
+                      <small>/year</small>
                     </div>
                     <div className="price-sub">
-                      Billed annually (was $1,188). <b>You save $198 (2 months free)</b>
+                      Billed annually (was {formatMoney(prices.growWas, currency)}).{" "}
+                      <b>You save {formatMoney(prices.growSave, currency)} (2 months free)</b>
                     </div>
                   </motion.div>
                 )}
@@ -112,12 +124,12 @@ export default function PricingPlans({ billingPeriod }: PricingPlansProps) {
                 <span className="ic">✓</span>Order &amp; Inventory Management
               </li>
               <li className="addon">
-                <span className="ic">+</span>AI Quote Engine (add-on, $49/mo)
+                <span className="ic">+</span>AI Quote Engine (add-on,{" "}
+                {formatMoney(prices.aiQuoteAddon, currency)}/mo)
               </li>
             </ul>
           </motion.div>
 
-          {/* PRO PLAN */}
           <motion.div
             custom={1}
             initial="hidden"
@@ -135,30 +147,35 @@ export default function PricingPlans({ billingPeriod }: PricingPlansProps) {
               <AnimatePresence mode="wait">
                 {billingPeriod === "monthly" ? (
                   <motion.div
-                    key="pro-monthly"
+                    key={`pro-monthly-${currency}`}
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                     transition={{ duration: 0.2 }}
                   >
                     <div className="price">
-                      $179<small>/mo</small>
+                      {formatMoney(prices.proMonthly, currency)}
+                      <small>/mo</small>
                     </div>
-                    <div className="price-sub">or $1,790/yr billed annually — 2 months free</div>
+                    <div className="price-sub">
+                      or {formatMoney(prices.proAnnual, currency)}/yr billed annually — 2 months free
+                    </div>
                   </motion.div>
                 ) : (
                   <motion.div
-                    key="pro-annual"
+                    key={`pro-annual-${currency}`}
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                     transition={{ duration: 0.2 }}
                   >
                     <div className="price">
-                      $1,790<small>/year</small>
+                      {formatMoney(prices.proAnnual, currency)}
+                      <small>/year</small>
                     </div>
                     <div className="price-sub">
-                      Billed annually (was $2,148). <b>You save $358 (2 months free)</b>
+                      Billed annually (was {formatMoney(prices.proWas, currency)}).{" "}
+                      <b>You save {formatMoney(prices.proSave, currency)} (2 months free)</b>
                     </div>
                   </motion.div>
                 )}
@@ -208,7 +225,6 @@ export default function PricingPlans({ billingPeriod }: PricingPlansProps) {
             </ul>
           </motion.div>
 
-          {/* ENTERPRISE PLAN */}
           <motion.div
             custom={2}
             initial="hidden"

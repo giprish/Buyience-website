@@ -2,8 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function SalesRoomDivesSection() {
+  const { format } = useCurrency();
   return (
     <section className="challenge" style={{ paddingBottom: "60px" }}>
       <div className="container">
@@ -49,30 +51,30 @@ export default function SalesRoomDivesSection() {
               <div className="ai-card" style={{ marginTop: 0 }}>
                 <div className="ai-h">✦ AI SUGGESTION</div>
                 <p>
-                  Counter robe at <b>$20.50</b> (24.6% margin), hold tee at <b>$8.80</b> — win probability <b>81%</b>, above
+                  Counter robe at <b>{format(20.5, 2)}</b> (24.6% margin), hold tee at <b>{format(8.8, 2)}</b> — win probability <b>81%</b>, above
                   your <b>22% floor</b>.
                 </p>
               </div>
               <div className="mini-row warn">
                 <span className="tag">BLOCKED</span>
-                <span>$8.40 request breaches floor at qty 24</span>
+                <span>{format(8.4, 2)} request breaches floor at qty 24</span>
               </div>
               <div className="mini-row done">
                 <span className="tag">SAFE</span>
-                <span>$8.40 works at qty 30 — floor holds</span>
+                <span>{format(8.4, 2)} works at qty 30 — floor holds</span>
               </div>
             </div>
           </motion.div>
         </div>
 
         {/* Dive 2: AI Quote Triggers */}
-        <div className="dive reveal in">
+        <div className="dive reversed reveal in">
           <div>
             <p className="eyebrow">AI QUOTE TRIGGERS</p>
             <h2>It spots the deal inside the conversation.</h2>
             <p>
               The copilot listens for signals — a quantity mention, a budget hint, a deadline — and surfaces the
-              opportunity as a concrete move: "Offer $8.40 at qty 30 — adds $252 volume, holds 27.5% margin."
+              opportunity as a concrete move: "Offer {format(8.4, 2)} at qty 30 — adds {format(252)} volume, holds 27.5% margin."
             </p>
             <p>
               One click applies it to a structured counter-offer. The contextual read your best negotiator does
@@ -98,7 +100,7 @@ export default function SalesRoomDivesSection() {
               <div className="ai-card">
                 <div className="ai-h">✦ SUGGESTED NEXT MOVE</div>
                 <p>
-                  Offer <b>$8.40 @ qty 30</b> — adds <b>$252</b> volume, holds <b>27.5% margin</b>.
+                  Offer <b>{format(8.4, 2)} @ qty 30</b> — adds <b>{format(252)}</b> volume, holds <b>27.5% margin</b>.
                 </p>
                 <div className="acts">
                   <span>⇄ Apply to counter</span>
@@ -134,10 +136,10 @@ export default function SalesRoomDivesSection() {
                 <span className="rn">R3</span>
                 <div className="rt">
                   <b>Buyer counter · pending</b>
-                  <span>"Can you do $8.40 on the tee at qty 30?"</span>
+                  <span>"Can you do {format(8.4, 2)} on the tee at qty 30?"</span>
                 </div>
                 <div className="amt">
-                  $35,860<i>▼ $1,390 gap</i>
+                  {format(35860)}<i>▼ {format(1390)} gap</i>
                 </div>
               </div>
               <div className="r">
@@ -146,7 +148,7 @@ export default function SalesRoomDivesSection() {
                   <b>Seller counter · rejected</b>
                   <span>Met partway on the robe</span>
                 </div>
-                <div className="amt">$37,250</div>
+                <div className="amt">{format(37250)}</div>
               </div>
               <div className="r">
                 <span className="rn">R1</span>
@@ -154,7 +156,7 @@ export default function SalesRoomDivesSection() {
                   <b>Buyer counter · rejected</b>
                   <span>Initial targets attached</span>
                 </div>
-                <div className="amt">$34,120</div>
+                <div className="amt">{format(34120)}</div>
               </div>
               <div className="trend">▾ Down 13.1% · trending to close</div>
             </div>

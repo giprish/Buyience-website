@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { integrationsData, Integration } from "../data/integrations";
 
@@ -123,7 +124,20 @@ export default function IntegrationsDirectory() {
                     data-cat={item.category}
                   >
                     <div className="int-top">
-                      <span className="tile">{item.tileText}</span>
+                      <span className={`tile${item.logo ? " has-logo" : ""}`}>
+                        {item.logo ? (
+                          <Image
+                            src={item.logo}
+                            alt=""
+                            width={28}
+                            height={28}
+                            className="tile-logo"
+                            unoptimized
+                          />
+                        ) : (
+                          item.tileText
+                        )}
+                      </span>
                       <div className="int-name">
                         <b>{item.name}</b>
                         <span>{item.category}</span>

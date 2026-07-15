@@ -3,8 +3,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
+import {
+  CurrencyCode,
+  formatMoney,
+  getPlanPrices,
+} from "@/lib/pricing/currency";
 
-export default function ComparisonTable() {
+interface ComparisonTableProps {
+  currency: CurrencyCode;
+}
+
+export default function ComparisonTable({ currency }: ComparisonTableProps) {
+  const prices = getPlanPrices(currency);
+
   return (
     <section className="compare">
       <div className="container">
@@ -36,10 +47,12 @@ export default function ComparisonTable() {
               <tr>
                 <th>Features</th>
                 <th>
-                  Grow<span className="p">$99/mo</span>
+                  Grow
+                  <span className="p">{formatMoney(prices.growMonthly, currency)}/mo</span>
                 </th>
                 <th className="rec-col">
-                  Pro<span className="p">$179/mo</span>
+                  Pro
+                  <span className="p">{formatMoney(prices.proMonthly, currency)}/mo</span>
                 </th>
                 <th>
                   Enterprise<span className="p">Custom</span>

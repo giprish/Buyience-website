@@ -1,45 +1,36 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import Button from "@/components/Button";
+import FinalCTA from "@/components/FinalCTA";
 
 export default function PartnerFinalCTA() {
   return (
-    <section className="final">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="container reveal in"
-      >
-        <p className="eyebrow">JOIN THE PROGRAM</p>
-        <h2>
-          Your clients need modern B2B commerce.
-          <br />
-          Be the one who brings it.
-        </h2>
-        <p>Apply in two minutes — applications go straight to the founding team.</p>
-        <div className="cta-row" style={{ justifyContent: "center" }}>
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={() => {
-              const firstInput = document.getElementById("first");
-              if (firstInput) {
-                firstInput.scrollIntoView({ behavior: "smooth", block: "center" });
-                firstInput.focus();
-              }
-            }}
-          >
-            Apply now
-          </Button>
-          <Button variant="ghost" size="lg" href="/platform">
-            Explore the platform
-          </Button>
-        </div>
-      </motion.div>
-    </section>
+    <FinalCTA
+      capsule="Join the Program"
+      title={
+        <>
+          Your clients need modern B2B commerce.{" "}
+          <span className="final-card-accent">Be the one who brings it.</span>
+        </>
+      }
+      description="Apply in two minutes — applications go straight to the founding team."
+      primaryAction={{
+        label: "Apply now",
+        variant: "ghost",
+        onClick: () => {
+          const firstInput = document.getElementById("first");
+          if (firstInput) {
+            firstInput.scrollIntoView({ behavior: "smooth", block: "center" });
+            firstInput.focus();
+          }
+        },
+      }}
+      secondaryAction={{
+        label: "Explore the platform",
+        href: "/platform-overview",
+        variant: "ghost",
+      }}
+      trust={null}
+    />
   );
 }

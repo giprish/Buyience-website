@@ -73,7 +73,7 @@ export default function SupplierDivesSection() {
         </div>
 
         {/* Dive 2: Compliance Tracking */}
-        <div className="dive reveal in">
+        <div className="dive reversed reveal in">
           <div>
             <p className="eyebrow">COMPLIANCE TRACKING</p>
             <h2>Track every certificate. See every expiry coming.</h2>

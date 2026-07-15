@@ -5,7 +5,6 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactHero from "./components/ContactHero";
-import ContactRoutes from "./components/ContactRoutes";
 import ContactFormSection from "./components/ContactFormSection";
 import SelfServeSection from "./components/SelfServeSection";
 import ContactFinalCTA from "./components/ContactFinalCTA";
@@ -23,8 +22,7 @@ export default function ContactPageContent() {
 
       {/* Scoped Content Block */}
       <main className="contact-page flex-grow">
-        <ContactHero />
-        <ContactRoutes selectedReason={selectedReason} onSelectReason={setSelectedReason} />
+        <ContactHero selectedReason={selectedReason} onSelectReason={setSelectedReason} />
         <ContactFormSection selectedReason={selectedReason} onSelectReason={setSelectedReason} />
         <SelfServeSection />
         <ContactFinalCTA />

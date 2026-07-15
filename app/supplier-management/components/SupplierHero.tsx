@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Button from "@/components/Button";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 type StepKey = 1 | 2 | 3 | 4 | 5;
 
@@ -12,6 +13,7 @@ interface FieldRow {
 }
 
 export default function SupplierHero() {
+  const { format, currency } = useCurrency();
   const [currentStep, setCurrentStep] = useState<StepKey>(1);
   const [isCreated, setIsCreated] = useState(false);
 
@@ -24,7 +26,7 @@ export default function SupplierHero() {
     2: [
       { tag: "FIELD", text: "Bank · Commerzbank · SWIFT COBADEFF" },
       { tag: "MASKED", text: "Account ····· 4821 — stored securely", status: "ok" },
-      { tag: "FIELD", text: "Currency EUR · Payment terms Net 30" },
+      { tag: "FIELD", text: `Currency ${currency} · Payment terms Net 30` },
     ],
     3: [
       { tag: "VALID", text: "ISO 9001 · expires Mar 2027", status: "ok" },
@@ -34,7 +36,7 @@ export default function SupplierHero() {
     4: [
       { tag: "FIELD", text: "Road freight · 5-day transit" },
       { tag: "FIELD", text: "Zones · DE, UK mainland, BeNeLux" },
-      { tag: "RULES", text: "Min order €500 · chilled transport", status: "warn" },
+      { tag: "RULES", text: `Min order ${format(500)} · chilled transport`, status: "warn" },
     ],
     5: [
       { tag: "BASIC", text: "Complete", status: "ok" },
