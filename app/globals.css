@@ -4236,8 +4236,11 @@ body {
 }
 
 .pricing-page .currency-chevron {
-  font-size: 10px;
-  line-height: 1;
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: currentColor;
   transition: transform 0.15s ease;
 }
 

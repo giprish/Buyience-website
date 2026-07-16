@@ -2,6 +2,7 @@
 
 import React, { useEffect, useId, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import {
   CURRENCY_CODES,
   CURRENCY_META,
@@ -147,9 +148,10 @@ export default function PricingHero({
               <span>
                 {meta.symbol} {meta.label}
               </span>
-              <span className={`currency-chevron${open ? " open" : ""}`} aria-hidden>
-                ▾
-              </span>
+              <ChevronDown
+                className={`currency-chevron${open ? " open" : ""}`}
+                aria-hidden
+              />
             </button>
             {open && (
               <ul id={listboxId} className="currency-menu" role="listbox" aria-label="Currency">
