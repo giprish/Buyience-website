@@ -41,6 +41,88 @@ body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
+/* Shared FITS YOUR STACK logo marquee */
+.stack-logo-marquee {
+  --stack-logo-gap: 36px;
+  --stack-logo-size: 48px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 920px;
+  margin: 36px auto 22px;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.stack-logo-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: var(--stack-logo-gap);
+  animation: stack-logo-marquee 36s linear infinite;
+}
+
+.stack-logo-marquee__sequence {
+  display: flex;
+  align-items: center;
+  gap: var(--stack-logo-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.stack-logo-marquee__item {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.stack-logo-marquee__tile {
+  width: var(--stack-logo-size);
+  height: var(--stack-logo-size);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: rgba(124, 58, 237, 0.06);
+  overflow: hidden;
+}
+
+.stack-logo-marquee__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@keyframes stack-logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - var(--stack-logo-gap) / 2));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-logo-marquee__track {
+    animation: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    gap: 20px 28px;
+  }
+
+  .stack-logo-marquee__sequence[aria-hidden="true"] {
+    display: none;
+  }
+
+  .stack-logo-marquee {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
 /* Custom Grid Background Utility */
 .bg-grid-dots {
   background-image: radial-gradient(rgba(124, 58, 237, 0.08) 1.5px, transparent 1.5px);
@@ -2912,26 +2994,6 @@ body {
 .solutions-page .integrations {
   text-align: center;
   background: var(--surface);
-}
-
-.solutions-page .logo-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px 34px;
-  margin: 36px 0 22px;
-}
-
-.solutions-page .logo-row span {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: #A29CBE;
-  letter-spacing: .02em;
-  transition: color .15s;
-}
-
-.solutions-page .logo-row span:hover {
-  color: var(--ink);
 }
 
 .solutions-page .integrations p {
@@ -12620,56 +12682,6 @@ body {
   text-align: center;
 }
 
-.packaging-page .logo-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 24px 40px;
-  margin: 36px 0 22px;
-}
-
-.packaging-page .logo-row .logo-item {
-  display: inline-flex;
-  align-items: center;
-}
-
-.packaging-page .logo-row .tile {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 15px;
-  flex-shrink: 0;
-  background: var(--violet-tint);
-  color: var(--violet-deep);
-  border: none;
-  box-shadow: none;
-}
-
-.packaging-page .logo-row .tile.has-logo {
-  width: auto;
-  min-width: 72px;
-  height: 64px;
-  padding: 0;
-  overflow: visible;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-}
-
-.packaging-page .logo-row .tile .tile-logo {
-  width: auto;
-  height: 56px;
-  max-width: 160px;
-  object-fit: contain;
-  display: block;
-}
-
 .packaging-page .integrations p {
   color: var(--muted);
   font-size: 15.5px;
@@ -14515,56 +14527,6 @@ body {
 /* integrations */
 .gifting-page .integrations {
   text-align: center;
-}
-
-.gifting-page .logo-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 24px 40px;
-  margin: 36px 0 22px;
-}
-
-.gifting-page .logo-row .logo-item {
-  display: inline-flex;
-  align-items: center;
-}
-
-.gifting-page .logo-row .tile {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 15px;
-  flex-shrink: 0;
-  background: var(--violet-tint);
-  color: var(--violet-deep);
-  border: none;
-  box-shadow: none;
-}
-
-.gifting-page .logo-row .tile.has-logo {
-  width: auto;
-  min-width: 72px;
-  height: 64px;
-  padding: 0;
-  overflow: visible;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-}
-
-.gifting-page .logo-row .tile .tile-logo {
-  width: auto;
-  height: 56px;
-  max-width: 160px;
-  object-fit: contain;
-  display: block;
 }
 
 .gifting-page .integrations p {

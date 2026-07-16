@@ -93,7 +93,7 @@ export const integrationsData: Integration[] = [
     tileText: "Br",
     description: "Transactional and marketing email, driven by platform events.",
     status: "live",
-    logo: "/images/integrations/brevo.png",
+    logo: "/images/integrations/brevo.svg",
   },
   {
     id: "google-ads",
@@ -113,7 +113,7 @@ export const integrationsData: Integration[] = [
     tileText: "Sr",
     description: "Shipping labels, courier selection, and delivery tracking connected to your orders.",
     status: "live",
-    logo: "/images/integrations/shiprocket.png",
+    logo: "/images/integrations/shiprocket.svg",
   },
 
   // ANALYTICS
