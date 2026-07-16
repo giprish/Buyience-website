@@ -99,7 +99,7 @@ export default function FinalCTA({
           </div>
 
           {showGlobe && (
-            <div className="final-card-visual" aria-hidden="true">
+            <div className="final-card-visual">
               <DottedGlobe />
             </div>
           )}
