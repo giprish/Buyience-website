@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Button from "@/components/Button";
+import SectionCapsule from "@/components/SectionCapsule";
 
 export default function PartnerHero() {
   const [formData, setFormData] = useState({
@@ -92,10 +93,11 @@ export default function PartnerHero() {
   ];
 
   return (
-    <header className="hero overflow-hidden relative">
-      <div className="container hero-grid">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
+      <div className="container hero-grid relative z-10">
         <div className="flex flex-col text-left">
-          <p className="eyebrow">BUYIENCE PARTNER PROGRAM</p>
+          <SectionCapsule>Buyience Partner Program</SectionCapsule>
           <h1>
             Become a Nova Core solution partner. <span className="grad-text">Grow your business with us.</span>
           </h1>

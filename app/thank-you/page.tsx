@@ -19,7 +19,7 @@ export default function ThankYouPage() {
       <main className="flex flex-grow items-center justify-center px-6 py-24">
         <div className="max-w-lg text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-[#7C3AED]">Thank you</p>
-          <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-[#171241] sm:text-4xl">
+          <h1 className="mt-3 text-3xl font-semibold tracking-normal text-[#17265C] sm:text-4xl">
             We&apos;ve got your request
           </h1>
           <p className="mt-4 text-[17px] leading-relaxed text-[#5B5F76]">

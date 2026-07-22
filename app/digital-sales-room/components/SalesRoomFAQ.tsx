@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import FaqSection from "@/components/FaqSection";
 
 export default function SalesRoomFAQ() {
   const faqs = [
@@ -32,43 +32,11 @@ export default function SalesRoomFAQ() {
   ];
 
   return (
-    <section className="challenge" id="faq">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="center-head reveal in"
-        >
-          <p className="eyebrow">QUESTIONS, ANSWERED</p>
-          <h2>Digital Sales Room FAQs</h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="faq-list reveal in"
-        >
-          {faqs.map((faq, idx) => (
-            <details
-              key={idx}
-              style={{
-                background: "#fff",
-                border: "1px solid var(--border)",
-                borderRadius: "12px",
-                marginBottom: "10px",
-                padding: "0 20px",
-              }}
-            >
-              <summary>{faq.q}</summary>
-              <p>{faq.a}</p>
-            </details>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+    <FaqSection
+      eyebrow="QUESTIONS, ANSWERED"
+      title="Digital Sales Room FAQs"
+      items={faqs}
+      className="challenge"
+    />
   );
 }

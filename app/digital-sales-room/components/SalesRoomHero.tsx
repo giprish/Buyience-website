@@ -3,15 +3,17 @@
 import React from "react";
 import Button from "@/components/Button";
 import { useCurrency } from "@/components/CurrencyProvider";
+import SectionCapsule from "@/components/SectionCapsule";
 
 export default function SalesRoomHero() {
   const { format } = useCurrency();
 
   return (
-    <header className="hero overflow-hidden relative">
-      <div className="container hero-grid">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
+      <div className="container hero-grid relative z-10">
         <div className="flex flex-col text-left">
-          <p className="eyebrow">REAL-TIME B2B NEGOTIATION</p>
+          <SectionCapsule>Real-Time B2B Negotiation</SectionCapsule>
           <h1>
             The <span className="grad-text">digital sales room</span> where B2B deals close in minutes — not email
             threads.

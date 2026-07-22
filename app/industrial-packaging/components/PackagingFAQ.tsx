@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import FaqSection from "@/components/FaqSection";
 import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function PackagingFAQ() {
@@ -34,35 +34,6 @@ export default function PackagingFAQ() {
   ];
 
   return (
-    <section id="faq">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="narrow reveal in"
-          style={{ textAlign: "center" }}
-        >
-          <p className="eyebrow">QUESTIONS</p>
-          <h2 style={{ marginTop: "14px" }}>Before you ask.</h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="faq-list reveal in"
-        >
-          {faqs.map((faq, idx) => (
-            <details key={idx}>
-              <summary>{faq.q}</summary>
-              <p>{faq.a}</p>
-            </details>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+    <FaqSection eyebrow="QUESTIONS" title="Before you ask." items={faqs} />
   );
 }

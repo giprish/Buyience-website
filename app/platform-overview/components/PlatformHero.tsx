@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
+import SectionCapsule from "@/components/SectionCapsule";
 
 type StageCardProps = {
   custom: number;
@@ -225,11 +226,12 @@ export default function PlatformHero() {
   ];
 
   return (
-    <header className="hero overflow-hidden relative">
-      <div className="container hero-grid">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
+      <div className="container hero-grid relative z-10">
         {/* Left Side Content */}
         <div className="flex flex-col text-left">
-          <p className="eyebrow">B2B COMMERCE PLATFORM · NOVA CORE</p>
+          <SectionCapsule>B2B Commerce Platform · Nova Core</SectionCapsule>
           <h1>
             The B2B commerce platform that works like you do.{" "}
             <span className="grad-text">Fast, flexible, intelligent.</span>

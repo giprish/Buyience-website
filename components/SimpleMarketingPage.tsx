@@ -30,9 +30,9 @@ export default function SimpleMarketingPage({
       <main className="flex-grow">
         <header className="relative overflow-hidden bg-hero-grid">
           <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
-          <div className="relative z-10 mx-auto max-w-3xl px-4 pb-12 pt-14 text-center sm:px-6 sm:pt-24 sm:pb-16">
+          <div className="relative z-10 mx-auto max-w-3xl px-5 pb-12 pt-14 text-center sm:px-[35px] sm:pt-24 sm:pb-16">
             <SectionCapsule>{capsule}</SectionCapsule>
-            <h1 className="mt-5 text-[1.75rem] font-extrabold leading-tight tracking-tight text-[#171241] sm:mt-6 sm:text-4xl md:text-5xl">
+            <h1 className="mt-4 text-[1.75rem] font-semibold leading-tight tracking-normal text-[#17265C] sm:mt-4 sm:text-4xl md:text-5xl">
               {title}
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-[15.5px] leading-relaxed text-[#5B5F76] sm:mt-5 sm:text-[17px]">{description}</p>
@@ -47,7 +47,7 @@ export default function SimpleMarketingPage({
           </div>
         </header>
         {children && (
-          <section className="mx-auto max-w-3xl px-6 py-16 text-[#5B5F76]">{children}</section>
+          <section className="mx-auto max-w-3xl px-5 py-16 text-[#5B5F76] sm:px-[35px]">{children}</section>
         )}
         <section className="border-t border-slate-100 bg-slate-50 py-12 text-center">
           <p className="text-sm text-slate-500">

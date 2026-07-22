@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import SectionCapsule from "@/components/SectionCapsule";
 
 export default function PartnerHero() {
   const [first, setFirst] = useState("");
@@ -119,11 +120,12 @@ export default function PartnerHero() {
   ];
 
   return (
-    <header className="hero overflow-hidden relative">
-      <div className="container hero-grid">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
+      <div className="container hero-grid relative z-10">
         {/* Left Side Info */}
         <div className="flex flex-col text-left">
-          <p className="eyebrow">TECHNOLOGY PARTNER PROGRAM</p>
+          <SectionCapsule>Technology Partner Program</SectionCapsule>
           <h1>
             Integrate your software with <span className="grad-text">an AI-native B2B commerce platform.</span>
           </h1>

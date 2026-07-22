@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Button from "@/components/Button";
+import SectionCapsule from "@/components/SectionCapsule";
 
 type EndpointKey = "products" | "quote" | "hook";
 
@@ -57,10 +58,11 @@ export default function MachHero() {
   };
 
   return (
-    <header className="hero overflow-hidden relative">
-      <div className="container hero-grid">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
+      <div className="container hero-grid relative z-10">
         <div className="flex flex-col text-left">
-          <p className="eyebrow">PLATFORM ARCHITECTURE</p>
+          <SectionCapsule>Platform Architecture</SectionCapsule>
           <h1>
             Built on MACH architecture. <span className="grad-text">Designed for B2B commerce.</span>
           </h1>

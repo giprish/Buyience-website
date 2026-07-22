@@ -28,10 +28,10 @@ export default function RequestDemoPage() {
       <main className="flex-grow">
         <section className="relative overflow-hidden bg-hero-grid">
           <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
-          <div className="relative z-10 mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-2 md:py-24 lg:gap-16">
+          <div className="relative z-10 mx-auto grid max-w-[1400px] gap-12 px-5 py-16 md:grid-cols-2 md:px-[35px] md:py-24 lg:gap-16">
             <div>
               <SectionCapsule>Request a Demo</SectionCapsule>
-              <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-[#171241] sm:text-4xl">
+              <h1 className="mt-6 text-3xl font-semibold tracking-normal text-[#17265C] sm:text-4xl">
                 See Nova Core in action
               </h1>
               <p className="mt-4 text-[17px] leading-relaxed text-[#5B5F76]">

@@ -25,7 +25,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-white">
       <AnnouncementBar />
       <Navbar />
-      <main className="quote-engine-page flex-grow">
+      <main className="quote-engine-page home-landing flex-grow">
         <QuoteHero />
         <Challenge />
         <Capabilities />

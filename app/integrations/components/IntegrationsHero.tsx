@@ -37,8 +37,9 @@ export default function IntegrationsHero() {
   ] as const;
 
   return (
-    <header className="hero overflow-hidden relative">
-      <div className="container hero-grid">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
+      <div className="container hero-grid relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"

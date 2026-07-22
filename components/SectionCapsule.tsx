@@ -8,7 +8,10 @@ interface SectionCapsuleProps {
   variant?: "soft" | "outline";
 }
 
-/** Framer-style pill label used above non-hero section headings */
+/**
+ * Framer buyience.com hero pill.
+ * Spec: ~32px tall, 1px border rgb(152,94,255), pale lavender fill, 14px x-padding, 6px icon gap.
+ */
 export default function SectionCapsule({
   children,
   className = "",
@@ -16,16 +19,19 @@ export default function SectionCapsule({
   variant = "outline",
 }: SectionCapsuleProps) {
   const variants = {
-    soft: "bg-[#f5f3ff] border border-transparent text-[#7c3aed]",
-    outline: "bg-white border border-[#c4b5fd] text-[#7c3aed]",
+    // soft kept for API compat — same Framer pill as outline
+    soft: "border-[#985eff] bg-[#faf8ff] text-[#985eff]",
+    outline: "border-[#985eff] bg-[#faf8ff] text-[#985eff]",
   };
 
   return (
     <span
-      className={`inline-flex max-w-full flex-wrap items-center gap-1.5 rounded-full px-3 py-[7px] text-left text-[11px] font-semibold uppercase tracking-[0.04em] sm:px-3.5 sm:text-[11.5px] sm:tracking-[0.06em] ${variants[variant]} ${className}`}
+      className={`inline-flex h-8 w-fit max-w-full items-center gap-1.5 rounded-full border px-3.5 text-[11.5px] font-semibold uppercase leading-none tracking-[0.06em] ${variants[variant]} ${className}`}
     >
-      {showIcon && <Sparkles className="h-3 w-3 shrink-0 text-[#7c3aed]" strokeWidth={2.25} aria-hidden="true" />}
-      <span className="min-w-0 break-words">{children}</span>
+      {showIcon && (
+        <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#985eff]" strokeWidth={2.25} aria-hidden="true" />
+      )}
+      <span className="min-w-0">{children}</span>
     </span>
   );
 }

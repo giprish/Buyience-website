@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "@/components/Button";
 import { useCurrency } from "@/components/CurrencyProvider";
+import SectionCapsule from "@/components/SectionCapsule";
 
 type GroupKey = "mem" | "sto" | "cpu";
 
@@ -64,10 +65,11 @@ export default function ConfiguratorHero() {
   const total = BASE_PRICE + prices[`mem:${state.mem}`] + prices[`sto:${state.sto}`] + prices[`cpu:${state.cpu}`];
 
   return (
-    <header className="hero overflow-hidden relative">
-      <div className="container hero-grid">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
+      <div className="container hero-grid relative z-10">
         <div className="flex flex-col text-left">
-          <p className="eyebrow">CPQ · PRODUCT CONFIGURATOR</p>
+          <SectionCapsule>CPQ · Product Configurator</SectionCapsule>
           <h1>
             The B2B product configurator that makes <span className="grad-text">complex products simple.</span>
           </h1>

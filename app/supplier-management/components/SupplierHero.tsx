@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Button from "@/components/Button";
 import { useCurrency } from "@/components/CurrencyProvider";
+import SectionCapsule from "@/components/SectionCapsule";
 
 type StepKey = 1 | 2 | 3 | 4 | 5;
 
@@ -55,10 +56,11 @@ export default function SupplierHero() {
   };
 
   return (
-    <header className="hero overflow-hidden relative">
-      <div className="container hero-grid">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
+      <div className="container hero-grid relative z-10">
         <div className="flex flex-col text-left">
-          <p className="eyebrow">SUPPLIER MANAGEMENT</p>
+          <SectionCapsule>Supplier Management</SectionCapsule>
           <h1>
             B2B supplier management. Every supplier, every document,{" "}
             <span className="grad-text">one workflow.</span>

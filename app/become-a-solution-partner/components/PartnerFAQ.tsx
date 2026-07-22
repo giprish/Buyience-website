@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import FaqSection from "@/components/FaqSection";
 
 export default function PartnerFAQ() {
   const faqs = [
@@ -28,34 +28,11 @@ export default function PartnerFAQ() {
   ];
 
   return (
-    <section className="how" id="faq">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="center-head reveal in"
-        >
-          <p className="eyebrow">QUESTIONS, ANSWERED</p>
-          <h2>Partner program FAQs</h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="faq-list reveal in"
-        >
-          {faqs.map((faq, idx) => (
-            <details key={idx}>
-              <summary>{faq.q}</summary>
-              <p>{faq.a}</p>
-            </details>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+    <FaqSection
+      eyebrow="QUESTIONS, ANSWERED"
+      title="Partner program FAQs"
+      items={faqs}
+      className="how"
+    />
   );
 }

@@ -29,12 +29,13 @@ export default function ContactHero({ selectedReason, onSelectReason }: ContactH
   };
 
   return (
-    <header className="hero overflow-hidden relative">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="container"
+        className="container relative z-10"
       >
         <motion.div variants={itemVariants}>
           <SectionCapsule>Get in Touch</SectionCapsule>

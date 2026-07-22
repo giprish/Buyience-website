@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import SectionCapsule from "@/components/SectionCapsule";
 
 export default function BlogHero() {
   const containerVariants = {
@@ -22,16 +23,17 @@ export default function BlogHero() {
   };
 
   return (
-    <header className="hero overflow-hidden relative">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="container"
+        className="container relative z-10"
       >
-        <motion.p variants={itemVariants} className="eyebrow">
-          THE BUYIENCE BLOG
-        </motion.p>
+        <motion.div variants={itemVariants}>
+          <SectionCapsule>The Buyience Blog</SectionCapsule>
+        </motion.div>
         <motion.h1 variants={itemVariants}>
           B2B commerce insights, <span className="grad-text">from people building it.</span>
         </motion.h1>

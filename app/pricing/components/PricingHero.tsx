@@ -3,6 +3,7 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import SectionCapsule from "@/components/SectionCapsule";
 import {
   CURRENCY_CODES,
   CURRENCY_META,
@@ -71,16 +72,17 @@ export default function PricingHero({
   };
 
   return (
-    <header className="hero relative">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="container"
+        className="container relative z-10"
       >
-        <motion.p variants={itemVariants} className="eyebrow">
-          NO HIDDEN FEES · CANCEL ANYTIME
-        </motion.p>
+        <motion.div variants={itemVariants}>
+          <SectionCapsule>No Hidden Fees · Cancel Anytime</SectionCapsule>
+        </motion.div>
         <motion.h1 variants={itemVariants}>
           Simple, <span className="grad-text">transparent pricing.</span>
         </motion.h1>

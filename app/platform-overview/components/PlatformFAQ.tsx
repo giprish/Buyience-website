@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import FaqSection from "@/components/FaqSection";
 import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function PlatformFAQ() {
@@ -30,34 +30,11 @@ export default function PlatformFAQ() {
   ];
 
   return (
-    <section id="faq" style={{ paddingTop: 0, marginTop: "104px" }}>
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="center-head reveal in"
-        >
-          <p className="eyebrow">QUESTIONS</p>
-          <h2>Platform FAQs</h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="faq-list reveal in"
-        >
-          {faqs.map((faq, idx) => (
-            <details key={idx}>
-              <summary>{faq.q}</summary>
-              <p>{faq.a}</p>
-            </details>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+    <FaqSection
+      eyebrow="QUESTIONS"
+      title="Platform FAQs"
+      items={faqs}
+      style={{ paddingTop: 0, marginTop: "104px" }}
+    />
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import FaqSection from "@/components/FaqSection";
 import { useCurrency } from "@/components/CurrencyProvider";
 
 export default function PricingFAQ() {
@@ -34,36 +34,11 @@ export default function PricingFAQ() {
   ];
 
   return (
-    <section id="faq" style={{ paddingTop: 0 }}>
-      <div className="container">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          style={{ textAlign: "center", maxWidth: "62ch", margin: "0 auto" }}
-        >
-          <p className="eyebrow">QUESTIONS, ANSWERED</p>
-          <h2 style={{ marginTop: "14px" }}>Pricing FAQs</h2>
-        </motion.div>
-
-        {/* FAQs */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="faq-list reveal in"
-        >
-          {faqs.map((faq, idx) => (
-            <details key={idx}>
-              <summary>{faq.q}</summary>
-              <p>{faq.a}</p>
-            </details>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+    <FaqSection
+      eyebrow="QUESTIONS, ANSWERED"
+      title="Pricing FAQs"
+      items={faqs}
+      style={{ paddingTop: 0 }}
+    />
   );
 }

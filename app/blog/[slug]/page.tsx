@@ -159,7 +159,7 @@ export default async function BlogPostPage({
         <Link href="/blog" className="text-sm font-semibold text-[#7C3AED] hover:underline">
           ← Back to blog
         </Link>
-        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-[#171241] sm:text-4xl">{post.title}</h1>
+        <h1 className="mt-6 text-3xl font-semibold tracking-normal text-[#17265C] sm:text-4xl">{post.title}</h1>
         <p className="mt-6 text-[17px] leading-relaxed text-[#5B5F76]">{post.excerpt}</p>
         <p className="mt-8 text-[15.5px] leading-relaxed text-[#5B5F76]">
           This article is part of the Buyience knowledge base on modern B2B commerce. For the full product story, see

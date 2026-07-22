@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "@/components/Button";
 import { useCurrency } from "@/components/CurrencyProvider";
+import SectionCapsule from "@/components/SectionCapsule";
 
 export default function PackagingHero() {
   const { format } = useCurrency();
@@ -35,12 +36,11 @@ export default function PackagingHero() {
   const strokeDashoffset = circumference - (winProb / 100) * circumference;
 
   return (
-    <header className="hero overflow-hidden relative">
-      <div className="container hero-grid">
+    <header className="hero relative overflow-hidden bg-hero-grid">
+      <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
+      <div className="container hero-grid relative z-10">
         <div className="flex flex-col text-left">
-          <p className="eyebrow">
-            SOLUTIONS <b>/ INDUSTRIAL PACKAGING</b>
-          </p>
+          <SectionCapsule>Solutions · Industrial Packaging</SectionCapsule>
           <h1>
             Spec-heavy RFQs. <span className="grad-text">Quotes in minutes.</span>
           </h1>
