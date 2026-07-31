@@ -22,6 +22,16 @@ export default function Navbar() {
   const [accPlatform, setAccPlatform] = useState(false);
   const [accSolutions, setAccSolutions] = useState(false);
   const [accResources, setAccResources] = useState(false);
+  const [accNewPages, setAccNewPages] = useState(false);
+
+  const newPages = [
+    { title: "Homepage", href: "/new-pages/homepage.html" },
+    { title: "Platform Overview", href: "/new-pages/platform-overview.html" },
+    { title: "AI Quote Engine", href: "/new-pages/ai-quote-engine.html" },
+    { title: "Digital Sales Room", href: "/new-pages/digital-sales-room.html" },
+    { title: "CPQ Configurator", href: "/new-pages/cpq-configurator.html" },
+    { title: "Order Management", href: "/new-pages/order-management.html" },
+  ];
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -185,7 +195,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-[#eceef2] bg-white">
+      <header className="sticky top-0 z-40 w-full border-b border-[#ECE5FB] bg-[rgba(251,250,255,0.82)] backdrop-blur-[14px] backdrop-saturate-160">
         <Container>
           <div className="flex h-12 items-center gap-6 sm:h-14 lg:h-[76px]">
             {/* Logo */}
@@ -612,6 +622,58 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
               </div>
+
+              {/* NEW PAGES */}
+              <div
+                className="relative"
+                data-menu
+                onMouseEnter={() => handleMouseEnter("newPages")}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button
+                  className={`flex items-center gap-1 text-[14px] font-medium py-1 px-0.5 transition-colors cursor-pointer ${
+                    activeMenu === "newPages" ? "text-slate-900" : "text-[#1f2937] hover:text-slate-900"
+                  }`}
+                  aria-expanded={activeMenu === "newPages" ? "true" : "false"}
+                  aria-controls="menu-new-pages"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveMenu(activeMenu === "newPages" ? null : "newPages");
+                  }}
+                >
+                  New Pages
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 text-slate-400 transition-transform duration-200 ${
+                      activeMenu === "newPages" ? "rotate-180 text-slate-700" : ""
+                    }`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {activeMenu === "newPages" && (
+                    <motion.div
+                      id="menu-new-pages"
+                      initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[260px] max-w-[calc(100vw-40px)] bg-white border border-slate-100 rounded-3xl shadow-xl p-4 z-50"
+                    >
+                      <div className="flex flex-col gap-0.5 text-left">
+                        {newPages.map((page) => (
+                          <a
+                            key={page.href}
+                            href={page.href}
+                            className="block px-3 py-2.5 rounded-2xl text-sm font-medium text-slate-900 hover:bg-slate-50 hover:text-violet-600 transition-colors"
+                          >
+                            {page.title}
+                          </a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </nav>
 
             {/* Desktop Actions — Framer spacing + divider */}
@@ -637,7 +699,7 @@ export default function Navbar() {
                 variant="primary"
                 size="sm"
                 href="https://app.buyience.com/register"
-                className="!border-0 !px-[18px] !py-[9px] !text-[13px] !font-semibold !shadow-none"
+                className="!border-0 !px-[18px] !py-[9px] !text-[13px] !font-bold"
               >
                 Start free trial
               </Button>
@@ -807,6 +869,39 @@ export default function Navbar() {
                         <Link href="/become-a-solution-partner" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Solution Partners</Link>
                         <Link href="/become-a-technology-partner" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Technology Partners</Link>
                         <Link href="/blog" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Blog</Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* New Pages Accordion */}
+                <div className="border-b border-slate-100">
+                  <button
+                    onClick={() => setAccNewPages(!accNewPages)}
+                    className="w-full py-4 flex items-center justify-between text-base font-bold text-slate-800 focus:outline-none cursor-pointer"
+                    aria-expanded={accNewPages ? "true" : "false"}
+                  >
+                    New Pages
+                    <ChevronDown className={`h-4.5 w-4.5 text-slate-400 transition-transform ${accNewPages ? "rotate-180" : ""}`} />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {accNewPages && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden pl-2 pb-4 flex flex-col gap-3"
+                      >
+                        {newPages.map((page) => (
+                          <a
+                            key={page.href}
+                            href={page.href}
+                            className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1"
+                            onClick={() => setIsDrawerOpen(false)}
+                          >
+                            {page.title}
+                          </a>
+                        ))}
                       </motion.div>
                     )}
                   </AnimatePresence>

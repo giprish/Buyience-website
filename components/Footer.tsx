@@ -72,7 +72,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/buyience"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#9aa0ae] transition-colors hover:text-[#7c3aed]"
+                className="text-[#9aa0ae] transition-colors hover:text-[#6E2CF4]"
                 aria-label="LinkedIn"
               >
                 <svg className="h-[17px] w-[17px] fill-current" viewBox="0 0 24 24">
@@ -83,7 +83,7 @@ export default function Footer() {
                 href="https://x.com/buyience"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#9aa0ae] transition-colors hover:text-[#7c3aed]"
+                className="text-[#9aa0ae] transition-colors hover:text-[#6E2CF4]"
                 aria-label="X"
               >
                 <svg className="h-[16px] w-[16px] fill-current" viewBox="0 0 24 24">
@@ -103,7 +103,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-[13px] font-normal leading-none text-[#6b7280] transition-colors hover:text-[#7c3aed]"
+                      className="text-[13px] font-normal leading-none text-[#6b7280] transition-colors hover:text-[#6E2CF4]"
                     >
                       {link.label}
                     </Link>
@@ -117,19 +117,19 @@ export default function Footer() {
         <div className="flex flex-col items-start justify-between gap-3 border-t border-[#e6e2ee] pt-6 text-[11.5px] font-normal leading-relaxed text-[#9aa0ae] md:flex-row md:flex-wrap md:items-center md:gap-x-4 md:gap-y-2">
           <div>Copyright © 2026 Buyience All rights reserved.</div>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            <Link href="/terms-and-conditions" className="transition-colors hover:text-[#7c3aed]">
+            <Link href="/terms-and-conditions" className="transition-colors hover:text-[#6E2CF4]">
               Terms & Conditions
             </Link>
             <span className="text-[#c5c9d4]" aria-hidden="true">
               |
             </span>
-            <Link href="/privacy-policy" className="transition-colors hover:text-[#7c3aed]">
+            <Link href="/privacy-policy" className="transition-colors hover:text-[#6E2CF4]">
               Privacy Policy
             </Link>
             <span className="text-[#c5c9d4]" aria-hidden="true">
               |
             </span>
-            <Link href="/refund-policy" className="transition-colors hover:text-[#7c3aed]">
+            <Link href="/refund-policy" className="transition-colors hover:text-[#6E2CF4]">
               Refund Policy
             </Link>
           </div>

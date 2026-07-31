@@ -28,17 +28,17 @@ export default function RequestDemoPage() {
       <main className="flex-grow">
         <section className="relative overflow-hidden bg-hero-grid">
           <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
-          <div className="relative z-10 mx-auto grid max-w-[1400px] gap-12 px-5 py-16 md:grid-cols-2 md:px-[35px] md:py-24 lg:gap-16">
+          <div className="relative z-10 mx-auto grid max-w-[1200px] gap-12 px-5 py-16 md:grid-cols-2 sm:px-8 md:py-24 lg:gap-16">
             <div>
               <SectionCapsule>Request a Demo</SectionCapsule>
-              <h1 className="mt-6 text-3xl font-semibold tracking-normal text-[#17265C] sm:text-4xl">
+              <h1 className="mt-6 text-4xl font-extrabold tracking-normal text-[#1B1033] sm:text-5xl">
                 See Nova Core in action
               </h1>
-              <p className="mt-4 text-[17px] leading-relaxed text-[#5B5F76]">
+              <p className="mt-4 text-[17px] leading-relaxed text-[#5A4B7C]">
                 Book a personalized 30-minute walkthrough. We&apos;ll show AI quoting, inventory management, and the B2B
                 storefront — tailored to how your team sells.
               </p>
-              <ul className="mt-8 space-y-3 text-[15px] text-[#332C63]">
+              <ul className="mt-8 space-y-3 text-[15px] text-[#4A3B6B]">
                 {[
                   "AI Quote Engine with margin protection",
                   "Digital Sales Room negotiations",
@@ -46,7 +46,7 @@ export default function RequestDemoPage() {
                   "Founder launch pricing walkthrough",
                 ].map((item) => (
                   <li key={item} className="flex gap-2">
-                    <span className="text-[#7C3AED]">✓</span>
+                    <span className="text-[#6E2CF4]">✓</span>
                     {item}
                   </li>
                 ))}
@@ -58,46 +58,46 @@ export default function RequestDemoPage() {
               className="rounded-3xl border border-[#E8E4F4] bg-white p-6 shadow-[0_12px_40px_rgba(23,18,65,0.08)] sm:p-8"
             >
               <div className="grid gap-4 sm:grid-cols-2">
-                <label className="block text-left text-sm font-semibold text-[#171241]">
+                <label className="block text-left text-sm font-semibold text-[#1B1033]">
                   First name
                   <input
                     required
                     name="firstName"
-                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#171241] outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20"
+                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
                   />
                 </label>
-                <label className="block text-left text-sm font-semibold text-[#171241]">
+                <label className="block text-left text-sm font-semibold text-[#1B1033]">
                   Last name
                   <input
                     required
                     name="lastName"
-                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#171241] outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20"
+                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
                   />
                 </label>
               </div>
-              <label className="mt-4 block text-left text-sm font-semibold text-[#171241]">
+              <label className="mt-4 block text-left text-sm font-semibold text-[#1B1033]">
                 Work email
                 <input
                   required
                   type="email"
                   name="email"
-                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#171241] outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20"
+                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
                 />
               </label>
-              <label className="mt-4 block text-left text-sm font-semibold text-[#171241]">
+              <label className="mt-4 block text-left text-sm font-semibold text-[#1B1033]">
                 Company
                 <input
                   required
                   name="company"
-                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#171241] outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20"
+                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
                 />
               </label>
-              <label className="mt-4 block text-left text-sm font-semibold text-[#171241]">
+              <label className="mt-4 block text-left text-sm font-semibold text-[#1B1033]">
                 What are you looking to solve?
                 <textarea
                   name="message"
                   rows={4}
-                  className="mt-1.5 w-full resize-y rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#171241] outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20"
+                  className="mt-1.5 w-full resize-y rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
                 />
               </label>
               <Button

@@ -18,11 +18,11 @@ export default function ThankYouPage() {
       <Navbar />
       <main className="flex flex-grow items-center justify-center px-6 py-24">
         <div className="max-w-lg text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-[#7C3AED]">Thank you</p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-normal text-[#17265C] sm:text-4xl">
+          <p className="text-sm font-semibold uppercase tracking-wider text-[#6E2CF4]">Thank you</p>
+          <h1 className="mt-3 text-4xl font-extrabold tracking-normal text-[#1B1033] sm:text-5xl">
             We&apos;ve got your request
           </h1>
-          <p className="mt-4 text-[17px] leading-relaxed text-[#5B5F76]">
+          <p className="mt-4 text-[17px] leading-relaxed text-[#5A4B7C]">
             A Buyience specialist will follow up shortly to schedule your Nova Core demo. In the meantime, explore
             pricing or dig into the platform.
           </p>
@@ -36,7 +36,7 @@ export default function ThankYouPage() {
           </div>
           <p className="mt-8 text-sm text-slate-400">
             Or head back{" "}
-            <Link href="/" className="font-semibold text-[#7C3AED] hover:underline">
+            <Link href="/" className="font-semibold text-[#6E2CF4] hover:underline">
               home
             </Link>
             .

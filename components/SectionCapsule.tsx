@@ -1,5 +1,4 @@
 import React from "react";
-import { Sparkles } from "lucide-react";
 
 interface SectionCapsuleProps {
   children: React.ReactNode;
@@ -9,8 +8,7 @@ interface SectionCapsuleProps {
 }
 
 /**
- * Framer buyience.com hero pill.
- * Spec: ~32px tall, 1px border rgb(152,94,255), pale lavender fill, 14px x-padding, 6px icon gap.
+ * New-page hero capsule: white pill, green live dot, purple sentence-case label.
  */
 export default function SectionCapsule({
   children,
@@ -18,18 +16,18 @@ export default function SectionCapsule({
   showIcon = true,
   variant = "outline",
 }: SectionCapsuleProps) {
-  const variants = {
-    // soft kept for API compat — same Framer pill as outline
-    soft: "border-[#985eff] bg-[#faf8ff] text-[#985eff]",
-    outline: "border-[#985eff] bg-[#faf8ff] text-[#985eff]",
-  };
+  // soft kept for API compat — same look as outline
+  void variant;
 
   return (
     <span
-      className={`inline-flex h-8 w-fit max-w-full items-center gap-1.5 rounded-full border px-3.5 text-[11.5px] font-semibold uppercase leading-none tracking-[0.06em] ${variants[variant]} ${className}`}
+      className={`inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-[#E7DEFB] bg-white px-3.5 py-[7px] text-[13px] font-bold leading-none text-[#6E2CF4] shadow-[0_4px_14px_rgba(110,44,244,0.08)] ${className}`}
     >
       {showIcon && (
-        <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#985eff]" strokeWidth={2.25} aria-hidden="true" />
+        <span
+          className="h-[7px] w-[7px] shrink-0 rounded-full bg-[#16A34A]"
+          aria-hidden="true"
+        />
       )}
       <span className="min-w-0">{children}</span>
     </span>

@@ -31,7 +31,7 @@ export default function OrderManagementPage() {
           },
         ].map((item) => (
           <div key={item.title}>
-            <h2 className="text-lg font-bold text-[#171241]">{item.title}</h2>
+            <h2 className="text-xl font-bold text-[#1B1033]">{item.title}</h2>
             <p className="mt-2">{item.body}</p>
           </div>
         ))}

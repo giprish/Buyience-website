@@ -74,7 +74,7 @@ export default function SelfServeSection() {
             >
               <b>{option.title}</b>
               <p>{option.description}</p>
-              <Link href={option.linkHref} className="text-[#6D28D9] font-semibold hover:underline">
+              <Link href={option.linkHref} className="text-[#5B21D8] font-semibold hover:underline">
                 {option.linkText}
               </Link>
             </motion.div>

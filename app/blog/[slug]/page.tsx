@@ -156,12 +156,12 @@ export default async function BlogPostPage({
       <AnnouncementBar />
       <Navbar />
       <main className="mx-auto max-w-3xl flex-grow px-6 py-16 sm:py-20">
-        <Link href="/blog" className="text-sm font-semibold text-[#7C3AED] hover:underline">
+        <Link href="/blog" className="text-sm font-semibold text-[#6E2CF4] hover:underline">
           ← Back to blog
         </Link>
-        <h1 className="mt-6 text-3xl font-semibold tracking-normal text-[#17265C] sm:text-4xl">{post.title}</h1>
-        <p className="mt-6 text-[17px] leading-relaxed text-[#5B5F76]">{post.excerpt}</p>
-        <p className="mt-8 text-[15.5px] leading-relaxed text-[#5B5F76]">
+        <h1 className="mt-6 text-4xl font-extrabold tracking-normal text-[#1B1033] sm:text-5xl">{post.title}</h1>
+        <p className="mt-6 text-[17px] leading-relaxed text-[#5A4B7C]">{post.excerpt}</p>
+        <p className="mt-8 text-[15.5px] leading-relaxed text-[#5A4B7C]">
           This article is part of the Buyience knowledge base on modern B2B commerce. For the full product story, see
           Nova Core — AI quoting, inventory, and storefronts on MACH architecture.
         </p>

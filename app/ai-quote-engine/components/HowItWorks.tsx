@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import SectionHeader from "@/components/SectionHeader";
 
 const steps = [
   {
@@ -36,12 +35,13 @@ export default function HowItWorks() {
   return (
     <section className="how">
       <div className="container">
-        <SectionHeader
-          className="center-head"
-          capsule="How it works"
-          title="From quote request to closed deal."
-          description="A workflow that keeps your team focused on relationships, not spreadsheets."
-        />
+        <div className="center-head">
+          <p className="eyebrow">HOW IT WORKS</p>
+          <h2>From quote request to closed deal.</h2>
+          <p className="lede">
+            A workflow that keeps your team focused on relationships, not spreadsheets.
+          </p>
+        </div>
 
         <ol className="steps">
           {steps.map((step, index) => {

@@ -111,7 +111,7 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
 
           <div className="info-block">
             <p className="h">GENERAL ENQUIRIES</p>
-            <a className="mail text-[#6D28D9] hover:underline" href="mailto:hello@buyience.com">
+            <a className="mail text-[#5B21D8] hover:underline" href="mailto:hello@buyience.com">
               hello@buyience.com
             </a>
             <p>Goes to the founding team. Not a shared inbox nobody reads.</p>
