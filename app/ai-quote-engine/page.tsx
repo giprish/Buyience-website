@@ -22,15 +22,10 @@ export const metadata: Metadata = {
 
 export default function AIQuoteEnginePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Premium Unified Announcement Bar */}
+    <div className="flex min-h-screen flex-col bg-white">
       <AnnouncementBar />
-      
-      {/* Premium Unified Navbar */}
       <Navbar />
-
-      {/* Scoped Content Block */}
-      <main className="quote-engine-page flex-grow">
+      <main className="quote-engine-page home-landing flex-grow">
         <QuoteHero />
         <Challenge />
         <Capabilities />
@@ -43,7 +38,6 @@ export default function AIQuoteEnginePage() {
         <FinalCTASection />
       </main>
 
-      {/* Premium Unified Footer */}
       <Footer />
     </div>
   );

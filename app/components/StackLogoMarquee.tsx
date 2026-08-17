@@ -24,12 +24,15 @@ function LogoSequence({ ariaHidden }: { ariaHidden?: boolean }) {
   );
 }
 
+const MARQUEE_COPIES = 4;
+
 export default function StackLogoMarquee() {
   return (
     <div className="stack-logo-marquee" aria-label="Integrations">
       <div className="stack-logo-marquee__track">
-        <LogoSequence />
-        <LogoSequence ariaHidden />
+        {Array.from({ length: MARQUEE_COPIES }, (_, index) => (
+          <LogoSequence key={index} ariaHidden={index > 0} />
+        ))}
       </div>
     </div>
   );

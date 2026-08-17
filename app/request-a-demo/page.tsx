@@ -28,7 +28,7 @@ export default function RequestDemoPage() {
       <main className="flex-grow">
         <section className="relative overflow-hidden bg-hero-grid">
           <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
-          <div className="relative z-10 mx-auto grid max-w-[1200px] gap-12 px-5 py-16 md:grid-cols-2 sm:px-8 md:py-24 lg:gap-16">
+          <div className="relative z-10 mx-auto grid max-w-[var(--w-max,1200px)] gap-12 px-5 py-16 md:grid-cols-2 sm:px-8 md:py-24 lg:gap-16">
             <div>
               <SectionCapsule>Request a Demo</SectionCapsule>
               <h1 className="mt-6 text-4xl font-extrabold tracking-normal text-[#1B1033] sm:text-5xl">

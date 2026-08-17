@@ -1,0 +1,41 @@
+---
+description: Sitewide layout rule for two-column hero sections — equal-height columns with top/bottom content distribution, and a viewport-height formula for hero height. Apply when creating or editing a hero section component or its CSS.
+globs:
+  - "app/**/components/*Hero*.tsx"
+  - "app/**/*HeroSection*.tsx"
+  - "app/globals.css"
+alwaysApply: false
+---
+
+# Hero section layout rule
+
+Every two-column hero (left = copy/CTA, right = visual/demo), on **640px+
+viewports only**:
+
+- Columns stretch to equal height *to each other* (grid/flex stretch on both
+  sides, matching whichever column's natural content is taller — not
+  shrink-to-content on one while the other stretches).
+- Don't stretch the column-pair row itself to fill the whole fixed hero
+  height (`flex: 0 1 auto` on the row, sized to content — not `1 1 auto`).
+  Center that naturally-sized row inside the hero (`justify-content: center`
+  on the hero) so leftover space becomes one balanced margin above/below the
+  whole content block, not padding stretched inside each column.
+- Within a column shorter than the row (e.g. copy vs. a taller visual
+  widget), cap its internal gap (e.g. `gap: clamp(28px, 4vh, 56px)`) and
+  center it (`justify-content: center`) — never `margin-top: auto` pushing a
+  footer to the very bottom of a column (that leaves one oversized dead gap
+  instead of even spacing).
+- Hero height = `100vh - navbar height - announcement-strip height`, via
+  `--home-hero-h: calc(100vh - var(--home-nav-h) - var(--home-strip-h))`.
+  `--home-nav-h` must switch value at the same breakpoints as `Navbar`'s own
+  height (49px / 57px / 77px at <640 / 640–1023 / 1024+).
+- Add `max-height` tiers so short-but-wide viewports (landscape phones) fall
+  back to `height: auto` instead of clipping content.
+
+**Below 640px:** hero stacks in one column, natural height — none of the
+above applies.
+
+Full rationale, exact px values, and known limitations live in `AGENTS.md`
+under "Hero section layout rule (sm and wider)" — that is the canonical
+source. If the rule changes, update AGENTS.md first and mirror the bullets
+above.

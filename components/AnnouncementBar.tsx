@@ -9,7 +9,7 @@ export default function AnnouncementBar() {
 
   return (
     <div className="announcement-bar relative w-full overflow-hidden select-none">
-      <div className="relative z-10 mx-auto flex max-w-[1200px] flex-col items-center justify-center gap-2 px-5 py-3 text-center sm:flex-row sm:flex-wrap sm:gap-x-3 sm:gap-y-1 sm:px-8 sm:py-2.5">
+      <div className="relative z-10 mx-auto flex max-w-[var(--w-max,1200px)] flex-col items-center justify-center gap-2 px-5 py-3 text-center sm:flex-row sm:flex-wrap sm:gap-x-3 sm:gap-y-1 sm:px-8 sm:py-2.5">
         <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#D6FB4F] px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.1em] text-[#1B1033] sm:px-3 sm:py-1 sm:text-[11px] sm:tracking-[0.06em]">
           <span aria-hidden="true" className="text-[9px] opacity-80">
             ✦

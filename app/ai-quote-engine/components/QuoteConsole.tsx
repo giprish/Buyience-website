@@ -224,6 +224,9 @@ export default function QuoteConsole() {
               step={1}
               value={priceCents}
               aria-label="Quoted price per unit"
+              style={{
+                background: `linear-gradient(90deg, #6E2CF4 0%, #9B5DE5 ${((priceCents - Math.round(PRODUCT.floor * 100)) / (Math.round(PRODUCT.list * 100) - Math.round(PRODUCT.floor * 100))) * 100}%, #ffffff ${((priceCents - Math.round(PRODUCT.floor * 100)) / (Math.round(PRODUCT.list * 100) - Math.round(PRODUCT.floor * 100))) * 100}%, #ffffff 100%)`,
+              }}
               onChange={(e) => setPriceCents(parseInt(e.target.value, 10))}
             />
             <div className="aiq-range-lbls">
