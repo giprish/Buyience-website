@@ -1654,94 +1654,183 @@ a.nav-btn-outline-block {
   }
 }
 
-/* hero — laptops get the whole hero in one screen, so every vertical gap here
-   is a multiple of --hero-fit, which the short-viewport tiers dial down. */
-.quote-engine-page .hero .container>.text-left>span,
-.quote-engine-page .hero .container>.text-left>.inline-flex {
-  margin-bottom: calc(18px * var(--hero-fit, 1));
+/* hero — same viewport-height / equal-column rules as .home-page .home-hero */
+.quote-engine-page .quote-hero-copy h1 {
+  margin: 16px 0 20px;
 }
 
-.quote-engine-page .hero {
-  padding: calc(60px * var(--hero-fit, 1)) 0 calc(44px * var(--hero-fit, 1));
+.quote-engine-page .quote-hero-copy .lede {
+  max-width: 34rem;
+  margin: 0;
 }
 
-@media(min-width:961px) {
-  .quote-engine-page .hero {
-    /* sticky nav only — the founder-launch strip above it scrolls away */
-    --header-h: 77px;
-    --strip-h: 46px;
-    display: grid;
-    align-content: center;
-    min-height: calc(100svh - var(--header-h));
-    /* Even padding so align-content actually centres, plus the strip's height
-       on the bottom: on load the strip still pushes the hero down by that much,
-       so the extra bottom padding is what makes the gaps above and below the
-       content read as equal in the band the visitor can see. */
-    padding: calc(52px * var(--hero-fit, 1)) 0 calc(52px * var(--hero-fit, 1) + var(--strip-h));
+.quote-engine-page .quote-hero-copy-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.quote-engine-page .home-rotator {
+  display: block;
+  height: 1.12em;
+  overflow: hidden;
+  margin-top: 0.04em;
+}
+
+.quote-engine-page .home-rotator-track {
+  display: flex;
+  flex-direction: column;
+  animation: quote-rot-words 8s cubic-bezier(.7, 0, .2, 1) infinite;
+}
+
+.quote-engine-page .home-rotator-word {
+  display: flex;
+  align-items: center;
+  height: 1.12em;
+  line-height: 1.12;
+}
+
+@keyframes quote-rot-words {
+  0%, 15% { transform: translateY(0); }
+  20%, 45% { transform: translateY(-25%); }
+  50%, 73% { transform: translateY(-50%); }
+  78%, 100% { transform: translateY(-75%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote-engine-page .home-rotator-track {
+    animation: none;
   }
 }
 
-/* Short laptop viewports: tighten the rhythm and the win-probability dial until
-   the hero and the console clear the fold without an internal scroll. */
-@media(min-width:961px) and (max-height:920px) {
-  .quote-engine-page .hero {
+@media (min-width: 40rem) {
+  .quote-engine-page .quote-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: var(--home-hero-h);
+  }
+
+  .quote-engine-page .quote-hero-inner {
+    flex: 0 1 auto;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    column-gap: clamp(24px, 2.4vw, 36px);
+    row-gap: 36px;
+    padding-top: clamp(20px, 3vh, 36px);
+    padding-bottom: clamp(20px, 3vh, 36px);
+  }
+
+  .quote-engine-page .quote-hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: stretch;
+    height: 100%;
+    min-height: 0;
+    gap: clamp(28px, 4vh, 56px);
+  }
+
+  .quote-engine-page .quote-hero-copy-foot {
+    margin-top: 0;
+  }
+
+  .quote-engine-page .quote-hero-visual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: stretch;
+    min-height: 0;
+    height: auto;
+  }
+
+  .quote-engine-page .quote-hero-visual .aiq-console-wrap,
+  .quote-engine-page .quote-hero-visual .aiq-console {
+    flex: 0 1 auto;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 40rem) and (max-height: 900px) {
+  .quote-engine-page .quote-hero {
     --hero-fit: .68;
     --aiq-dial: 116px;
   }
 
-  .quote-engine-page .hero .aiq-nego {
+  .quote-engine-page .quote-hero-inner {
+    column-gap: 24px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .quote-engine-page .quote-hero-copy h1 {
+    margin: 10px 0 12px;
+  }
+
+  .quote-engine-page .quote-hero-copy .lede {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .quote-engine-page .quote-hero-copy-foot {
+    gap: 20px;
+  }
+
+  .quote-engine-page .quote-hero .aiq-nego {
     min-height: 440px;
+  }
+
+  .quote-engine-page .quote-hero-stats dt {
+    font-size: 22px;
   }
 }
 
-@media(min-width:961px) and (max-height:780px) {
-  .quote-engine-page .hero {
+@media (min-width: 40rem) and (max-height: 780px) {
+  .quote-engine-page .quote-hero {
     --hero-fit: .55;
     --aiq-dial: 108px;
   }
 
-  .quote-engine-page .hero .aiq-nego {
+  .quote-engine-page .quote-hero .aiq-nego {
     min-height: 400px;
   }
 }
 
-@media(min-width:961px) and (max-height:720px) {
-  .quote-engine-page .hero {
+@media (min-width: 40rem) and (max-height: 720px) {
+  .quote-engine-page .quote-hero {
     --hero-fit: .38;
     --aiq-dial: 92px;
   }
 
-  .quote-engine-page .hero .aiq-nego {
+  .quote-engine-page .quote-hero .aiq-nego {
     min-height: 356px;
   }
 }
 
-@media(min-width:961px) and (max-height:640px) {
-  .quote-engine-page .hero {
+@media (min-width: 40rem) and (max-height: 640px) {
+  .quote-engine-page .quote-hero {
     --hero-fit: .3;
     --aiq-dial: 84px;
   }
 
-  .quote-engine-page .hero .aiq-dial-num {
+  .quote-engine-page .quote-hero .aiq-dial-num {
     font-size: 25px;
   }
 
-  .quote-engine-page .hero .aiq-nego {
+  .quote-engine-page .quote-hero .aiq-nego {
     min-height: 320px;
   }
 }
 
-.quote-engine-page .hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 52px;
-  align-items: stretch;
-}
-
-@media(max-width:960px) {
-  .quote-engine-page .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
+@media (min-width: 40rem) and (max-height: 560px) {
+  .quote-engine-page .quote-hero {
+    height: auto;
+    min-height: 0;
   }
 }
 
@@ -1822,19 +1911,6 @@ a.nav-btn-outline-block {
     margin-top: auto;
   }
 
-}
-
-.quote-engine-page .hero h1 {
-  margin: calc(16px * var(--hero-fit, 1)) 0 calc(20px * var(--hero-fit, 1));
-}
-
-.quote-engine-page .hero .lede {
-  max-width: 34rem;
-  margin-bottom: calc(34px * var(--hero-fit, 1));
-}
-
-.quote-engine-page .hero .trust-micro {
-  margin-top: calc(14px * var(--hero-fit, 1));
 }
 
 /* challenge */

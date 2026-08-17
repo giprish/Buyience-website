@@ -1,5 +1,5 @@
 .section {
-  padding: 12px 0 72px !important;
+  padding: 40px 0 72px !important;
 }
 
 .section .grid {
@@ -86,7 +86,7 @@
 
 @media (max-width: 480px) {
   .section {
-    padding: 8px 0 48px !important;
+    padding: 28px 0 48px !important;
   }
 
   .section .grid {

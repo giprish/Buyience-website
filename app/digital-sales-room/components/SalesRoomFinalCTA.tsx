@@ -12,6 +12,11 @@ export default function SalesRoomFinalCTA() {
           <span className="final-card-accent">faster?</span>
         </>
       }
+      primaryAction={{
+        label: "Start For Free",
+        href: "https://app.buyience.com/register",
+        variant: "primary",
+      }}
       description="Replace email chaos with real-time negotiation — floor protected, AI assisted, fully logged."
     />
   );
