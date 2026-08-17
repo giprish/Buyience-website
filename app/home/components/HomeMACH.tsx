@@ -27,9 +27,9 @@ const CARDS = [
   },
 ];
 
-export default function HomeMACH() {
+export default function HomeMACH({ purple = false }: { purple?: boolean }) {
   return (
-    <section className="mach">
+    <section className={`mach ${purple ? "bg-(--surface)" : ""}`.trim()}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

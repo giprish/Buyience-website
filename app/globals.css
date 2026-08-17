@@ -1014,6 +1014,41 @@ h3, h4 {
   border-bottom: 1px solid var(--border);
 }
 
+a.nav-btn-outline,
+a.nav-btn-outline:link,
+a.nav-btn-outline:visited,
+a.nav-btn-outline:active {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #111827;
+  -webkit-text-fill-color: #111827;
+  border: 1px solid #111827;
+  border-radius: 12px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+a.nav-btn-outline:hover {
+  background: #f8fafc;
+  color: #111827;
+  -webkit-text-fill-color: #111827;
+  text-decoration: none;
+}
+
+a.nav-btn-outline-block {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
 .logo-text {
   font-weight: 700;
   font-size: 20px;
@@ -1299,12 +1334,12 @@ h3, h4 {
   max-width: 100%;
 }
 
-.quote-engine-page a {
+.quote-engine-page a:not(.inline-flex):not(.mach-cta):not(.nav-btn-outline) {
   color: var(--violet-deep);
   text-decoration: none;
 }
 
-.quote-engine-page a:hover {
+.quote-engine-page a:not(.inline-flex):not(.mach-cta):not(.nav-btn-outline):hover {
   text-decoration: underline;
 }
 
@@ -17086,21 +17121,33 @@ h3, h4 {
   margin-top: 32px;
 }
 
-.home-page .mach-cta {
-  background: #1B1033 !important;
-  color: #fff !important;
-  border: 1px solid transparent !important;
-  box-shadow: none !important;
+.home-page a.mach-cta,
+.home-page a.mach-cta:link,
+.home-page a.mach-cta:visited,
+.home-page a.mach-cta:active {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #1B1033;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  border: 1px solid transparent;
+  box-shadow: none;
   border-radius: 13px;
   padding: 14px 26px;
   font-size: 15px;
   font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.home-page .mach-cta:hover {
-  background: #2a1850 !important;
-  color: #fff !important;
-  border-color: transparent !important;
+.home-page a.mach-cta:hover {
+  background: #2a1850;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  text-decoration: none;
 }
 
 .home-page .who-grid {

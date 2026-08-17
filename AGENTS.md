@@ -59,3 +59,98 @@ Follow-up (out of scope for now): measure the strip's real height at runtime
 via `ResizeObserver` and set the CSS var dynamically, or constrain the strip
 to guarantee single-line layout down to 640px.
 <!-- END:hero-section-rules -->
+
+<!-- BEGIN:section-background-rules -->
+## Section background alternation rule (sitewide)
+
+Applies to every full-bleed page section rendered directly inside a page's
+`<main>` (i.e. every section component in `app/<page>/components/*.tsx`, plus
+shared cross-page section components such as `components/FaqSection.tsx` and
+`components/FinalCTA.tsx`). Excludes hero sections (see "Hero section layout
+rule" above) — a hero keeps its own bespoke background and sits above the
+alternating sequence, not inside it.
+
+**The two allowed backgrounds.** Every non-hero section is either:
+
+1. **Purple** — `background: var(--surface)` (`#F4EFFF`, flat light
+   lavender; already defined globally at `:root` in `app/globals.css`, no
+   gradient, no decorative pattern). Applied via Tailwind v4's CSS-variable
+   shorthand `bg-(--surface)` on the section's own root `<section>` element
+   — never redeclare `--surface` locally, it already resolves anywhere in
+   the stylesheet.
+2. **White** (default) — no background override class; the section inherits
+   the page's white background as it does today.
+
+**Alternation.** Reading down the page, consecutive sections must alternate
+between purple and white — never two purple or two white sections back to
+back — *except* where a documented, deliberate exception applies (see below).
+Hero sections sit above this sequence entirely and don't count toward
+alternation.
+
+**Documented exceptions to strict alternation:**
+- A logo-strip section (e.g. a customer/integration logo marquee) placed
+  immediately after the hero should stay white rather than participate in
+  alternation. Heavy tinted backgrounds behind a logo marquee read poorly in
+  B2B marketing design, and most logo marks are designed for a plain white
+  canvas.
+- Any section whose own inner markup already renders a card/panel at
+  `background: var(--surface)` (the exact purple value) must stay white at
+  the section level. Painting the section purple too makes that inner
+  card/panel visually disappear — it becomes indistinguishable from its own
+  background. Check the component's CSS before assigning it purple; if it
+  (or any of its inner elements) already uses `var(--surface)` or an
+  equivalent tint (e.g. `--violet-tint`, `#F4EFFF`) as a background, leave
+  the section white.
+
+**White cards on purple sections.** When a section is purple, cards or
+content boxes placed on top of it stay white (`background: #fff`) with a
+`1px solid var(--border)` border — never colored/tinted cards. This is the
+established pattern (`app/ai-quote-engine/components/Challenge.tsx`'s
+`.chal-card`, mirrored by `.cap-card`, `.mach-card`, `.who-card`), and keeps
+hierarchy readable: purple marks the *section*, white marks *content grouped
+within it*.
+
+**Implementation mechanism: the `purple` prop.** Every section component
+accepts an optional boolean `purple` prop, default `false`:
+
+```tsx
+export default function SomeSection({ purple = false }: { purple?: boolean }) {
+  return (
+    <section className={`some-section ${purple ? "bg-(--surface)" : ""}`.trim()}>
+      ...
+    </section>
+  );
+}
+```
+
+- Omitted or `false` → no override class is added; the section renders
+  exactly as it does today (backward-compatible, zero visual change).
+- `true` → adds `bg-(--surface)` to the section's root className.
+- Shared cross-page components (`FaqSection`, `FinalCTA`, and any future
+  shared section) must default `purple` to `false` so every other page that
+  already calls them without the prop is unaffected.
+- The parent page component decides the sequence by passing `purple` on
+  alternating children, e.g. `<HomeCapabilities purple />`.
+- **Cascade-layer gotcha:** before wiring up a new section, check whether it
+  already has a plain (non-Tailwind, unlayered) CSS rule setting its own
+  `background` (e.g. `.final-card-section { background: #fff; }` in
+  `app/globals.css`). Tailwind utilities live inside `@layer utilities`, and
+  in CSS, unlayered rules *always* win over layered ones regardless of
+  specificity — so `bg-(--surface)` would silently do nothing on such a
+  section. `components/FinalCTA.tsx` is exactly this case: its `purple` prop
+  sets an inline `style={{ background: "var(--surface)" }}` instead of the
+  class, since inline styles beat both layered and unlayered stylesheet
+  rules. Use the class by default; fall back to an inline style only when a
+  competing unlayered background rule already exists on that section.
+
+**Known limitation:** this rule assigns backgrounds per hand-picked
+component, not automatically by position — adding, removing, or reordering
+sections on a page requires re-checking the alternation and re-assigning
+`purple` props by hand. There is no automatic "every other section"
+mechanism, since full-bleed section backgrounds are applied via a component
+prop, not a structural CSS selector. Relatedly, a decoration element that
+happens to reuse the exact `var(--surface)` value (e.g. an accordion's `+`
+icon chip) will read with lower contrast on a purple section than on white —
+acceptable for legibility (text colors keep strong contrast) but worth a
+visual check per component.
+<!-- END:section-background-rules -->

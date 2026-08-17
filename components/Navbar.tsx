@@ -687,14 +687,12 @@ export default function Navbar() {
               >
                 Login
               </Button>
-              <Button
-                variant="outline-gray"
-                size="sm"
+              <Link
                 href="/request-a-demo"
-                className="!border-[#111827] !px-[18px] !py-[8px] !text-[13px] !font-medium !text-[#111827] hover:!bg-slate-50"
+                className="nav-btn-outline"
               >
                 Request Demo
-              </Button>
+              </Link>
               <Button
                 variant="primary"
                 size="sm"
@@ -922,14 +920,13 @@ export default function Navbar() {
                 >
                   Start free trial
                 </Button>
-                <Button
-                  variant="outline-gray"
+                <Link
                   href="/request-a-demo"
-                  className="w-full justify-center font-bold py-3.5 border-slate-200"
+                  className="nav-btn-outline nav-btn-outline-block"
                   onClick={() => setIsDrawerOpen(false)}
                 >
                   Request Demo
-                </Button>
+                </Link>
               </div>
             </motion.div>
           </>

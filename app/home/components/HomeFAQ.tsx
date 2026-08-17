@@ -4,7 +4,7 @@ import React from "react";
 import FaqSection from "@/components/FaqSection";
 import { useCurrency } from "@/components/CurrencyProvider";
 
-export default function HomeFAQ() {
+export default function HomeFAQ({ purple = false }: { purple?: boolean }) {
   const { format, prices } = useCurrency();
 
   const faqs = [
@@ -34,5 +34,5 @@ export default function HomeFAQ() {
     },
   ];
 
-  return <FaqSection eyebrow="FAQ" title="Questions, answered" items={faqs} />;
+  return <FaqSection eyebrow="FAQ" title="Questions, answered" items={faqs} purple={purple} />;
 }

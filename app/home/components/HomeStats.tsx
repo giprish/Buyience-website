@@ -8,9 +8,12 @@ const STATS = [
   { value: "50+", label: "integrations" },
 ];
 
-export default function HomeStats() {
+export default function HomeStats({ purple = false }: { purple?: boolean }) {
   return (
-    <section className={`home-stats ${styles.section}`} aria-label="Platform outcomes">
+    <section
+      className={`home-stats ${styles.section} ${purple ? "bg-(--surface)" : ""}`.trim()}
+      aria-label="Platform outcomes"
+    >
       <div className="container">
         <dl className={`home-stats-grid ${styles.grid}`}>
           {STATS.map((stat) => (

@@ -1,0 +1,49 @@
+---
+description: Sitewide rule for full-bleed page section background colors — alternate purple (var(--surface)) and white down the page via a `purple` boolean prop, with a hero exemption and a "white cards on purple" sub-rule. Apply when creating or editing a page section component (app/**/components/*.tsx) or a shared section component (FaqSection, FinalCTA).
+globs:
+  - "app/**/components/*.tsx"
+  - "components/FaqSection.tsx"
+  - "components/FinalCTA.tsx"
+  - "app/globals.css"
+alwaysApply: false
+---
+
+# Section background alternation rule
+
+Every full-bleed section rendered directly in a page's `<main>` (excluding
+hero sections, which keep their own bespoke background and sit above this
+sequence) is either:
+
+- **Purple** — `bg-(--surface)` on the section's root `<section>`
+  (`var(--surface)` = `#F4EFFF`, already global in `app/globals.css`, no new
+  token needed).
+- **White** (default) — no override class, inherits the page background.
+
+Reading down the page, consecutive sections must alternate purple/white —
+never two of the same back to back — with two allowed deliberate exceptions:
+a logo-strip section right after the hero stays white (tinted backgrounds
+read poorly behind a logo marquee), and any section whose own inner markup
+already renders a card/panel at `var(--surface)` (or an equivalent tint like
+`--violet-tint`) must stay white at the section level, or that inner
+card/panel visually disappears into the section background.
+
+When a section is purple, cards/content boxes on top of it stay white
+(`background:#fff; border:1px solid var(--border)`) — never colored cards
+(established pattern: `.chal-card`, `.cap-card`, `.mach-card`, `.who-card`).
+
+**Implementation:** every section component takes an optional `purple`
+boolean prop, default `false`. `false`/omitted → no class added, zero visual
+change. `true` → adds `bg-(--surface)` to the section's className. Shared
+cross-page components (`FaqSection`, `FinalCTA`) must default `purple` to
+`false` so other pages calling them unprompted are unaffected.
+
+Before wiring a new section, check it doesn't already have a plain
+(non-Tailwind) CSS `background` rule — unlayered CSS always beats Tailwind's
+`@layer utilities`, so `bg-(--surface)` would silently no-op. If one exists
+(e.g. `FinalCTA`'s `.final-card-section { background:#fff }`), use an inline
+`style={{ background: "var(--surface)" }}` instead, which always wins.
+
+Full rationale, exact background/token values, and the exception list live
+in `AGENTS.md` under "Section background alternation rule (sitewide)" — that
+is the canonical source. If the rule changes, update AGENTS.md first and
+mirror the bullets above.

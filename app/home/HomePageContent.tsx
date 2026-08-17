@@ -20,12 +20,12 @@ export default function HomePageContent() {
       <main className="quote-engine-page home-landing home-page flex-grow">
         <HomeHero />
         <HomeLogos />
-        <HomeCapabilities />
+        <HomeCapabilities purple />
         <HomeStats />
         <HomeModuleTabs />
-        <HomeMACH />
+        <HomeMACH purple />
         <HomeAudiences />
-        <HomeFAQ />
+        <HomeFAQ purple />
         <HomeFinalCTA />
       </main>
       <Footer />

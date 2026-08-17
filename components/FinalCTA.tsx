@@ -21,6 +21,8 @@ export type FinalCTAProps = {
   trust?: React.ReactNode | null;
   id?: string;
   className?: string;
+  /** Sitewide alternating-section-background rule: true = purple (var(--surface)); default/false = white — today's site-wide behavior, unchanged for every existing caller. */
+  purple?: boolean;
 };
 
 const DEFAULT_PRIMARY: FinalCTAAction = {
@@ -50,6 +52,7 @@ export default function FinalCTA({
   ),
   id,
   className = "",
+  purple = false,
 }: FinalCTAProps) {
   const [showGlobe, setShowGlobe] = useState(false);
 
@@ -62,7 +65,11 @@ export default function FinalCTA({
   }, []);
 
   return (
-    <section className={`final-card-section ${className}`.trim()} id={id}>
+    <section
+      className={`final-card-section ${className}`.trim()}
+      id={id}
+      style={purple ? { background: "var(--surface)" } : undefined}
+    >
       <div className="final-card-container">
         <div className="final-card">
           <div className="final-card-copy">

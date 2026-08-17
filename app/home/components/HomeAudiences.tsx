@@ -28,9 +28,9 @@ const PERSONAS = [
   },
 ];
 
-export default function HomeAudiences() {
+export default function HomeAudiences({ purple = false }: { purple?: boolean }) {
   return (
-    <section>
+    <section className={purple ? "bg-(--surface)" : undefined}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

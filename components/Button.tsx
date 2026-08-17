@@ -23,11 +23,11 @@ export default function Button({
     primary:
       "bg-[#6E2CF4] !text-white shadow-[0_10px_26px_rgba(110,44,244,0.34)] hover:bg-[#5B21D8] hover:-translate-y-[1px] hover:shadow-[0_10px_26px_rgba(110,44,244,0.34)]",
     secondary:
-      "!bg-white !text-[#6E2CF4] !border !border-[#E7DEFB] !hover:border-[#6E2CF4] !hover:-translate-y-[1px]",
+      "bg-white !text-[#6E2CF4] border border-[#E7DEFB] hover:border-[#6E2CF4] hover:-translate-y-[1px]",
     ghost:
-      "!bg-white !text-[#6E2CF4] !border !border-[#E7DEFB] !hover:border-[#6E2CF4] !hover:-translate-y-[1px]",
+      "bg-white !text-[#6E2CF4] border border-[#E7DEFB] hover:border-[#6E2CF4] hover:-translate-y-[1px]",
     lime:
-      "bg-[#D6FB4F] !text-[#1B1033] shadow-[0_10px_24px_-14px_rgba(214,251,79,0.5)] !hover:bg-[#E2FF74] hover:-translate-y-[1px]",
+      "bg-[#D6FB4F] !text-[#1B1033] shadow-[0_10px_24px_-14px_rgba(214,251,79,0.5)] hover:bg-[#E2FF74] hover:-translate-y-[1px]",
     "outline-gray":
       "border border-slate-300 !text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 hover:-translate-y-[1px]",
     text: "!text-slate-600 hover:!text-[#6E2CF4] bg-transparent",

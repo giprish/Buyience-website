@@ -71,9 +71,9 @@ const CAPABILITIES = [
   },
 ];
 
-export default function HomeCapabilities() {
+export default function HomeCapabilities({ purple = false }: { purple?: boolean }) {
   return (
-    <section id="capabilities">
+    <section id="capabilities" className={purple ? "bg-(--surface)" : undefined}>
       <div className="container">
         <div className="center-head">
           <p className="eyebrow">CORE CAPABILITIES</p>

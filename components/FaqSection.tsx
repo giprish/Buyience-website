@@ -16,6 +16,8 @@ type FaqSectionProps = {
   className?: string;
   /** Inline styles on the <section> (spacing / background overrides). */
   style?: React.CSSProperties;
+  /** Sitewide alternating-section-background rule: true = purple (var(--surface)); default/false = white (unchanged for existing callers). */
+  purple?: boolean;
 };
 
 /** Site-wide FAQ accordion: divider list with + toggle (Platform FAQ UI). */
@@ -25,9 +27,14 @@ export default function FaqSection({
   items,
   className = "",
   style,
+  purple = false,
 }: FaqSectionProps) {
   return (
-    <section id="faq" className={className || undefined} style={style}>
+    <section
+      id="faq"
+      className={[className, purple ? "bg-(--surface)" : ""].filter(Boolean).join(" ") || undefined}
+      style={style}
+    >
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

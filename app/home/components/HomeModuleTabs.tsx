@@ -67,12 +67,12 @@ const TABS = [
   },
 ];
 
-export default function HomeModuleTabs() {
+export default function HomeModuleTabs({ purple = false }: { purple?: boolean }) {
   const [activeTab, setActiveTab] = useState(0);
   const current = TABS[activeTab];
 
   return (
-    <section className="home-suite">
+    <section className={`home-suite ${purple ? "bg-(--surface)" : ""}`.trim()}>
       <div className="container">
         <div className="center-head">
           <p className="eyebrow">ONE PLATFORM</p>
