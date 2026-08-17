@@ -17,7 +17,7 @@ export default function PackagingFinalCTA() {
       secondaryAction={{
         label: "Book a demo",
         href: "/request-a-demo",
-        variant: "ghost",
+        variant: "primary",
       }}
     />
   );

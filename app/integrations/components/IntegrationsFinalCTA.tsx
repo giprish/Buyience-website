@@ -16,12 +16,12 @@ export default function IntegrationsFinalCTA() {
       primaryAction={{
         label: "Start free trial",
         href: "https://app.buyience.com/register",
-        variant: "ghost",
+        variant: "primary",
       }}
       secondaryAction={{
         label: "See Pricing",
         href: "/pricing",
-        variant: "ghost",
+        variant: "primary",
       }}
     />
   );

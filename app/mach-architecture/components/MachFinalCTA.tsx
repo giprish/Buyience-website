@@ -16,7 +16,7 @@ export default function MachFinalCTA() {
       primaryAction={{
         label: "Start For Free",
         href: "https://app.buyience.com/register",
-        variant: "ghost",
+        variant: "primary",
       }}
     />
   );

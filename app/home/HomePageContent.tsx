@@ -23,8 +23,8 @@ export default function HomePageContent() {
         <HomeCapabilities purple />
         <HomeStats />
         <HomeModuleTabs />
-        <HomeMACH purple />
-        <HomeAudiences />
+        <HomeMACH />
+        <HomeAudiences purple />
         <HomeFAQ purple />
         <HomeFinalCTA />
       </main>

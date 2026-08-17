@@ -28,7 +28,7 @@ export default function PartnerFinalCTA() {
       secondaryAction={{
         label: "Explore the platform",
         href: "/platform-overview",
-        variant: "ghost",
+        variant: "primary",
       }}
       trust={null}
     />

@@ -34,5 +34,13 @@ export default function HomeFAQ({ purple = false }: { purple?: boolean }) {
     },
   ];
 
-  return <FaqSection eyebrow="FAQ" title="Questions, answered" items={faqs} purple={purple} />;
+  return (
+    <FaqSection
+      eyebrow="FAQ"
+      title="Questions, answered"
+      items={faqs}
+      purple={purple}
+      card
+    />
+  );
 }

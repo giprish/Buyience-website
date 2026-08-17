@@ -15,12 +15,12 @@ export default function HomeFinalCTA() {
       primaryAction={{
         label: "Start for free →",
         href: "https://app.buyience.com/register",
-        variant: "ghost",
+        variant: "primary",
       }}
       secondaryAction={{
         label: "See pricing",
         href: "/pricing",
-        variant: "ghost",
+        variant: "primary",
       }}
     />
   );

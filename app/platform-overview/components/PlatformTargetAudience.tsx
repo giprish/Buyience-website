@@ -49,7 +49,7 @@ export default function PlatformTargetAudience() {
 
         <div className="who-grid">
           {personas.map((p, idx) => (
-            <Link key={idx} href={p.href} className="who-card hover:no-underline">
+            <Link key={idx} href={p.href} className="who-card">
               <motion.div
                 custom={idx}
                 initial="hidden"

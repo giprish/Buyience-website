@@ -18,6 +18,8 @@ type FaqSectionProps = {
   style?: React.CSSProperties;
   /** Sitewide alternating-section-background rule: true = purple (var(--surface)); default/false = white (unchanged for existing callers). */
   purple?: boolean;
+  /** Wrap the accordion in a white rounded card (home mockup). Default keeps the divider list. */
+  card?: boolean;
 };
 
 /** Site-wide FAQ accordion: divider list with + toggle (Platform FAQ UI). */
@@ -28,6 +30,7 @@ export default function FaqSection({
   className = "",
   style,
   purple = false,
+  card = false,
 }: FaqSectionProps) {
   return (
     <section
@@ -52,7 +55,11 @@ export default function FaqSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
-          className="faq-list reveal in"
+          className={
+            card
+              ? "faq-list faq-card-list reveal in"
+              : "faq-list reveal in"
+          }
         >
           {items.map((faq, idx) => (
             <details key={idx}>

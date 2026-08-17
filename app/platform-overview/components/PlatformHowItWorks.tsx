@@ -4,39 +4,46 @@ import React from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
 
+function CheckIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path
+        d="M2.5 7.2 5.4 10.2 11.5 3.8"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function PlatformHowItWorks() {
   const steps = [
     {
       n: "1",
-      title: "Sign Up",
+      title: "Sign up",
       dur: "2 MIN",
       d: "Create your account. Your tenant is provisioned automatically.",
     },
     {
       n: "2",
-      title: "Import Catalog",
+      title: "Import catalog",
       dur: "< 1 HOUR",
       d: "Bring products in via CSV, API, or your WooCommerce store.",
     },
     {
       n: "3",
-      title: "Storefront Live",
+      title: "Storefront live",
       dur: "< 1 DAY",
       d: "Your headless B2B storefront is auto-configured and ready.",
     },
     {
       n: "✓",
-      title: "Fully Operational",
+      title: "Fully operational",
       dur: "< 2 WEEKS",
       d: "Quoting, orders, inventory, and suppliers — running end to end.",
     },
-  ];
-
-  const stacks = [
-    { chip: "AUTO-CONFIGURED", title: "Headless B2B Storefront" },
-    { chip: "AI-READY", title: "AI Quote Engine" },
-    { chip: "REAL-TIME", title: "Digital Sales Room" },
-    { chip: "DUAL-SIDED", title: "Seller & Buyer Dashboards" },
   ];
 
   const cardVariants = {
@@ -65,47 +72,34 @@ export default function PlatformHowItWorks() {
           </p>
         </motion.div>
 
-        {/* Timeline */}
-        <ol className="timeline" style={{ listStyle: "none" }}>
+        <ol className="mt-12 m-0 grid list-none grid-cols-1 gap-4.5 p-0 min-[641px]:grid-cols-2 min-[961px]:grid-cols-4">
           {steps.map((step, idx) => (
             <motion.li
-              key={idx}
+              key={step.title}
               custom={idx}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={cardVariants}
-              className="t-step reveal in"
+              className="reveal in flex flex-col rounded-[18px] border border-[#EDE6FB] bg-white px-6 py-6 text-left"
             >
-              <span className="t-n">{step.n}</span>
-              <div>
-                <b>{step.title}</b>
-                <span className="dur">{step.dur}</span>
-                <span className="d">{step.d}</span>
+              <div className="flex items-start justify-between gap-3">
+                <span
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-purple text-[13px] font-bold leading-none text-white"
+                  aria-hidden="true"
+                >
+                  {step.n === "✓" ? <CheckIcon /> : step.n}
+                </span>
+                <span className="rounded-full bg-[#E7F6F1] px-2.5 py-1 font-mono text-[10.5px] font-semibold tracking-[0.06em] text-[#0E9E7E]">
+                  {step.dur}
+                </span>
               </div>
+              <h3 className="mt-5 mb-2 !text-[18px] font-bold text-[#1B1033]">{step.title}</h3>
+              <p className="m-0 text-[14.5px] font-medium leading-[1.55] text-[#5A4B7C]">{step.d}</p>
             </motion.li>
           ))}
         </ol>
 
-        {/* Stacks */}
-        <div className="stack-grid">
-          {stacks.map((st, idx) => (
-            <motion.div
-              key={idx}
-              custom={idx}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={cardVariants}
-              className="stack-card reveal in"
-            >
-              <span className="chip">{st.chip}</span>
-              <b>{st.title}</b>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

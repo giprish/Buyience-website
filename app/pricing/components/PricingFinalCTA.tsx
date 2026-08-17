@@ -17,12 +17,12 @@ export default function PricingFinalCTA() {
       primaryAction={{
         label: "Start free trial",
         href: "https://app.buyience.com/register",
-        variant: "ghost",
+        variant: "primary",
       }}
       secondaryAction={{
         label: "Request demo",
         href: "/request-a-demo",
-        variant: "ghost",
+        variant: "primary",
       }}
     />
   );

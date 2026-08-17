@@ -17,7 +17,7 @@ export default function BlogFinalCTA() {
       primaryAction={{
         label: "Start For Free",
         href: "https://app.buyience.com/register",
-        variant: "ghost",
+        variant: "primary",
       }}
     />
   );
