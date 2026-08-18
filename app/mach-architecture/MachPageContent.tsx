@@ -32,7 +32,7 @@ export default function MachPageContent() {
       <MachHero />
       <MachWhatIsSection />
       <MachPrinciplesSection />
-      <MachDivesSection />
+      <MachDivesSection purple />
       <MachComparisonSection />
       <MachFAQ />
     </MarketingLayout>

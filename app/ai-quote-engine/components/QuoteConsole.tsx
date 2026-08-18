@@ -98,10 +98,10 @@ export default function QuoteConsole() {
           : "Long shot at this price";
   const winNote =
     Math.abs(price - optimal) < 0.04
-      ? `You're at the AI sweet spot. Best balance of win odds and margin for ${customer.short}.`
+      ? `Sweet spot for ${customer.short} — best win odds and margin.`
       : price > optimal
-        ? `Priced above the sweet spot — margin is safe but win odds drop. AI suggests ${money(optimal)}.`
-        : `Below the sweet spot — you'd likely win, but you're giving up margin. AI suggests ${money(optimal)}.`;
+        ? `Above the sweet spot — safer margin, lower odds. AI: ${money(optimal)}.`
+        : `Below the sweet spot — likely win, less margin. AI: ${money(optimal)}.`;
 
   const marginTight = margin < 22;
   const marginLabel = margin >= 30 ? "Strong" : marginTight ? "Below target" : "Healthy";
@@ -143,8 +143,8 @@ export default function QuoteConsole() {
   }
 
   return (
-    <div className="aiq-console-wrap">
-      <div className="aiq-console">
+    <div className="quote-hero-visual aiq-console-wrap relative flex min-h-0 w-full flex-col self-stretch">
+      <div className="aiq-console flex min-h-0 w-full flex-1 flex-col">
         <div className="aiq-head">
           <span className="aiq-head-dot" aria-hidden="true" />
           <span className="aiq-head-title">AI Quote Engine</span>

@@ -41,7 +41,7 @@ const DEFAULT_PRIMARY: FinalCTAAction = {
 const DEFAULT_SECONDARY: FinalCTAAction = {
   label: "See pricing",
   href: "/pricing",
-  variant: "primary",
+  variant: "ghost",
 };
 
 const GLOBE_MQ = "(min-width: 901px)";

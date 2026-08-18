@@ -27,6 +27,11 @@ export default function SalesRoomPageContent() {
           href: "https://app.buyience.com/register",
           variant: "primary",
         },
+        secondaryAction: {
+          label: "See pricing",
+          href: "/pricing",
+          variant: "ghost",
+        },
         description: "Replace email chaos with real-time negotiation — floor protected, AI assisted, fully logged.",
       }}
     >

@@ -1,63 +1,85 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import {
+  ArrowUpRight,
+  Cable,
+  Clock3,
+  Code2,
+  DatabaseZap,
+  Layers2,
+  Shuffle,
+  SwatchBook,
+} from "lucide-react";
+import WhatChangesSection, { type WhatChangesItem } from "@/components/WhatChangesSection";
+
+const items: WhatChangesItem[] = [
+  {
+    title: "Frontend",
+    from: "Locked to platform templates",
+    after: "Any technology",
+    desc: "React, Vue, custom frontend - your backend stays the same.",
+    Icon: SwatchBook,
+  },
+  {
+    title: "Integrations",
+    from: "Limited connectors, custom dev",
+    after: "API-first, connect anything",
+    desc: "Every capability is exposed through APIs and webhooks.",
+    Icon: Cable,
+  },
+  {
+    title: "Updates",
+    from: "Major versions, migration required",
+    after: "Continuous updates",
+    desc: "No disruptive migration projects to stay current.",
+    Icon: DatabaseZap,
+  },
+  {
+    title: "Scaling",
+    from: "Manual capacity planning",
+    after: "Auto-scaling infrastructure",
+    desc: "Elastic backend capacity without infrastructure firefighting.",
+    Icon: Layers2,
+  },
+  {
+    title: "Customization",
+    from: "Code changes, version conflicts",
+    after: "Configuration-first",
+    desc: "Adapt business logic with configuration, not hard forks.",
+    Icon: Code2,
+  },
+  {
+    title: "Multi-channel",
+    from: "Separate instances per channel",
+    after: "One backend, unlimited frontends",
+    desc: "Run storefronts, portals, and channels from one core system.",
+    Icon: Shuffle,
+  },
+  {
+    title: "Vendor lock-in",
+    from: "High switching cost",
+    after: "Data portable",
+    desc: "API-first architecture keeps integration boundaries clean.",
+    Icon: ArrowUpRight,
+  },
+  {
+    title: "Time to market",
+    from: "6-12 months implementation",
+    after: "Weeks to go live",
+    desc: "Ship faster with composable building blocks.",
+    Icon: Clock3,
+  },
+];
 
 export default function MachComparisonSection() {
-  const rows = [
-    { aspect: "Frontend", manual: "Locked to platform templates", nc: "Any technology (React, Vue, custom)" },
-    { aspect: "Integrations", manual: "Limited connectors, custom dev", nc: "API-first, connect anything" },
-    { aspect: "Updates", manual: "Major versions, migration required", nc: "Continuous updates, no migration projects" },
-    { aspect: "Scaling", manual: "Manual capacity planning", nc: "Auto-scaling infrastructure" },
-    { aspect: "Customization", manual: "Code changes, version conflicts", nc: "Configuration-first, no code" },
-    { aspect: "Multi-channel", manual: "Separate instances per channel", nc: "One backend, unlimited frontends" },
-    { aspect: "Vendor lock-in", manual: "High switching cost", nc: "API-first, data portable" },
-    { aspect: "Time to market", manual: "6–12 months implementation", nc: "Weeks to go live" },
-  ];
-
   return (
-    <section>
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="center-head reveal in"
-        >
-          <p className="eyebrow">THE DIFFERENCE</p>
-          <h2>Traditional platform vs Nova Core.</h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
-          className="tbl-wrap reveal in"
-        >
-          <table className="cmp">
-            <thead>
-              <tr>
-                <th>Aspect</th>
-                <th>Traditional platform</th>
-                <th className="nc">Nova Core (MACH)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row, idx) => (
-                <tr key={idx}>
-                  <td>{row.aspect}</td>
-                  <td data-label="Traditional platform">{row.manual}</td>
-                  <td className="nc" data-label="Nova Core (MACH)">
-                    {row.nc}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </motion.div>
-      </div>
-    </section>
+    <WhatChangesSection
+      eyebrow="THE DIFFERENCE"
+      heading="Traditional platform vs Nova Core."
+      outcomeLabel="Aspect"
+      fromLabel="Traditional platform"
+      toLabel="Nova Core (MACH)"
+      items={items}
+    />
   );
 }

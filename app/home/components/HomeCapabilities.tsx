@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import CapabilitiesChipGridSection from "@/components/CapabilitiesChipGridSection";
 
 const CAPABILITIES = [
   {
@@ -73,36 +73,13 @@ const CAPABILITIES = [
 
 export default function HomeCapabilities({ purple = false }: { purple?: boolean }) {
   return (
-    <section id="capabilities" className={purple ? "bg-(--surface)" : undefined}>
-      <div className="container">
-        <div className="center-head">
-          <p className="eyebrow">CORE CAPABILITIES</p>
-          <h2>Meet Nova Core</h2>
-          <p className="lede">
-            The AI-powered B2B commerce platform built for how businesses actually buy — quote engine, unified catalog,
-            multi-warehouse inventory, customer-specific pricing, and a live negotiation room, all from one dashboard.
-            Set up in minutes. Launch in days.
-          </p>
-        </div>
-        <div className="cap-grid">
-          {CAPABILITIES.map((cap, index) => (
-            <motion.div
-              key={cap.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.08, duration: 0.5 }}
-              className="cap-card text-left"
-            >
-              <div className="cap-icon" aria-hidden="true">
-                {cap.icon}
-              </div>
-              <h3>{cap.title}</h3>
-              <p>{cap.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <CapabilitiesChipGridSection
+      id="capabilities"
+      eyebrow="CORE CAPABILITIES"
+      heading="Meet Nova Core"
+      lede="The AI-powered B2B commerce platform built for how businesses actually buy — quote engine, unified catalog, multi-warehouse inventory, customer-specific pricing, and a live negotiation room, all from one dashboard. Set up in minutes. Launch in days."
+      items={CAPABILITIES}
+      purple={purple}
+    />
   );
 }

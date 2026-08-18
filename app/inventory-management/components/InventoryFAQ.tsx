@@ -37,6 +37,8 @@ export default function InventoryFAQ() {
       title="Inventory management FAQs"
       items={faqs}
       className="challenge"
+      card
+      
     />
   );
 }

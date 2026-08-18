@@ -37,6 +37,7 @@ export default function SalesRoomFAQ() {
       title="Digital Sales Room FAQs"
       items={faqs}
       className="challenge"
+      card
     />
   );
 }

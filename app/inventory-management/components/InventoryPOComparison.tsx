@@ -1,64 +1,49 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import { Calculator, ClipboardList, FilePlus2, PackageCheck } from "lucide-react";
+import WhatChangesSection, { type WhatChangesItem } from "@/components/WhatChangesSection";
+
+const items: WhatChangesItem[] = [
+  {
+    title: "Check stock levels",
+    from: "Open spreadsheet, scan rows",
+    after: "Real-time low stock alerts",
+    desc: "Threshold-based alerts surface exactly what needs replenishment.",
+    Icon: ClipboardList,
+  },
+  {
+    title: "Calculate order quantity",
+    from: "Manual math based on thresholds",
+    after: "Auto-calculated from safety stock",
+    desc: "Reorder quantities are calculated from your min/max and safety stock rules.",
+    Icon: Calculator,
+  },
+  {
+    title: "Create purchase order",
+    from: "Copy data to email or another system",
+    after: "One-click PO linked to supplier",
+    desc: "Generate a supplier-linked PO from the alert without retyping line items.",
+    Icon: FilePlus2,
+  },
+  {
+    title: "Update when received",
+    from: "Manually update the spreadsheet",
+    after: "One-click receive updates stock",
+    desc: "Receiving a PO posts inventory updates immediately across locations.",
+    Icon: PackageCheck,
+  },
+];
 
 export default function InventoryPOComparison() {
-  const rows = [
-    { process: "Check stock levels", manual: "Open spreadsheet, scan rows", nc: "Real-time low stock alerts" },
-    {
-      process: "Calculate order quantity",
-      manual: "Manual math based on thresholds",
-      nc: "Auto-calculated from safety stock",
-    },
-    { process: "Create purchase order", manual: "Copy data to email or another system", nc: "One-click PO linked to supplier" },
-    { process: "Update when received", manual: "Manually update the spreadsheet", nc: "One-click receive updates stock" },
-  ];
-
   return (
-    <section>
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="center-head reveal in"
-        >
-          <p className="eyebrow">PURCHASE ORDERS</p>
-          <h2>Low stock alert → PO → received. Done.</h2>
-          <p className="lede">No more spreadsheet calculations. No more "I thought we ordered that."</p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
-          className="tbl-wrap reveal in"
-        >
-          <table className="cmp">
-            <thead>
-              <tr>
-                <th>Process</th>
-                <th>Manual method</th>
-                <th className="nc">With Nova Core</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row, idx) => (
-                <tr key={idx}>
-                  <td>{row.process}</td>
-                  <td data-label="Manual method">{row.manual}</td>
-                  <td className="nc" data-label="With Nova Core">
-                    {row.nc}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </motion.div>
-      </div>
-    </section>
+    <WhatChangesSection
+      eyebrow="PURCHASE ORDERS"
+      heading="Low stock alert -> PO -> received. Done."
+      lede='No more spreadsheet calculations. No more "I thought we ordered that."'
+      outcomeLabel="Process"
+      fromLabel="Manual method"
+      toLabel="With Nova Core"
+      items={items}
+    />
   );
 }

@@ -1,67 +1,78 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import { Boxes, GraduationCap, Layers2, ShieldCheck, ShieldX, Sparkles, Tag, Zap } from "lucide-react";
+import WhatChangesSection, { type WhatChangesItem } from "@/components/WhatChangesSection";
 
-export default function ConfiguratorComparison() {
-  const rows = [
-    { aspect: "Product count", manual: "Dozens of separate SKUs", nc: "1 product with option groups" },
-    { aspect: "Price updates", manual: "Update each SKU individually", nc: "Update option prices once" },
-    { aspect: "Inventory", manual: "Track stock per SKU combination", nc: "Track stock per option value" },
-    {
-      aspect: "Configuration errors",
-      manual: "Manual validation, frequent mistakes",
-      nc: "Defined conflicts caught automatically",
-    },
-    { aspect: "Quote speed", manual: "Manual calculation", nc: "Real-time pricing" },
-    { aspect: "Sales rep training", manual: "Deep product knowledge required", nc: "Guided configuration with defaults" },
-    { aspect: "Customer experience", manual: "Overwhelming product list", nc: "Clear options, real-time pricing" },
-    { aspect: "Margin protection", manual: "Unknown cost per configuration", nc: "Cost tracking per option" },
-  ];
+const items: WhatChangesItem[] = [
+  {
+    title: "Product count",
+    from: "Dozens of separate SKUs",
+    after: "1 product with option groups",
+    desc: "One configurable product replaces dozens of SKU combinations.",
+    Icon: Layers2,
+  },
+  {
+    title: "Price updates",
+    from: "Update each SKU individually",
+    after: "Update option prices once",
+    desc: "Change a price once and every configuration inherits it.",
+    Icon: Tag,
+  },
+  {
+    title: "Inventory",
+    from: "Track stock per SKU combination",
+    after: "Track stock per option value",
+    desc: "Nine option values to manage instead of twenty-seven SKU permutations.",
+    Icon: Boxes,
+  },
+  {
+    title: "Configuration errors",
+    from: "Manual validation, frequent mistakes",
+    after: "Conflicts caught automatically",
+    desc: "Invalid combinations you define never reach a quote.",
+    Icon: ShieldX,
+  },
+  {
+    title: "Quote speed",
+    from: "Manual calculation",
+    after: "Real-time pricing",
+    desc: "The price updates as options are selected — no spreadsheet lookups.",
+    Icon: Zap,
+  },
+  {
+    title: "Sales rep training",
+    from: "Deep product knowledge required",
+    after: "Guided configuration with defaults",
+    desc: "Constraints and defaults walk reps through valid builds.",
+    Icon: GraduationCap,
+  },
+  {
+    title: "Customer experience",
+    from: "Overwhelming product list",
+    after: "Clear options, live prices",
+    desc: "Buyers configure a product instead of scrolling a catalogue.",
+    Icon: Sparkles,
+  },
+  {
+    title: "Margin protection",
+    from: "Unknown cost per configuration",
+    after: "Cost tracking per option",
+    desc: "You see margin as the product is built, not after it is quoted.",
+    Icon: ShieldCheck,
+  },
+];
 
+export default function ConfiguratorComparison({ purple = false }: { purple?: boolean }) {
   return (
-    <section className="problem">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="center-head reveal in"
-        >
-          <p className="eyebrow">THE DIFFERENCE</p>
-          <h2>Before CPQ vs with Nova Core CPQ.</h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
-          className="tbl-wrap reveal in"
-        >
-          <table className="cmp">
-            <thead>
-              <tr>
-                <th>Aspect</th>
-                <th>Without CPQ</th>
-                <th className="nc">With Nova Core CPQ</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row, idx) => (
-                <tr key={idx}>
-                  <td>{row.aspect}</td>
-                  <td data-label="Without CPQ">{row.manual}</td>
-                  <td className="nc" data-label="With Nova Core CPQ">
-                    {row.nc}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </motion.div>
-      </div>
-    </section>
+    <WhatChangesSection
+      purple={purple}
+      eyebrow="THE DIFFERENCE"
+      heading="Before CPQ vs with Nova Core CPQ."
+      lede="SKU sprawl and live configuration are not the same catalogue with a nicer picker. Eight things actually move."
+      outcomeLabel="Aspect"
+      fromLabel="Without CPQ"
+      toLabel="Nova Core CPQ"
+      items={items}
+    />
   );
 }

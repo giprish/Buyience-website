@@ -2,76 +2,41 @@
 
 import React from "react";
 import Button from "@/components/Button";
-import { useCurrency } from "@/components/CurrencyProvider";
 import SectionCapsule from "@/components/SectionCapsule";
+import SalesRoomDemo from "./SalesRoomDemo";
 
 export default function SalesRoomHero() {
-  const { format } = useCurrency();
-
   return (
-    <header className="hero relative overflow-hidden bg-hero-grid">
+    <header className="sales-room-hero relative flex flex-col overflow-hidden bg-hero-grid sm:min-h-[var(--home-hero-h)] sm:justify-center">
       <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
-      <div className="container hero-grid relative z-10">
-        <div className="flex flex-col text-left">
-          <SectionCapsule>Digital Sales Room</SectionCapsule>
-          <h1>
-            One link. The whole <span className="grad-text">deal.</span>
-          </h1>
-          <p className="lede">
-            Replace the email-and-PDF chase with a shared, buyer-facing room. Live quote, mutual action plan, files, and a running conversation — every stakeholder aligned in one place, right through to signature.
-          </p>
-          <div className="cta-row">
-            <Button variant="primary" size="lg" href="/contact">
-              Start Free Trial
-            </Button>
-            <Button variant="ghost" size="lg" href="/contact">
-              Request Demo
-            </Button>
-          </div>
-          <p className="trust-micro">
-            14-day trial<span className="dot" aria-hidden="true">·</span>No card required
-          </p>
-        </div>
-
-        <div className="room" aria-label="A live negotiation in the Digital Sales Room">
-          <div className="room-head">
-            <div>
-              <b>Sales Room · Q-2048</b>
-              <div className="st">● Buyer online · typing…</div>
-            </div>
-            <div className="presence" aria-label="Participants">
-              <span className="av on">RA</span>
-              <span className="av on">AL</span>
-              <span className="av">AI</span>
-            </div>
-          </div>
-          <div className="pin">📌 Pinned: Delivery must land before 20-May for the retail launch window.</div>
-          <div className="msg them">
-            <span className="who">RACHEL · BUYER</span>Morning! We reviewed Round 2. The waffle robe and the graphic
-            tee are still a bit high for our margins.
-          </div>
-          <div className="ai-card">
-            <div className="ai-h">✦ AI SUGGESTION · based on buyer&apos;s target costs &amp; your margin floor</div>
-            <p>
-              Counter the robe at <b>{format(20.5, 2)}</b> (24.6% margin) and hold the tee at{" "}
-              <b>{format(8.8, 2)}</b>. This raises win probability to <b>81%</b> while staying above your{" "}
-              <b>22% floor</b>.
+      <div className="sales-room-hero-inner relative z-10 mx-auto grid w-full max-w-[var(--w-max,1200px)] grid-cols-1 items-stretch gap-10 px-5 py-12 sm:grid-cols-2 sm:px-8">
+        <div className="sales-room-hero-copy flex min-h-0 flex-col text-left">
+          <div className="sales-room-hero-copy-main">
+            <SectionCapsule>Digital Sales Room</SectionCapsule>
+            <h1>
+              One link. The whole <span className="grad-text">deal.</span>
+            </h1>
+            <p className="lede">
+              Replace the email-and-PDF chase with a shared, buyer-facing room. Live quote, mutual action plan, files,
+              and a running conversation — every stakeholder aligned in one place, right through to signature.
             </p>
-            <div className="acts">
-              <span>⇄ Build counter from this</span>
-              <span>Insert as reply</span>
+          </div>
+          <div className="sales-room-hero-copy-foot">
+            <div className="cta-row">
+              <Button variant="primary" size="lg" href="https://app.buyience.com/register">
+                Start free trial →
+              </Button>
+              <Button variant="ghost" size="lg" href="/request-a-demo">
+                Request a demo
+              </Button>
             </div>
+            <p className="trust-micro">
+              <span className="trust-live" aria-hidden="true" />
+              14-day trial · No card required
+            </p>
           </div>
-          <div className="msg you">
-            <span className="who">ALEX · YOU</span>Here&apos;s where I can land: robe {format(20.5, 2)}, tee holds at{" "}
-            {format(8.8, 2)}. Sending a formal counter now.
-          </div>
-          <div className="msg them">
-            <span className="who">RACHEL · BUYER</span>That works for the robe. Can you do {format(8.4, 2)} on the tee if
-            we bump qty to 30?
-          </div>
-          <p className="typing">Rachel is typing…</p>
         </div>
+        <SalesRoomDemo />
       </div>
     </header>
   );

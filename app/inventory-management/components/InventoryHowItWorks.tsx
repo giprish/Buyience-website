@@ -1,76 +1,44 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { Boxes, ChartNoAxesColumn, ShieldCheck, Upload } from "lucide-react";
+import StepRailSection, { type StepRailStep } from "@/components/StepRailSection";
 
 export default function InventoryHowItWorks() {
-  const steps = [
+  const steps: StepRailStep[] = [
     {
-      n: "1",
+      chip: "Step 1",
       title: "Import your catalogue",
       desc: "Upload products via CSV or connect your existing platform. Data syncs automatically.",
+      Icon: Upload,
     },
     {
-      n: "2",
+      chip: "Step 2",
       title: "Set safety stock",
       desc: "Define minimum levels per product and location. Thresholds trigger alerts and status changes.",
+      Icon: ShieldCheck,
     },
     {
-      n: "3",
+      chip: "Step 3",
       title: "Track in real time",
       desc: "Monitor stock across all locations. Inline editing lets you adjust quantities directly in the table.",
+      Icon: ChartNoAxesColumn,
     },
     {
-      n: "✓",
+      chip: "Live",
       title: "Automate reorders",
       desc: "One-click purchase orders when stock is low. Receive goods and update stock instantly.",
+      Icon: Boxes,
+      won: true,
     },
   ];
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 25 },
-    visible: (index: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: index * 0.1, duration: 0.5 },
-    }),
-  };
-
   return (
-    <section className="how">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="center-head reveal in"
-        >
-          <p className="eyebrow">HOW IT WORKS</p>
-          <h2>From import to insight in minutes.</h2>
-          <p className="lede">No complex setup, no consultants. Connect your catalogue and start tracking.</p>
-        </motion.div>
-
-        <ol className="steps">
-          {steps.map((step, idx) => (
-            <motion.li
-              key={idx}
-              custom={idx}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={cardVariants}
-              className="step reveal in"
-            >
-              <span className="step-n">{step.n}</span>
-              <div>
-                <b>{step.title}</b>
-                <span>{step.desc}</span>
-              </div>
-            </motion.li>
-          ))}
-        </ol>
-      </div>
-    </section>
+    <StepRailSection
+      eyebrow="HOW IT WORKS"
+      heading="From import to insight in minutes."
+      lede="No complex setup, no consultants. Connect your catalogue and start tracking."
+      steps={steps}
+    />
   );
 }

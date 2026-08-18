@@ -37,6 +37,7 @@ export default function ConfiguratorFAQ() {
       title="CPQ configurator FAQs"
       items={faqs}
       className="problem"
+      card
     />
   );
 }

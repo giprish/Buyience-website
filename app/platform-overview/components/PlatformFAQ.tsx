@@ -34,7 +34,8 @@ export default function PlatformFAQ() {
       eyebrow="QUESTIONS"
       title="Platform FAQs"
       items={faqs}
-      style={{ paddingTop: 0, marginTop: "104px" }}
+      purple={true}
+      card
     />
   );
 }

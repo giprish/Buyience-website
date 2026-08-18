@@ -1,136 +1,112 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { MiniRow, MiniUi } from "@/components/MiniUi";
+import SplitFeatureSection from "@/components/SplitFeatureSection";
 
-export default function MachDivesSection() {
+function FeatureList({
+  items,
+}: {
+  items: { label: string; detail: string }[];
+}) {
   return (
-    <section className="challenge" style={{ backgroundColor: "var(--surface)", paddingTop: "60px", paddingBottom: "60px" }}>
-      <div className="container">
-        {/* Dive 1: API-First Design */}
-        <div className="dive reveal in">
-          <div>
-            <p className="eyebrow">API-FIRST DESIGN</p>
-            <h2>Everything is an API. Everything connects.</h2>
-            <p className="intro">
-              Every feature in Nova Core is exposed via RESTful APIs. This isn't an afterthought — it's the foundation.
-              Your frontend, ERP, CRM, and third-party tools all speak the same language.
-            </p>
-            <ul>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>RESTful endpoints</b> — standard HTTP methods (GET, POST, PUT, DELETE)
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Secure authentication</b> — token-based, scoped per tenant
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Tenant isolation</b> — API keys scoped to individual tenants
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Webhooks</b> — 38 real-time event notifications
-                </span>
-              </li>
-            </ul>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-            className="visual"
+    <ul className="mt-4.5 list-none p-0">
+      {items.map((item) => (
+        <li
+          key={item.label}
+          className="flex items-start gap-2.75 py-1.75 text-[15.5px] text-(--ink-soft)"
+        >
+          <span
+            className="mt-0.75 flex size-4.5 shrink-0 items-center justify-center rounded-full bg-(--mint-tint) text-[10px] font-bold text-(--mint)"
+            aria-hidden="true"
           >
-            <div className="mini-ui" aria-label="Webhook events firing">
-              <div className="mini-row done">
-                <span className="tag">EVENT</span>
-                <span>quote.accepted → CRM notified</span>
-              </div>
-              <div className="mini-row done">
-                <span className="tag">EVENT</span>
-                <span>order.created → fulfilment triggered</span>
-              </div>
-              <div className="mini-row active">
-                <span className="tag">EVENT</span>
-                <span>inventory.low_stock → PO workflow</span>
-              </div>
-              <div className="mini-row">
-                <span className="tag">EVENT</span>
-                <span>payment.received → accounting sync</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            ✓
+          </span>
+          <span>
+            <b className="text-(--ink)">{item.label}</b> — {item.detail}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-        {/* Dive 2: Multi-Tenancy */}
-        <div className="dive reversed reveal in">
-          <div>
-            <p className="eyebrow">MULTI-TENANCY</p>
-            <h2>Your data. Its own database.</h2>
-            <p className="intro">
-              Nova Core is built for true SaaS multi-tenancy. Every tenant gets a dedicated database — your records never
-              share tables with anyone else's. No shared data, no cross-tenant access, no compromises.
-            </p>
-            <ul>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Database-per-tenant</b> — isolation by architecture, not by a column filter
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Custom branding</b> — white-label with your brand identity
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Tenant-specific API keys</b> — authentication scoped per tenant
-                </span>
-              </li>
-            </ul>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-            className="visual text-center"
-          >
-            <div className="tenants mb-4" aria-label="Each tenant has its own database">
-              <div className="tenant">
-                <b>Tenant A</b>
-                <span className="db">DB · A</span>
-                <span className="wall">isolated</span>
-              </div>
-              <div className="tenant">
-                <b>Tenant B</b>
-                <span className="db">DB · B</span>
-                <span className="wall">isolated</span>
-              </div>
-              <div className="tenant">
-                <b>Tenant C</b>
-                <span className="db">DB · C</span>
-                <span className="wall">isolated</span>
-              </div>
-            </div>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "10.5px", color: "var(--muted)", margin: 0 }}>
-              Dedicated database per tenant — not shared tables with a tenant ID
-            </p>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+export default function MachDivesSection({ purple = false }: { purple?: boolean }) {
+  return (
+    <SplitFeatureSection
+      purple={purple}
+      className="pt-15 pb-15"
+      rows={[
+        {
+          eyebrow: "API-FIRST DESIGN",
+          title: "Everything is an API. Everything connects.",
+          description: (
+            <>
+              <p>
+                Every feature in Nova Core is exposed via RESTful APIs. This isn&apos;t an afterthought — it&apos;s the
+                foundation. Your frontend, ERP, CRM, and third-party tools all speak the same language.
+              </p>
+              <FeatureList
+                items={[
+                  { label: "RESTful endpoints", detail: "standard HTTP methods (GET, POST, PUT, DELETE)" },
+                  { label: "Secure authentication", detail: "token-based, scoped per tenant" },
+                  { label: "Tenant isolation", detail: "API keys scoped to individual tenants" },
+                  { label: "Webhooks", detail: "38 real-time event notifications" },
+                ]}
+              />
+            </>
+          ),
+          visual: (
+            <MiniUi label="Webhook events firing">
+              <MiniRow tone="done" tag="QUOTE">
+                quote.accepted → CRM notified
+              </MiniRow>
+              <MiniRow tone="done" tag="ORDER">
+                order.created → fulfilment triggered
+              </MiniRow>
+              <MiniRow tone="active" tag="STOCK">
+                inventory.low_stock → PO workflow
+              </MiniRow>
+              <MiniRow tag="PAY">payment.received → accounting sync</MiniRow>
+            </MiniUi>
+          ),
+        },
+        {
+          eyebrow: "MULTI-TENANCY",
+          title: "Your data. Its own database.",
+          description: (
+            <>
+              <p>
+                Nova Core is built for true SaaS multi-tenancy. Every tenant gets a dedicated database — your records
+                never share tables with anyone else&apos;s. No shared data, no cross-tenant access, no compromises.
+              </p>
+              <FeatureList
+                items={[
+                  { label: "Database-per-tenant", detail: "isolation by architecture, not by a column filter" },
+                  { label: "Custom branding", detail: "white-label with your brand identity" },
+                  { label: "Tenant-specific API keys", detail: "authentication scoped per tenant" },
+                ]}
+              />
+            </>
+          ),
+          visual: (
+            <MiniUi label="Each tenant has its own database">
+              <MiniRow tone="done" tag="TENANT A">
+                Dedicated DB · isolated
+              </MiniRow>
+              <MiniRow tone="done" tag="TENANT B">
+                Dedicated DB · isolated
+              </MiniRow>
+              <MiniRow tone="done" tag="TENANT C">
+                Dedicated DB · isolated
+              </MiniRow>
+              <MiniRow tone="active" tag="DESIGN">
+                Not shared tables with a tenant ID
+              </MiniRow>
+            </MiniUi>
+          ),
+        },
+      ]}
+    />
   );
 }

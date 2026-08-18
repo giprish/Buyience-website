@@ -36,6 +36,7 @@ export default function SupplierFAQ() {
       eyebrow="QUESTIONS, ANSWERED"
       title="Supplier management FAQs"
       items={faqs}
+      purple={true}
     />
   );
 }

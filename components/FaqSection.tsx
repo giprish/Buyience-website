@@ -30,7 +30,7 @@ export default function FaqSection({
   className = "",
   style,
   purple = false,
-  card = false,
+  card = true,
 }: FaqSectionProps) {
   return (
     <section

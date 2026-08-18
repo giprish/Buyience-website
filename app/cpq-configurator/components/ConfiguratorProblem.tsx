@@ -6,14 +6,33 @@ import { motion } from "framer-motion";
 export default function ConfiguratorProblem() {
   const painPoints = [
     {
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
+          <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" />
+        </svg>
+      ),
       title: "Inventory nightmare",
       desc: "Track stock for 27 SKUs — or track 9 option values?",
     },
     {
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="12" y1="1" x2="12" y2="23" />
+          <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+        </svg>
+      ),
       title: "Price-update hell",
       desc: "Update prices on 27 products — or 9 option prices?",
     },
     {
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+          <line x1="12" y1="9" x2="12" y2="13" />
+          <line x1="12" y1="17" x2="12.01" y2="17" />
+        </svg>
+      ),
       title: "Configuration errors",
       desc: "Manual validation across 27 SKUs — or automatic conflict resolution?",
     },
@@ -95,6 +114,12 @@ export default function ConfiguratorProblem() {
               variants={cardVariants}
               className="pain reveal in"
             >
+              <div
+                aria-hidden="true"
+                className="w-10 h-10 rounded-[10px] bg-(--violet-tint) flex items-center justify-center mb-4 text-(--violet-deep)"
+              >
+                {p.icon}
+              </div>
               <b>{p.title}</b>
               <p>{p.desc}</p>
             </motion.div>

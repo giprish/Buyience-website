@@ -1,160 +1,131 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { useCurrency } from "@/components/CurrencyProvider";
+import { MiniRow, MiniUi } from "@/components/MiniUi";
+import SplitFeatureSection from "@/components/SplitFeatureSection";
 
-export default function ConfiguratorDivesSection() {
-  const { format } = useCurrency();
+function FeatureList({
+  items,
+}: {
+  items: { label: string; detail: string }[];
+}) {
   return (
-    <section className="problem" style={{ paddingBottom: "52px" }}>
-      <div className="container">
-        {/* Dive 1: Conflict Resolution */}
-        <div className="dive reveal in">
-          <div>
-            <p className="eyebrow">CONFLICT RESOLUTION</p>
-            <h2>Invalid configurations, prevented.</h2>
-            <p className="intro">
-              Some options don't work together — a high-power processor with basic cooling, for example. Nova Core
-              catches the conflicts you've defined before they reach a quote.
-            </p>
-            <ul>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Define conflicts</b> — mark incompatible combinations in setup
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Real-time detection</b> — the system checks every selection
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Auto-resolution</b> — the conflicting option is auto-deselected
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Clear messages</b> — the customer sees why an option was removed
-                </span>
-              </li>
-            </ul>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-            className="visual"
+    <ul className="mt-4.5 list-none p-0">
+      {items.map((item) => (
+        <li
+          key={item.label}
+          className="flex items-start gap-2.75 py-1.75 text-[15.5px] text-(--ink-soft)"
+        >
+          <span
+            className="mt-0.75 flex size-4.5 shrink-0 items-center justify-center rounded-full bg-(--mint-tint) text-[10px] font-bold text-(--mint)"
+            aria-hidden="true"
           >
-            <div className="mini-ui" aria-label="Conflict caught and resolved">
-              <div className="mini-row">
-                <span className="tag">SELECT</span>
-                <span>Processor: Enterprise</span>
-              </div>
-              <div className="mini-row warn">
-                <span className="tag">CONFLICT</span>
-                <span>Incompatible with 16 GB memory</span>
-              </div>
-              <div className="mini-row active">
-                <span className="tag">RESOLVE</span>
-                <span>Memory switched to 32 GB</span>
-              </div>
-              <div className="mini-row done">
-                <span className="tag">EXPLAIN</span>
-                <span>"Enterprise processor requires 32 GB+ memory"</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            ✓
+          </span>
+          <span>
+            <b className="text-(--ink)">{item.label}</b> — {item.detail}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-        {/* Dive 2: Dynamic Pricing */}
-        <div className="dive reversed reveal in">
-          <div>
-            <p className="eyebrow">DYNAMIC PRICING</p>
-            <h2>Price updates as you configure.</h2>
-            <p className="intro">
-              No more manual calculations. No spreadsheet lookups. As customers select options, the price updates
-              instantly. Every option has its own price — add them up, display the total.
-            </p>
-            <ul>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Real-time calculation</b> — price updates instantly on selection
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Option-level pricing</b> — each value has its own price
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Quantity multipliers</b> — prices multiply by selected quantities
-                </span>
-              </li>
-              <li>
-                <span className="ic">✓</span>
-                <span>
-                  <b>Cost tracking</b> — cost price per option for margin calculation
-                </span>
-              </li>
-            </ul>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-            className="visual"
-          >
-            <div className="mini-ui" aria-label="Live price derivation">
-              <div className="mini-row">
-                <span className="tag">BASE</span>
-                <span>Control Unit X2</span>
-                <span className="mono" style={{ marginLeft: "auto", fontSize: "12px" }}>
-                  {format(1200)}
-                </span>
-              </div>
-              <div className="mini-row">
-                <span className="tag">+OPT</span>
-                <span>Memory 32 GB</span>
-                <span className="mono" style={{ marginLeft: "auto", fontSize: "12px" }}>
-                  +{format(180)}
-                </span>
-              </div>
-              <div className="mini-row">
-                <span className="tag">+OPT</span>
-                <span>Processor Pro</span>
-                <span className="mono" style={{ marginLeft: "auto", fontSize: "12px" }}>
-                  +{format(450)}
-                </span>
-              </div>
-              <div className="mini-row done">
-                <span className="tag">TOTAL</span>
-                <span>
-                  <b>Live total</b>
-                </span>
-                <span className="mono" style={{ marginLeft: "auto", fontSize: "12px", fontWeight: 700 }}>
-                  {format(1830)}
-                </span>
-              </div>
-              <div className="mini-row active">
-                <span className="tag">MARGIN</span>
-                <span>Cost tracked per option · margin visible</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+export default function ConfiguratorDivesSection({ purple = false }: { purple?: boolean }) {
+  const { format } = useCurrency();
+
+  return (
+    <SplitFeatureSection
+      purple={purple}
+      rows={[
+        {
+          eyebrow: "CONFLICT RESOLUTION",
+          title: "Invalid configurations, prevented.",
+          description: (
+            <>
+              <p>
+                Some options don&apos;t work together — a high-power processor with basic cooling, for example. Nova
+                Core catches the conflicts you&apos;ve defined before they reach a quote.
+              </p>
+              <FeatureList
+                items={[
+                  { label: "Define conflicts", detail: "mark incompatible combinations in setup" },
+                  { label: "Real-time detection", detail: "the system checks every selection" },
+                  { label: "Auto-resolution", detail: "the conflicting option is auto-deselected" },
+                  { label: "Clear messages", detail: "the customer sees why an option was removed" },
+                ]}
+              />
+            </>
+          ),
+          visual: (
+            <MiniUi label="Conflict caught and resolved">
+              <MiniRow tag="SELECT">Processor: Enterprise</MiniRow>
+              <MiniRow tone="warn" tag="CONFLICT">
+                Incompatible with 16 GB memory
+              </MiniRow>
+              <MiniRow tone="active" tag="RESOLVE">
+                Memory switched to 32 GB
+              </MiniRow>
+              <MiniRow tone="done" tag="EXPLAIN">
+                &quot;Enterprise processor requires 32 GB+ memory&quot;
+              </MiniRow>
+            </MiniUi>
+          ),
+        },
+        {
+          eyebrow: "DYNAMIC PRICING",
+          title: "Price updates as you configure.",
+          description: (
+            <>
+              <p>
+                No more manual calculations. No spreadsheet lookups. As customers select options, the price updates
+                instantly. Every option has its own price — add them up, display the total.
+              </p>
+              <FeatureList
+                items={[
+                  { label: "Real-time calculation", detail: "price updates instantly on selection" },
+                  { label: "Option-level pricing", detail: "each value has its own price" },
+                  { label: "Quantity multipliers", detail: "prices multiply by selected quantities" },
+                  { label: "Cost tracking", detail: "cost price per option for margin calculation" },
+                ]}
+              />
+            </>
+          ),
+          visual: (
+            <MiniUi label="Live price derivation">
+              <MiniRow
+                tag="BASE"
+                trailing={<span className="shrink-0 font-mono text-[12px]">{format(1200)}</span>}
+              >
+                Control Unit X2
+              </MiniRow>
+              <MiniRow
+                tag="+OPT"
+                trailing={<span className="shrink-0 font-mono text-[12px]">+{format(180)}</span>}
+              >
+                Memory 32 GB
+              </MiniRow>
+              <MiniRow
+                tag="+OPT"
+                trailing={<span className="shrink-0 font-mono text-[12px]">+{format(450)}</span>}
+              >
+                Processor Pro
+              </MiniRow>
+              <MiniRow
+                tone="done"
+                tag="TOTAL"
+                trailing={<span className="shrink-0 font-mono text-[12px] font-bold">{format(1830)}</span>}
+              >
+                <b>Live total</b>
+              </MiniRow>
+              <MiniRow tone="active" tag="MARGIN">
+                Cost tracked per option · margin visible
+              </MiniRow>
+            </MiniUi>
+          ),
+        },
+      ]}
+    />
   );
 }
