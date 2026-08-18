@@ -2,9 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import Button from "@/components/Button";
 
 const POSTS: Record<
@@ -152,10 +150,8 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
-      <AnnouncementBar />
-      <Navbar />
-      <main className="mx-auto max-w-3xl flex-grow px-6 py-16 sm:py-20">
+    <MarketingLayout>
+      <article className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
         <Link href="/blog" className="text-sm font-semibold text-[#6E2CF4] hover:underline">
           ← Back to blog
         </Link>
@@ -173,8 +169,7 @@ export default async function BlogPostPage({
             Explore AI Quote Engine
           </Button>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </article>
+    </MarketingLayout>
   );
 }

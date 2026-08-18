@@ -13,15 +13,12 @@ export default function SalesRoomHero() {
       <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
       <div className="container hero-grid relative z-10">
         <div className="flex flex-col text-left">
-          <SectionCapsule>Real-Time B2B Negotiation</SectionCapsule>
+          <SectionCapsule>Digital Sales Room</SectionCapsule>
           <h1>
-            The <span className="grad-text">digital sales room</span> where B2B deals close in minutes — not email
-            threads.
+            One link. The whole <span className="grad-text">deal.</span>
           </h1>
           <p className="lede">
-            The Digital Sales Room brings buyers and sellers into one shared workspace. Negotiate the quote, share
-            documents, and close the deal in minutes — not days of back-and-forth. With an AI copilot in the room that
-            knows your margin floor.
+            Replace the email-and-PDF chase with a shared, buyer-facing room. Live quote, mutual action plan, files, and a running conversation — every stakeholder aligned in one place, right through to signature.
           </p>
           <div className="cta-row">
             <Button variant="primary" size="lg" href="/contact">

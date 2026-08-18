@@ -1,13 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import SolutionsHero from "./components/SolutionsHero";
 import CapabilitiesSuite from "./components/CapabilitiesSuite";
 import IndustriesSection from "./components/IndustriesSection";
 import IntegrationsSection from "./components/IntegrationsSection";
-import FinalCTA from "./components/FinalCTA";
 
 export const metadata: Metadata = {
   title: "B2B Commerce Solutions | AI Quoting, CPQ & Sales Rooms — Buyience",
@@ -17,24 +14,33 @@ export const metadata: Metadata = {
 
 export default function SolutionsPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Premium Unified Announcement Bar */}
-      <AnnouncementBar />
-
-      {/* Premium Unified Navbar */}
-      <Navbar />
-
-      {/* Scoped Content Block */}
-      <main className="solutions-page flex-grow">
-        <SolutionsHero />
-        <CapabilitiesSuite />
-        <IndustriesSection />
-        <IntegrationsSection />
-        <FinalCTA />
-      </main>
-
-      {/* Premium Unified Footer */}
-      <Footer />
-    </div>
+    <MarketingLayout
+      mainClassName="solutions-page"
+      cta={{
+        id: "trial",
+        title: (
+          <>
+            See it on{" "}
+            <span className="final-card-accent">your own catalog.</span>
+          </>
+        ),
+        description: "Set up Nova Core in a trial account, load your products, and send your first AI-drafted quote.",
+        primaryAction: {
+          label: "Start free trial",
+          href: "https://app.buyience.com/register",
+          variant: "primary",
+        },
+        secondaryAction: {
+          label: "Request a demo",
+          href: "/request-a-demo",
+          variant: "primary",
+        },
+      }}
+    >
+      <SolutionsHero />
+      <CapabilitiesSuite />
+      <IndustriesSection />
+      <IntegrationsSection />
+    </MarketingLayout>
   );
 }

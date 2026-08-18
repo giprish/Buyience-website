@@ -8265,35 +8265,6 @@ a.nav-btn-outline-block {
   margin-top: 32px;
 }
 
-.mach-section a.mach-cta,
-.mach-section a.mach-cta:link,
-.mach-section a.mach-cta:visited,
-.mach-section a.mach-cta:active {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #1B1033;
-  color: #fff;
-  -webkit-text-fill-color: #fff;
-  border: 1px solid transparent;
-  box-shadow: none;
-  border-radius: 13px;
-  padding: 14px 26px;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.mach-section a.mach-cta:hover {
-  background: #2a1850;
-  color: #fff;
-  -webkit-text-fill-color: #fff;
-  text-decoration: none;
-}
-
 /* wordpress — two-column: copy + 2×2 feature grid */
 .platform-page .wp {
   background: var(--surface);

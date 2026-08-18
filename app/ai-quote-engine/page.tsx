@@ -1,8 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import QuoteHero from "./components/QuoteHero";
 import Challenge from "./components/Challenge";
 import Capabilities from "./components/Capabilities";
@@ -12,7 +10,6 @@ import Benefits from "./components/Benefits";
 import DigitalSalesRoomSection from "./components/DigitalSalesRoomSection";
 import Impact from "./components/Impact";
 import FAQSection from "./components/FAQSection";
-import FinalCTASection from "./components/FinalCTASection";
 
 export const metadata: Metadata = {
   title: "AI Quote Engine for B2B | Smart Pricing & Quotes | Buyience",
@@ -22,23 +19,37 @@ export const metadata: Metadata = {
 
 export default function AIQuoteEnginePage() {
   return (
-    <div className="flex min-h-screen flex-col bg-white">
-      <AnnouncementBar />
-      <Navbar />
-      <main className="quote-engine-page home-landing flex-grow">
-        <QuoteHero />
-        <Challenge />
-        <Capabilities />
-        <HowItWorks />
-        <Versus />
-        <Benefits />
-        <DigitalSalesRoomSection />
-        <Impact />
-        <FAQSection />
-        <FinalCTASection />
-      </main>
-
-      <Footer />
-    </div>
+    <MarketingLayout
+      mainClassName="quote-engine-page home-landing"
+      cta={{
+        title: (
+          <>
+            Ready to quote faster and{" "}
+            <span className="final-card-accent">win more deals?</span>
+          </>
+        ),
+        primaryAction: {
+          label: "Start For Free",
+          href: "https://app.buyience.com/register",
+          variant: "primary",
+        },
+        secondaryAction: {
+          label: "See pricing",
+          href: "/pricing",
+          variant: "ghost",
+        },
+        description: "Price your next quote with AI — scored, margin-protected, and ready in seconds.",
+      }}
+    >
+      <QuoteHero />
+      <Challenge />
+      <Capabilities />
+      <HowItWorks />
+      <Versus />
+      <Benefits />
+      <DigitalSalesRoomSection />
+      <Impact />
+      <FAQSection />
+    </MarketingLayout>
   );
 }

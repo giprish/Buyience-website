@@ -1,37 +1,58 @@
 "use client";
 
 import React from "react";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import PartnerHero from "./components/PartnerHero";
 import WhyIntegrateSection from "./components/WhyIntegrateSection";
 import IntegrationHowSection from "./components/IntegrationHowSection";
 import IntegrationGapsSection from "./components/IntegrationGapsSection";
 import PartnerFAQ from "./components/PartnerFAQ";
-import PartnerFinalCTA from "./components/PartnerFinalCTA";
 
 export default function TechnologyPartnerPageContent() {
+  const handleScrollToForm = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const firstInput = document.getElementById("first");
+    const formContainer = document.getElementById("tFormContainer");
+    if (formContainer) {
+      formContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setTimeout(() => {
+      if (firstInput) firstInput.focus();
+    }, 500);
+  };
+
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Announcement Bar */}
-      <AnnouncementBar />
-
-      {/* Navbar */}
-      <Navbar />
-
-      {/* Scoped Content Block */}
-      <main className="tech-partner-page flex-grow">
-        <PartnerHero />
-        <WhyIntegrateSection />
-        <IntegrationHowSection />
-        <IntegrationGapsSection />
-        <PartnerFAQ />
-        <PartnerFinalCTA />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    <MarketingLayout
+      mainClassName="tech-partner-page"
+      cta={{
+        capsule: "Join the Program",
+        title: (
+          <>
+            Integrate once.{" "}
+            <span className="final-card-accent">Be the one they find.</span>
+          </>
+        ),
+        description:
+          "An API built to be integrated with, engineers who answer, and a directory small enough that your listing matters.",
+        primaryAction: {
+          label: "Apply now",
+          href: "#tForm",
+          variant: "ghost",
+          onClick: handleScrollToForm,
+        },
+        secondaryAction: {
+          label: "Explore the API & architecture",
+          href: "/solutions",
+          variant: "primary",
+        },
+        trust: null,
+      }}
+    >
+      <PartnerHero />
+      <WhyIntegrateSection />
+      <IntegrationHowSection />
+      <IntegrationGapsSection />
+      <PartnerFAQ />
+    </MarketingLayout>
   );
 }

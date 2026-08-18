@@ -2,9 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import { useCurrency } from "@/components/CurrencyProvider";
 import PricingHero from "./components/PricingHero";
 import PricingPlans from "./components/PricingPlans";
@@ -12,7 +10,6 @@ import ComparisonTable from "./components/ComparisonTable";
 import AddonsSection from "./components/AddonsSection";
 import PricingFAQ from "./components/PricingFAQ";
 import LearnMoreSection from "./components/LearnMoreSection";
-import PricingFinalCTA from "./components/PricingFinalCTA";
 import { parseCurrencyParam } from "@/lib/pricing/currency";
 
 export default function PricingPageContent() {
@@ -38,26 +35,40 @@ export default function PricingPageContent() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      <AnnouncementBar />
-      <Navbar />
-
-      <main className="pricing-page flex-grow">
-        <PricingHero
-          billingPeriod={billingPeriod}
-          setBillingPeriod={setBillingPeriod}
-          currency={currency}
-          setCurrency={handleSetCurrency}
-        />
-        <PricingPlans billingPeriod={billingPeriod} currency={currency} />
-        <ComparisonTable currency={currency} />
-        <AddonsSection currency={currency} />
-        <PricingFAQ />
-        <LearnMoreSection />
-        <PricingFinalCTA />
-      </main>
-
-      <Footer />
-    </div>
+    <MarketingLayout
+      mainClassName="pricing-page"
+      cta={{
+        id: "trial",
+        title: (
+          <>
+            Start your 14-day{" "}
+            <span className="final-card-accent">free trial</span> today.
+          </>
+        ),
+        description: "Full access to all features. No credit card required.",
+        primaryAction: {
+          label: "Start free trial",
+          href: "https://app.buyience.com/register",
+          variant: "primary",
+        },
+        secondaryAction: {
+          label: "Request demo",
+          href: "/request-a-demo",
+          variant: "primary",
+        },
+      }}
+    >
+      <PricingHero
+        billingPeriod={billingPeriod}
+        setBillingPeriod={setBillingPeriod}
+        currency={currency}
+        setCurrency={handleSetCurrency}
+      />
+      <PricingPlans billingPeriod={billingPeriod} currency={currency} />
+      <ComparisonTable currency={currency} />
+      <AddonsSection currency={currency} />
+      <PricingFAQ />
+      <LearnMoreSection />
+    </MarketingLayout>
   );
 }

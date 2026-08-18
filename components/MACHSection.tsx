@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import Button from "@/components/Button";
 
 export type MACHCard = {
   letter: string;
@@ -74,12 +74,9 @@ export default function MACHSection({
           transition={{ duration: 0.5, delay: 0.25 }}
           className="cta-row reveal in mt-8 flex justify-center"
         >
-          <Link
-            href={ctaHref}
-            className="mach-cta inline-flex items-center justify-center gap-2 rounded-[13px] bg-[#1B1033] px-[26px] py-[14px] text-[15px] font-bold leading-[1.2] text-white no-underline hover:bg-[#2a1850] hover:text-white hover:no-underline"
-          >
+          <Button variant="primary" size="lg" href={ctaHref}>
             {ctaLabel}
-          </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

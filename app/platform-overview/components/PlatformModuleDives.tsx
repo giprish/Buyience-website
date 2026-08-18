@@ -138,16 +138,16 @@ function PipelineGlyph({ status, index }: { status: StepStatus; index: number })
   if (status === "active") {
     return (
       <span className="relative flex h-6 w-6 shrink-0 items-center justify-center" aria-hidden="true">
-        <span className="absolute inset-0 rounded-full border-2 border-[#D6FB4F]/25" />
-        <span className="absolute inset-0 animate-spin rounded-full border-2 border-transparent border-t-[#D6FB4F] border-r-[#D6FB4F]" />
-        <span className="h-2 w-2 rounded-full bg-[#D6FB4F]" />
+        <span className="absolute inset-0 rounded-full border-2 border-brand-purple/20" />
+        <span className="absolute inset-0 animate-spin rounded-full border-2 border-transparent border-t-brand-purple border-r-brand-purple" />
+        <span className="h-2 w-2 rounded-full bg-brand-purple" />
       </span>
     );
   }
 
   return (
     <span
-      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/20 text-[11px] font-semibold text-white/40"
+      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#1B1033]/15 text-[11px] font-semibold text-[#1B1033]/35"
       aria-hidden="true"
     >
       {index + 1}
@@ -157,12 +157,12 @@ function PipelineGlyph({ status, index }: { status: StepStatus; index: number })
 
 function stepRowClass(status: StepStatus) {
   if (status === "done") {
-    return "border-white/10 bg-white/[0.04] text-[#4ADE80]";
+    return "border-[#E8E4F4] bg-white text-[#15803D]";
   }
   if (status === "active") {
-    return "border-[#D6FB4F] bg-[#D6FB4F]/10 text-[#D6FB4F] shadow-[0_0_18px_rgba(214,251,79,0.22)]";
+    return "border-brand-purple bg-white text-brand-purple shadow-[0_0_18px_rgba(110,44,244,0.14)]";
   }
-  return "border-white/[0.08] bg-white/[0.03] text-white/38";
+  return "border-[#E8E4F4] bg-white text-[#1B1033]/38";
 }
 
 function LivePipeline({
@@ -187,13 +187,13 @@ function LivePipeline({
   }, [reduceMotion, steps.length]);
 
   return (
-    <div className="flex flex-col justify-center bg-[#170D3F] px-6 py-8 sm:px-9 sm:py-10">
-      <p className="m-0 mb-5 flex items-center gap-2 text-[11px] font-bold tracking-[0.12em] text-[#D6FB4F] uppercase">
+    <div className="flex flex-col justify-center border-t border-[#E8E4F4] bg-(--surface) px-6 py-8 sm:px-9 sm:py-10 md:border-t-0 md:border-l">
+      <p className="m-0 mb-5 flex items-center gap-2 text-[11px] font-bold tracking-[0.12em] text-brand-purple uppercase">
         <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
           {!reduceMotion && (
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D6FB4F] opacity-60" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#16A34A] opacity-60" />
           )}
-          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#D6FB4F]" />
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#16A34A]" />
         </span>
         {label}
       </p>

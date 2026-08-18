@@ -1,12 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import BlogHero from "./components/BlogHero";
 import BlogFeatured from "./components/BlogFeatured";
 import BlogDirectory from "./components/BlogDirectory";
-import BlogFinalCTA from "./components/BlogFinalCTA";
 
 export const metadata: Metadata = {
   title: "B2B Commerce Blog | Tips, Guides & Industry Insights | Buyience",
@@ -16,23 +13,27 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Announcement Bar */}
-      <AnnouncementBar />
-
-      {/* Navbar */}
-      <Navbar />
-
-      {/* Scoped Content Block */}
-      <main className="blog-page flex-grow">
-        <BlogHero />
-        <BlogFeatured />
-        <BlogDirectory />
-        <BlogFinalCTA />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    <MarketingLayout
+      mainClassName="blog-page"
+      cta={{
+        id: "trial",
+        title: (
+          <>
+            Ready to stop fighting{" "}
+            <span className="final-card-accent">your platform?</span>
+          </>
+        ),
+        description: "Start your 14-day free trial. No credit card required. Full access to all features.",
+        primaryAction: {
+          label: "Start For Free",
+          href: "https://app.buyience.com/register",
+          variant: "primary",
+        },
+      }}
+    >
+      <BlogHero />
+      <BlogFeatured />
+      <BlogDirectory />
+    </MarketingLayout>
   );
 }

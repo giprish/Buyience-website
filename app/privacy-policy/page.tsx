@@ -1,8 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -12,10 +10,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-white">
-      <AnnouncementBar />
-      <Navbar />
-      <main className="mx-auto max-w-3xl flex-grow px-6 py-16 sm:py-20">
+    <MarketingLayout cta={false}>
+      <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
         <h1 className="text-4xl font-extrabold tracking-normal text-[#1B1033] sm:text-5xl">Privacy Policy</h1>
         <p className="mt-3 text-sm text-slate-400">Last updated: 2026</p>
         <div className="prose-buyience mt-10 space-y-6 text-[15.5px] leading-relaxed text-[#5A4B7C]">
@@ -48,8 +44,7 @@ export default function PrivacyPolicyPage() {
             Buyience — Company No: 14871419. Registered in England and Wales. Email: hello@buyience.com
           </p>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </div>
+    </MarketingLayout>
   );
 }

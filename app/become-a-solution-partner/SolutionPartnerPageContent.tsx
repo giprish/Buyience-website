@@ -1,39 +1,52 @@
 "use client";
 
 import React from "react";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import PartnerHero from "./components/PartnerHero";
 import PartnerHowItWorks from "./components/PartnerHowItWorks";
 import PartnerEarn from "./components/PartnerEarn";
 import PartnerFounding from "./components/PartnerFounding";
 import PartnerWho from "./components/PartnerWho";
 import PartnerFAQ from "./components/PartnerFAQ";
-import PartnerFinalCTA from "./components/PartnerFinalCTA";
 
 export default function SolutionPartnerPageContent() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Announcement Bar */}
-      <AnnouncementBar />
-
-      {/* Navbar */}
-      <Navbar />
-
-      {/* Scoped Content Block */}
-      <main className="solution-partner-page flex-grow">
-        <PartnerHero />
-        <PartnerHowItWorks />
-        <PartnerEarn />
-        <PartnerFounding />
-        <PartnerWho />
-        <PartnerFAQ />
-        <PartnerFinalCTA />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    <MarketingLayout
+      mainClassName="solution-partner-page"
+      cta={{
+        capsule: "Join the Program",
+        title: (
+          <>
+            Your clients need modern B2B commerce.{" "}
+            <span className="final-card-accent">Be the one who brings it.</span>
+          </>
+        ),
+        description: "Apply in two minutes — applications go straight to the founding team.",
+        primaryAction: {
+          label: "Apply now",
+          variant: "ghost",
+          onClick: () => {
+            const firstInput = document.getElementById("first");
+            if (firstInput) {
+              firstInput.scrollIntoView({ behavior: "smooth", block: "center" });
+              firstInput.focus();
+            }
+          },
+        },
+        secondaryAction: {
+          label: "Explore the platform",
+          href: "/platform-overview",
+          variant: "primary",
+        },
+        trust: null,
+      }}
+    >
+      <PartnerHero />
+      <PartnerHowItWorks />
+      <PartnerEarn />
+      <PartnerFounding />
+      <PartnerWho />
+      <PartnerFAQ />
+    </MarketingLayout>
   );
 }

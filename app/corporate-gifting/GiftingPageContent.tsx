@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import GiftingHero from "./components/GiftingHero";
 import GiftingProblem from "./components/GiftingProblem";
 import GiftingCapabilities from "./components/GiftingCapabilities";
@@ -12,32 +10,35 @@ import GiftingHowItWorks from "./components/GiftingHowItWorks";
 import GiftingIntegrations from "./components/GiftingIntegrations";
 import GiftingPricing from "./components/GiftingPricing";
 import GiftingFAQ from "./components/GiftingFAQ";
-import GiftingFinalCTA from "./components/GiftingFinalCTA";
 
 export default function GiftingPageContent() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Announcement Bar */}
-      <AnnouncementBar />
-
-      {/* Navbar */}
-      <Navbar />
-
-      {/* Scoped Content Block */}
-      <main className="gifting-page flex-grow">
-        <GiftingHero />
-        <GiftingProblem />
-        <GiftingCapabilities />
-        <GiftingDivesSection />
-        <GiftingHowItWorks />
-        <GiftingIntegrations />
-        <GiftingPricing />
-        <GiftingFAQ />
-        <GiftingFinalCTA />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    <MarketingLayout
+      mainClassName="gifting-page"
+      cta={{
+        capsule: "Get Ahead Of It",
+        title: (
+          <>
+            Be ready before the next{" "}
+            <span className="final-card-accent">peak season.</span>
+          </>
+        ),
+        description: "Set up Nova Core now, quote in minutes when the rush arrives.",
+        secondaryAction: {
+          label: "Book a demo",
+          href: "/request-a-demo",
+          variant: "primary",
+        },
+      }}
+    >
+      <GiftingHero />
+      <GiftingProblem />
+      <GiftingCapabilities />
+      <GiftingDivesSection />
+      <GiftingHowItWorks />
+      <GiftingIntegrations />
+      <GiftingPricing />
+      <GiftingFAQ />
+    </MarketingLayout>
   );
 }

@@ -14,8 +14,8 @@ export type FinalCTAAction = {
 
 export type FinalCTAProps = {
   capsule?: string;
-  title: React.ReactNode;
-  description: React.ReactNode;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
   primaryAction?: FinalCTAAction;
   secondaryAction?: FinalCTAAction | null;
   trust?: React.ReactNode | null;
@@ -25,24 +25,31 @@ export type FinalCTAProps = {
   purple?: boolean;
 };
 
+const DEFAULT_TITLE = (
+  <>
+    Ready to transform your{" "}
+    <span className="final-card-accent">B2B commerce?</span>
+  </>
+);
+
 const DEFAULT_PRIMARY: FinalCTAAction = {
-  label: "Start free trial",
+  label: "Start for free →",
   href: "https://app.buyience.com/register",
-  variant: "ghost",
+  variant: "primary",
 };
 
 const DEFAULT_SECONDARY: FinalCTAAction = {
-  label: "See Pricing",
+  label: "See pricing",
   href: "/pricing",
-  variant: "ghost",
+  variant: "primary",
 };
 
 const GLOBE_MQ = "(min-width: 901px)";
 
 export default function FinalCTA({
-  capsule = "Get Started",
-  title,
-  description,
+  capsule = "Simplify · Connect · Grow",
+  title = DEFAULT_TITLE,
+  description = "Simple, transparent pricing with no hidden fees. Lock in founder pricing before it's gone.",
   primaryAction = DEFAULT_PRIMARY,
   secondaryAction = DEFAULT_SECONDARY,
   trust = (

@@ -2,9 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import SectionCapsule from "@/components/SectionCapsule";
 import Button from "@/components/Button";
 
@@ -22,11 +20,8 @@ export default function RequestDemoPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
-      <AnnouncementBar />
-      <Navbar />
-      <main className="flex-grow">
-        <section className="relative overflow-hidden bg-hero-grid">
+    <MarketingLayout cta={false}>
+      <section className="relative overflow-hidden bg-hero-grid">
           <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
           <div className="relative z-10 mx-auto grid max-w-[var(--w-max,1200px)] gap-12 px-5 py-16 md:grid-cols-2 sm:px-8 md:py-24 lg:gap-16">
             <div>
@@ -115,8 +110,6 @@ export default function RequestDemoPage() {
             </form>
           </div>
         </section>
-      </main>
-      <Footer />
-    </div>
+    </MarketingLayout>
   );
 }

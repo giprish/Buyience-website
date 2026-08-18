@@ -38,7 +38,9 @@ export default function FAQSection() {
       eyebrow="QUESTIONS, ANSWERED"
       title="AI Quote Engine FAQs"
       items={faqs}
+      purple={false}
       className="challenge"
+      card
     />
   );
 }

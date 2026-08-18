@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import PackagingHero from "./components/PackagingHero";
 import PackagingProblem from "./components/PackagingProblem";
 import PackagingCapabilities from "./components/PackagingCapabilities";
@@ -12,32 +10,35 @@ import PackagingHowItWorks from "./components/PackagingHowItWorks";
 import PackagingIntegrations from "./components/PackagingIntegrations";
 import PackagingPricing from "./components/PackagingPricing";
 import PackagingFAQ from "./components/PackagingFAQ";
-import PackagingFinalCTA from "./components/PackagingFinalCTA";
 
 export default function PackagingPageContent() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Announcement Bar */}
-      <AnnouncementBar />
-
-      {/* Navbar */}
-      <Navbar />
-
-      {/* Scoped Content Block */}
-      <main className="packaging-page flex-grow">
-        <PackagingHero />
-        <PackagingProblem />
-        <PackagingCapabilities />
-        <PackagingDivesSection />
-        <PackagingHowItWorks />
-        <PackagingIntegrations />
-        <PackagingPricing />
-        <PackagingFAQ />
-        <PackagingFinalCTA />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    <MarketingLayout
+      mainClassName="packaging-page"
+      cta={{
+        capsule: "Get Ahead Of It",
+        title: (
+          <>
+            Answer the next RFQ{" "}
+            <span className="final-card-accent">first.</span>
+          </>
+        ),
+        description: "Load your specs into Nova Core and send your first tiered, margin-protected quote this week.",
+        secondaryAction: {
+          label: "Book a demo",
+          href: "/request-a-demo",
+          variant: "primary",
+        },
+      }}
+    >
+      <PackagingHero />
+      <PackagingProblem />
+      <PackagingCapabilities />
+      <PackagingDivesSection />
+      <PackagingHowItWorks />
+      <PackagingIntegrations />
+      <PackagingPricing />
+      <PackagingFAQ />
+    </MarketingLayout>
   );
 }

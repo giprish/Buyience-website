@@ -1,13 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import MarketingLayout from "@/components/MarketingLayout";
 import IntegrationsHero from "./components/IntegrationsHero";
 import IntegrationsDirectory from "./components/IntegrationsDirectory";
 import HowItConnects from "./components/HowItConnects";
 import IntegrationsFAQ from "./components/IntegrationsFAQ";
-import IntegrationsFinalCTA from "./components/IntegrationsFinalCTA";
 
 export const metadata: Metadata = {
   title: "Integrations | Connect Payments, Commerce & Marketing Tools | Buyience",
@@ -17,24 +14,32 @@ export const metadata: Metadata = {
 
 export default function IntegrationsPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Announcement Bar */}
-      <AnnouncementBar />
-
-      {/* Navbar */}
-      <Navbar />
-
-      {/* Scoped Content Block */}
-      <main className="integrations-page flex-grow">
-        <IntegrationsHero />
-        <IntegrationsDirectory />
-        <HowItConnects />
-        <IntegrationsFAQ />
-        <IntegrationsFinalCTA />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    <MarketingLayout
+      mainClassName="integrations-page"
+      cta={{
+        title: (
+          <>
+            Your stack, connected{" "}
+            <span className="final-card-accent">in an afternoon.</span>
+          </>
+        ),
+        description: "Payments, commerce, marketing, shipping, analytics — plus an API for everything else.",
+        primaryAction: {
+          label: "Start free trial",
+          href: "https://app.buyience.com/register",
+          variant: "primary",
+        },
+        secondaryAction: {
+          label: "See Pricing",
+          href: "/pricing",
+          variant: "primary",
+        },
+      }}
+    >
+      <IntegrationsHero />
+      <IntegrationsDirectory />
+      <HowItConnects />
+      <IntegrationsFAQ />
+    </MarketingLayout>
   );
 }
