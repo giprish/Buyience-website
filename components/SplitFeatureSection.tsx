@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import EyebrowPill from "@/components/EyebrowPill";
 
 export type SplitFeatureHeader = {
   eyebrow: string;
@@ -60,14 +61,13 @@ export default function SplitFeatureSection({
           <div
             className={`mx-auto flex max-w-[62ch] flex-col items-center text-center ${header.className ?? ""}`.trim()}
           >
-            <span className="inline-flex h-8 w-fit max-w-full items-center gap-1.5 rounded-full border border-[#985eff] bg-[#faf8ff] px-3.5 text-[11.5px] font-semibold uppercase leading-none tracking-[0.06em] text-[#985eff]">
-              <span aria-hidden="true">✦</span>
+            <EyebrowPill>
               {header.eyebrow}
               {header.sparkles === "both" ? <span aria-hidden="true">✦</span> : null}
-            </span>
+            </EyebrowPill>
             <h2 className="mt-3.5 mb-0">{header.title}</h2>
             {header.description ? (
-              <p className="mt-3 mb-0 text-[16.5px] leading-[1.7] text-(--muted)">{header.description}</p>
+              <p className="mt-3 mb-0 text-[15.5px] leading-[1.6] text-(--muted) sm:text-[16.5px] sm:leading-[1.7]">{header.description}</p>
             ) : null}
           </div>
         ) : null}
@@ -79,19 +79,16 @@ export default function SplitFeatureSection({
             <div
               id={row.id}
               key={row.id ?? (typeof row.title === "string" ? row.title : index)}
-              className={`grid grid-cols-1 items-center gap-9 py-11 min-[921px]:grid-cols-2 min-[921px]:gap-18 min-[921px]:py-15 ${index > 0 ? "border-t border-(--border)" : ""}`}
+              className="grid grid-cols-1 items-center gap-9 py-11 min-[921px]:grid-cols-2 min-[921px]:gap-18 min-[921px]:py-15"
             >
               <motion.div {...copyReveal} className="text-left">
                 {typeof row.eyebrow === "string" ? (
-                  <p className="m-0 inline-flex w-fit items-center rounded-md  px-1 py-1 text-[12px] text-[#985eff] font-extrabold uppercase tracking-[0.06em]">
-                  {row.eyebrow}
-                </p>
-                 
+                  <EyebrowPill>{row.eyebrow}</EyebrowPill>
                 ) : (
                   row.eyebrow
                 )}
                 <h2 className="mt-3 mb-4">{row.title}</h2>
-                <div className="m-0 text-[16.5px] leading-[1.65] text-(--muted) [&_p]:m-0 [&_p+p]:mt-3.5">
+                <div className="m-0 text-[15.5px] leading-[1.6] text-(--muted) sm:text-[16.5px] sm:leading-[1.65] [&_p]:m-0 [&_p+p]:mt-3.5">
                   {typeof row.description === "string" ? <p>{row.description}</p> : row.description}
                 </div>
               </motion.div>

@@ -113,7 +113,7 @@ export default function HomeModuleTabs({ purple = false }: { purple?: boolean })
             ))}
           </div>
 
-          <div className="relative min-h-[380px] md:min-h-[280px]">
+          <div className="relative min-h-0 md:min-h-[280px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

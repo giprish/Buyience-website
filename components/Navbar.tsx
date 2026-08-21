@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Check, ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
 import Container from "./Container";
@@ -25,7 +25,7 @@ export default function Navbar() {
   const [accNewPages, setAccNewPages] = useState(false);
 
   const newPages = [
-    { title: "Homepage", href: "/new-pages/homepage.html" },
+    { title: "Homepage", href: "/new-pages/homepage.html", done: true },
     { title: "Platform Overview", href: "/new-pages/platform-overview.html" },
     { title: "AI Quote Engine", href: "/new-pages/ai-quote-engine.html" },
     { title: "Digital Sales Room", href: "/new-pages/digital-sales-room.html" },
@@ -195,9 +195,9 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-[#ECE5FB] bg-[rgba(251,250,255,0.82)] backdrop-blur-[14px] backdrop-saturate-160">
-        <Container>
-          <div className="flex h-12 items-center gap-6 sm:h-14 lg:h-[76px]">
+      <header className="sticky top-0 z-40 h-[var(--home-nav-h)] w-full border-b border-[#ECE5FB] bg-[rgba(251,250,255,0.94)] backdrop-blur-[14px] backdrop-saturate-160 sm:bg-[rgba(251,250,255,0.82)]">
+        <Container className="h-full">
+          <div className="flex h-full items-center gap-6">
             {/* Logo */}
             <Link href="/" className="flex shrink-0 items-center">
               <Image
@@ -206,7 +206,7 @@ export default function Navbar() {
                 width={160}
                 height={38}
                 priority
-                className="h-[22px] w-auto object-contain sm:h-[26px] lg:h-[32px] xl:h-[36px]"
+                className="h-[25px] w-auto object-contain sm:h-[26px] lg:h-[32px] xl:h-[36px]"
                 style={{ width: "auto" }}
               />
             </Link>
@@ -664,9 +664,15 @@ export default function Navbar() {
                           <a
                             key={page.href}
                             href={page.href}
-                            className="block px-3 py-2.5 rounded-2xl text-sm font-medium text-slate-900 hover:bg-slate-50 hover:text-violet-600 transition-colors"
+                            className="flex items-center justify-between gap-3 px-3 py-2.5 rounded-2xl text-sm font-medium text-slate-900 hover:bg-slate-50 hover:text-violet-600 transition-colors"
                           >
                             {page.title}
+                            {page.done && (
+                              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">
+                                <Check className="h-3 w-3" strokeWidth={2.5} aria-hidden="true" />
+                                Done
+                              </span>
+                            )}
                           </a>
                         ))}
                       </div>
@@ -894,10 +900,16 @@ export default function Navbar() {
                           <a
                             key={page.href}
                             href={page.href}
-                            className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1"
+                            className="flex items-center justify-between gap-3 text-sm font-semibold text-slate-700 hover:text-violet-600 py-1"
                             onClick={() => setIsDrawerOpen(false)}
                           >
                             {page.title}
+                            {page.done && (
+                              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">
+                                <Check className="h-3 w-3" strokeWidth={2.5} aria-hidden="true" />
+                                Done
+                              </span>
+                            )}
                           </a>
                         ))}
                       </motion.div>

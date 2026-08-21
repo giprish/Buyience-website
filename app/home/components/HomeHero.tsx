@@ -19,7 +19,7 @@ export default function HomeHero() {
         <div className="home-hero-copy flex min-h-0 flex-col text-left">
           <div className="home-hero-copy-main">
             <SectionCapsule>AI Quote Engine · Real-Time Negotiation · MACH</SectionCapsule>
-            <h1 className="text-[clamp(2.1rem,5vw,4rem)] leading-[1.03] font-extrabold tracking-normal">
+            <h1 className="text-[1.75rem] leading-[1.1] font-extrabold tracking-normal sm:text-[clamp(2.1rem,5vw,4rem)] sm:leading-[1.03]">
               The B2B platform that actually understands{" "}
               <span className="home-rotator" aria-hidden="true">
                 <span className="home-rotator-track">
@@ -32,7 +32,7 @@ export default function HomeHero() {
               </span>
               <span className="sr-only">quoting, negotiation, your margins, and real B2B.</span>
             </h1>
-            <p className="lede max-w-[34rem]">
+            <p className="lede max-w-[34rem] sm:text-[18.5px] sm:leading-[1.7]">
               Quotes that price themselves. A negotiation room that closes deals in minutes. Margin intelligence that
               tells you exactly where to push and where to hold — built for distributors and wholesalers who sell in the
               real world.
@@ -47,16 +47,18 @@ export default function HomeHero() {
                 See it in action
               </Button>
             </div>
-            <dl className="home-hero-stats flex flex-wrap items-stretch sm:flex-nowrap">
+            <dl className="home-hero-stats flex flex-row flex-nowrap items-stretch gap-0">
               {HERO_STATS.map((stat, i) => (
                 <div
                   key={stat.label}
-                  className={`flex min-w-0 flex-col ${i > 0 ? "max-sm:mt-3 sm:ml-7 sm:border-l sm:border-[#E7DEFB] sm:pl-7" : ""}`}
+                  className={`flex min-w-0 flex-1 flex-col ${
+                    i > 0 ? "border-l border-[#E7DEFB] pl-2.5 sm:ml-7 sm:pl-7" : ""
+                  }`}
                 >
-                  <dt className="font-heading text-[26px] leading-none font-extrabold tracking-tight text-[#1B1033]">
+                  <dt className="font-heading text-[18px] leading-none font-extrabold tracking-tight whitespace-nowrap text-[#1B1033] sm:text-[26px]">
                     {stat.value}
                   </dt>
-                  <dd className="m-0 mt-1.5 text-[13px] leading-snug font-semibold text-[#6A5A8C]">
+                  <dd className="m-0 mt-1 text-[11px] leading-snug font-semibold text-[#6A5A8C] sm:mt-1.5 sm:text-[13px]">
                     {stat.label}
                   </dd>
                 </div>

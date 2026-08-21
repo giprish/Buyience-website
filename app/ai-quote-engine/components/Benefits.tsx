@@ -7,13 +7,12 @@ import SplitFeatureSection from "@/components/SplitFeatureSection";
 export default function Benefits() {
   return (
     <SplitFeatureSection
-      className="pt-0"
+      className="benefits"
       header={{
         eyebrow: "BENEFITS",
         title: "We didn't just digitise the old process.",
         description:
           "We reimagined what B2B quoting could be with AI that reasons about your deals — not a form-filler.",
-        className: "mt-10",
       }}
       rows={[
         {

@@ -13,6 +13,21 @@ interface FieldRow {
   status?: "ok" | "warn" | "hl" | "";
 }
 
+const ROTATING_WORDS = [
+  "Every supplier.",
+  "Every document.",
+  "One workflow.",
+  "Every supplier.",
+];
+
+const STEP_LABELS: Record<StepKey, string> = {
+  1: "Basic",
+  2: "Financial",
+  3: "Compliance",
+  4: "Logistics",
+  5: "Review",
+};
+
 export default function SupplierHero() {
   const { format, currency } = useCurrency();
   const [currentStep, setCurrentStep] = useState<StepKey>(1);
@@ -56,38 +71,56 @@ export default function SupplierHero() {
   };
 
   return (
-    <header className="hero relative overflow-hidden bg-hero-grid">
+    <header className="supplier-hero relative flex flex-col overflow-hidden bg-hero-grid sm:min-h-[var(--home-hero-h)] sm:justify-center">
       <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
-      <div className="container hero-grid relative z-10">
-        <div className="flex flex-col text-left">
-          <SectionCapsule>Supplier Management</SectionCapsule>
-          <h1>
-            B2B supplier management. Every supplier, every document,{" "}
-            <span className="grad-text">one workflow.</span>
-          </h1>
-          <p className="lede">
-            Onboard suppliers with a structured 5-step process. Track compliance documents and expiry dates. Configure
-            logistics and delivery zones. See supplier status and spending at a glance.
-          </p>
-          <div className="cta-row">
-            <Button variant="primary" size="lg" href="/contact">
-              Start Free Trial
-            </Button>
-            <Button variant="ghost" size="lg" href="/contact">
-              Request Demo
-            </Button>
+      <div className="supplier-hero-inner relative z-10 mx-auto grid w-full max-w-[var(--w-max,1200px)] grid-cols-1 items-stretch gap-10 px-5 py-12 sm:grid-cols-2 sm:px-8">
+        <div className="supplier-hero-copy flex min-h-0 flex-col text-left">
+          <div className="supplier-hero-copy-main">
+            <SectionCapsule>Supplier Management</SectionCapsule>
+            <h1>
+              B2B supplier management.{" "}
+              <span className="home-rotator" aria-hidden="true">
+                <span className="home-rotator-track">
+                  {ROTATING_WORDS.map((word, i) => (
+                    <span key={`${word}-${i}`} className="home-rotator-word grad-text">
+                      {word}
+                    </span>
+                  ))}
+                </span>
+              </span>
+              <span className="sr-only">Every supplier, every document, one workflow.</span>
+            </h1>
+            <p className="lede">
+              Onboard suppliers with a structured 5-step process. Track compliance documents and expiry dates.
+              Configure logistics and delivery zones. See supplier status and spending at a glance.
+            </p>
           </div>
-          <p className="trust-micro">
-            14-day trial<span className="dot" aria-hidden="true">·</span>No card required
-          </p>
+          <div className="supplier-hero-copy-foot">
+            <div className="cta-row">
+              <Button variant="primary" size="lg" href="https://app.buyience.com/register">
+                Start free trial →
+              </Button>
+              <Button variant="ghost" size="lg" href="/request-a-demo">
+                Request a demo
+              </Button>
+            </div>
+            <p className="trust-micro">
+              <span className="trust-live" aria-hidden="true" />
+              14-day trial · No card required
+            </p>
+          </div>
         </div>
 
-        <div>
+        <div className="supplier-hero-visual relative flex min-h-0 w-full flex-col">
           <div className="ob" aria-label="Supplier onboarding — step through the 5-step workflow">
             <div className="ob-head">
-              <b>New supplier · Nordfab Components GmbH</b>
+              <div className="ob-head-text">
+                <b>New supplier</b>
+                <span>Nordfab Components GmbH</span>
+              </div>
               <span className="ob-badge">LIVE DEMO</span>
             </div>
+
             <div className="ob-steps" role="group" aria-label="Onboarding steps">
               {([1, 2, 3, 4, 5] as StepKey[]).map((s) => (
                 <button
@@ -101,30 +134,25 @@ export default function SupplierHero() {
                   }}
                 >
                   <b>{s}</b>
-                  {s === 1
-                    ? "Basic"
-                    : s === 2
-                    ? "Financial"
-                    : s === 3
-                    ? "Compliance"
-                    : s === 4
-                    ? "Logistics"
-                    : "Review"}
+                  {STEP_LABELS[s]}
                 </button>
               ))}
             </div>
+
             <div className="ob-prog">
               <span className="sr-only">Onboarding progress</span>
-              <i style={{ width: `${isCreated ? 100 : currentStep * 20}%` }}></i>
+              <i style={{ width: `${isCreated ? 100 : currentStep * 20}%` }} />
             </div>
+
             <div className="ob-panel">
               {panels[currentStep].map((row, idx) => (
                 <div key={idx} className={`ob-field ${row.status || ""}`}>
                   <span className="tag">{row.tag}</span>
-                  <span>{row.text}</span>
+                  <span className="ob-field-text">{row.text}</span>
                 </div>
               ))}
             </div>
+
             <div className="ob-foot">
               <span className="stat">
                 {isCreated ? "APPROVED · ACTIVE" : `STEP ${currentStep} OF 5`}

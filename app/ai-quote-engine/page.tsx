@@ -47,8 +47,8 @@ export default function AIQuoteEnginePage() {
       <HowItWorks />
       <Versus />
       <Benefits />
+      <Impact purple />
       <DigitalSalesRoomSection />
-      <Impact />
       <FAQSection />
     </MarketingLayout>
   );

@@ -26,7 +26,7 @@ export default function CapabilitiesSuite() {
         "Headless and API-first — 80+ endpoints and 38 webhook events — so it runs behind the storefront you already have.",
       ],
       linkText: "Explore the platform →",
-      linkHref: "#",
+      linkHref: "/platform-overview",
       features: [
         "Multi-warehouse inventory",
         "Product configurator (CPQ) with real BOMs",
@@ -62,7 +62,7 @@ export default function CapabilitiesSuite() {
         "When the conversation turns to price, the AI negotiation assistant activates inside the room — with your margin floor already in play.",
       ],
       linkText: "See the Sales Room →",
-      linkHref: "#",
+      linkHref: "/digital-sales-room",
       features: [
         "Live shared quote link",
         "Real-time presence & engagement",
@@ -79,8 +79,8 @@ export default function CapabilitiesSuite() {
         "Customer-specific pricing, volume tiers, and configurable margin floors — applied consistently whether a quote is written by a rep or drafted by AI. Discount pressure has a hard stop, and it isn't anyone's willpower.",
         "Repeat buyers get their pricing history and preferences pre-loaded through the Customer Context Engine, so returning business doesn't restart from zero.",
       ],
-      linkText: "Explore pricing controls →",
-      linkHref: "#",
+      linkText: "See how pricing works →",
+      linkHref: "/pricing",
       features: [
         "Configurable margin floors",
         "Customer-specific & tiered pricing",
@@ -97,13 +97,28 @@ export default function CapabilitiesSuite() {
     <section className="suite" id="capabilities">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: "easeOut" as const }}
+          transition={{ duration: 0.5 }}
+          className="center-head"
+        >
+          <p className="eyebrow">BY CAPABILITY</p>
+          <h2>
+            The stack behind <span className="grad-text">every quote.</span>
+          </h2>
+          <p className="lede">
+            Four connected capabilities — not four products bolted together after the fact.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.55, ease: "easeOut" as const }}
           className="tabs-wrap"
         >
-          {/* Tablist */}
           <div className="tablist" role="tablist" aria-label="Platform capabilities">
             {tabs.map((tab, idx) => (
               <button
@@ -129,20 +144,22 @@ export default function CapabilitiesSuite() {
                   }
                 }}
               >
-                {tab.label}
+                <span className="tab-n" aria-hidden="true">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
+                <span className="tab-label">{tab.label}</span>
               </button>
             ))}
           </div>
 
-          {/* Animating Panel Wrapper */}
-          <div className="relative min-h-[380px] md:min-h-[280px]">
+          <div className="panel-stage">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3, ease: "easeInOut" as const }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.28, ease: "easeInOut" as const }}
                 className="panel on"
                 role="tabpanel"
                 id={currentTab.id}
@@ -170,12 +187,11 @@ export default function CapabilitiesSuite() {
           </div>
         </motion.div>
 
-        {/* Flow Strip */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.12 }}
           className="flow"
           aria-label="Order of operations"
         >

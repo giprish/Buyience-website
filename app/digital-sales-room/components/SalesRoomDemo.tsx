@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ArrowUp, Plus } from "lucide-react";
 import { useReducedMotion } from "framer-motion";
 import { useCurrency } from "@/components/CurrencyProvider";
@@ -12,7 +12,6 @@ export default function SalesRoomDemo() {
   const { format } = useCurrency();
   const reduceMotion = useReducedMotion();
   const [shown, setShown] = useState(0);
-  const threadRef = useRef<HTMLDivElement>(null);
 
   const money = (value: number) => format(value, 2);
 
@@ -92,15 +91,6 @@ export default function SalesRoomDemo() {
     };
   }, [reduceMotion, total]);
 
-  useEffect(() => {
-    const el = threadRef.current;
-    if (!el) return;
-    el.scrollTo({
-      top: el.scrollHeight,
-      behavior: reduceMotion ? "auto" : "smooth",
-    });
-  }, [shown, reduceMotion]);
-
   const next = shown < total ? items[shown] : null;
   const status =
     next?.kind === "them"
@@ -130,7 +120,7 @@ export default function SalesRoomDemo() {
           </div>
         </div>
         <div className="pin">📌 Pinned: Delivery must land before 20-May for the retail launch window.</div>
-        <div className="room-thread" aria-hidden="true" ref={threadRef}>
+        <div className="room-thread" aria-hidden="true">
           {shown === 0 ? (
             <p className="room-empty">Digital Sales Room</p>
           ) : null}

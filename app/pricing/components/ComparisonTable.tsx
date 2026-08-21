@@ -1,326 +1,377 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
-import {
-  CurrencyCode,
-  formatMoney,
-  getPlanPrices,
-} from "@/lib/pricing/currency";
 
-interface ComparisonTableProps {
-  currency: CurrencyCode;
+type Cell = React.ReactNode;
+
+type FeatureRow = {
+  feature: string;
+  grow: Cell;
+  pro: Cell;
+  enterprise: Cell;
+};
+
+type Category = {
+  id: string;
+  label: string;
+  rows: FeatureRow[];
+};
+
+function Yes() {
+  return (
+    <span className="yes" aria-label="Included">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path
+          d="M2.2 6.2 4.8 8.8 9.8 3.2"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
 }
 
-export default function ComparisonTable({ currency }: ComparisonTableProps) {
-  const prices = getPlanPrices(currency);
+function No() {
+  return (
+    <span className="no" aria-label="Not included">
+      —
+    </span>
+  );
+}
+
+const CATEGORIES: Category[] = [
+  {
+    id: "platform",
+    label: "PLATFORM LIMITS",
+    rows: [
+      { feature: "Monthly orders", grow: "250", pro: "1,000", enterprise: "Unlimited" },
+      { feature: "Products / SKUs", grow: "1,000", pro: "2,500", enterprise: "Unlimited" },
+      { feature: "Team members", grow: "3", pro: "10", enterprise: "Unlimited" },
+      { feature: "Pricing tiers", grow: "50", pro: "Unlimited", enterprise: "Unlimited" },
+      { feature: "Warehouse locations", grow: "1", pro: "3", enterprise: "Unlimited" },
+      { feature: "API calls / month", grow: "10K", pro: "50K", enterprise: "Custom" },
+    ],
+  },
+  {
+    id: "storefront",
+    label: "B2B STOREFRONT",
+    rows: [
+      {
+        feature: "Customer-specific pricing",
+        grow: <Yes />,
+        pro: <Yes />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "Quick order / CSV upload",
+        grow: <Yes />,
+        pro: <Yes />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "Custom domain",
+        grow: <Yes />,
+        pro: <Yes />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "Saved shopping lists",
+        grow: <No />,
+        pro: <Yes />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "Multiple storefronts",
+        grow: <No />,
+        pro: <No />,
+        enterprise: <Yes />,
+      },
+    ],
+  },
+  {
+    id: "ai",
+    label: "AI & SALES TOOLS",
+    rows: [
+      {
+        feature: "AI Quote Engine",
+        grow: <span className="cmp-tag">Add-on</span>,
+        pro: <span className="cmp-tag on">Included</span>,
+        enterprise: <span className="cmp-tag on">Unlimited</span>,
+      },
+      {
+        feature: "Win-probability scoring",
+        grow: <No />,
+        pro: <Yes />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "Digital Sales Room",
+        grow: <No />,
+        pro: <Yes />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "Product Configurator (CPQ)",
+        grow: <No />,
+        pro: <span className="cmp-tag">Add-on</span>,
+        enterprise: <Yes />,
+      },
+    ],
+  },
+  {
+    id: "integrations",
+    label: "INTEGRATIONS & API",
+    rows: [
+      {
+        feature: "WordPress / WooCommerce",
+        grow: <Yes />,
+        pro: <Yes />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "Webhooks",
+        grow: <No />,
+        pro: <Yes />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "Custom integrations",
+        grow: <No />,
+        pro: <No />,
+        enterprise: <Yes />,
+      },
+    ],
+  },
+  {
+    id: "support",
+    label: "SUPPORT",
+    rows: [
+      {
+        feature: "Email support",
+        grow: <Yes />,
+        pro: <Yes />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "Response time",
+        grow: "24hr",
+        pro: "12hr",
+        enterprise: "2hr",
+      },
+      {
+        feature: "Phone support",
+        grow: <No />,
+        pro: <No />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "Dedicated success manager",
+        grow: <No />,
+        pro: <No />,
+        enterprise: <Yes />,
+      },
+      {
+        feature: "SLA guarantee",
+        grow: "99.5%",
+        pro: "99.5%",
+        enterprise: "99.9%",
+      },
+    ],
+  },
+];
+
+const DEFAULT_OPEN = Object.fromEntries(
+  CATEGORIES.map((c) => [c.id, true]),
+) as Record<string, boolean>;
+
+function readNavOffsetPx(): number {
+  if (typeof window === "undefined") return 0;
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue("--home-nav-h")
+    .trim();
+  const parsed = Number.parseFloat(raw);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+export default function ComparisonTable() {
+  const [openSections, setOpenSections] = useState(DEFAULT_OPEN);
+  const [isStuck, setIsStuck] = useState(false);
+  const baseId = useId();
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  function toggleSection(id: string) {
+    setOpenSections((prev) => ({ ...prev, [id]: !prev[id] }));
+  }
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    let observer: IntersectionObserver | null = null;
+
+    const observe = () => {
+      observer?.disconnect();
+      const navPx = readNavOffsetPx();
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsStuck(!entry.isIntersecting);
+        },
+        {
+          // Match sticky `top: var(--home-nav-h)` — sentinel leaving this
+          // inset viewport means the thead has engaged under the navbar.
+          root: null,
+          threshold: 0,
+          rootMargin: `-${navPx}px 0px 0px 0px`,
+        },
+      );
+      observer.observe(sentinel);
+    };
+
+    observe();
+    window.addEventListener("resize", observe);
+    return () => {
+      window.removeEventListener("resize", observe);
+      observer?.disconnect();
+    };
+  }, []);
 
   return (
     <section className="compare">
       <div className="container">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          style={{ textAlign: "center", maxWidth: "62ch", margin: "0 auto" }}
+          className="compare-intro"
         >
           <p className="eyebrow">COMPARE PLANS</p>
-          <h2 style={{ marginTop: "14px" }}>Everything, side by side.</h2>
-          <p className="lede" style={{ fontSize: "16.5px", marginTop: "12px" }}>
-            Exactly what's included in each plan, so you can pick the right fit.
+          <h2>Everything, side by side.</h2>
+          <p className="lede">
+            Exactly what&apos;s included in each plan, so you can pick the right fit.
           </p>
         </motion.div>
 
-        {/* Table Wrap */}
+        {/* Mobile-only plan CTAs — desktop thead is hidden under 640px */}
+        <div className="cmp-mobile-ctas">
+          <div className="cmp-mobile-cta">
+            <span className="cmp-name">Grow</span>
+            <Button variant="ghost" size="sm" href="#trial" className="cmp-cta">
+              Try free
+            </Button>
+          </div>
+          <div className="cmp-mobile-cta rec">
+            <span className="cmp-pill">Recommended</span>
+            <span className="cmp-name">Pro</span>
+            <Button variant="primary" size="sm" href="#trial" className="cmp-cta">
+              Try free
+            </Button>
+          </div>
+          <div className="cmp-mobile-cta">
+            <span className="cmp-name">Enterprise</span>
+            <Button variant="ghost" size="sm" href="/request-a-demo" className="cmp-cta">
+              Contact
+            </Button>
+          </div>
+        </div>
+
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="tbl-wrap"
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className={`tbl-wrap${isStuck ? " is-stuck" : ""}`}
         >
-          <table className="cmp">
-            <thead>
-              <tr>
-                <th>Features</th>
-                <th>
-                  Grow
-                  <span className="p">{formatMoney(prices.growMonthly, currency)}/mo</span>
-                </th>
-                <th className="rec-col">
-                  Pro
-                  <span className="p">{formatMoney(prices.proMonthly, currency)}/mo</span>
-                </th>
-                <th>
-                  Enterprise<span className="p">Custom</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="cat">
-                <td colSpan={4}>PLATFORM LIMITS</td>
-              </tr>
-              <tr>
-                <td>Monthly orders</td>
-                <td>250</td>
-                <td className="rec-col">1,000</td>
-                <td>Unlimited</td>
-              </tr>
-              <tr>
-                <td>Products / SKUs</td>
-                <td>1,000</td>
-                <td className="rec-col">2,500</td>
-                <td>Unlimited</td>
-              </tr>
-              <tr>
-                <td>Team members</td>
-                <td>3</td>
-                <td className="rec-col">10</td>
-                <td>Unlimited</td>
-              </tr>
-              <tr>
-                <td>Pricing tiers</td>
-                <td>50</td>
-                <td className="rec-col">Unlimited</td>
-                <td>Unlimited</td>
-              </tr>
-              <tr>
-                <td>Warehouse locations</td>
-                <td>1</td>
-                <td className="rec-col">3</td>
-                <td>Unlimited</td>
-              </tr>
-              <tr>
-                <td>API calls / month</td>
-                <td>10K</td>
-                <td className="rec-col">50K</td>
-                <td>Custom</td>
-              </tr>
+          {/* Scroll sentinel for sticky-thead stuck state (keeps overflow visible). */}
+          <div
+            ref={sentinelRef}
+            className="tbl-sticky-sentinel"
+            aria-hidden="true"
+          />
+          <div className="tbl-scroll">
+            <table className="cmp">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span className="cmp-feat-label">Features</span>
+                  </th>
+                  <th scope="col">
+                    <span className="cmp-head">
+                      <span className="cmp-name">Grow</span>
+                      <Button variant="ghost" size="sm" href="#trial" className="cmp-cta">
+                        Start free trial
+                      </Button>
+                    </span>
+                  </th>
+                  <th scope="col" className="rec-col">
+                    <span className="cmp-head">
+                      <span className="cmp-pill">Recommended</span>
+                      <span className="cmp-name">Pro</span>
+                      <Button variant="primary" size="sm" href="#trial" className="cmp-cta">
+                        Start free trial
+                      </Button>
+                    </span>
+                  </th>
+                  <th scope="col">
+                    <span className="cmp-head">
+                      <span className="cmp-name">Enterprise</span>
+                      <Button variant="ghost" size="sm" href="/request-a-demo" className="cmp-cta">
+                        Contact sales
+                      </Button>
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              {CATEGORIES.map((category) => {
+                const isOpen = openSections[category.id];
+                const panelId = `${baseId}-${category.id}-panel`;
+                const buttonId = `${baseId}-${category.id}-btn`;
 
-              <tr className="cat">
-                <td colSpan={4}>B2B STOREFRONT</td>
-              </tr>
-              <tr>
-                <td>Customer-specific pricing</td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-                <td className="rec-col">
-                  <span className="yes">✓</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Quick order / CSV upload</td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-                <td className="rec-col">
-                  <span className="yes">✓</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Custom domain</td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-                <td className="rec-col">
-                  <span className="yes">✓</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Saved shopping lists</td>
-                <td>
-                  <span className="no">—</span>
-                </td>
-                <td className="rec-col">
-                  <span className="yes">✓</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Multiple storefronts</td>
-                <td>
-                  <span className="no">—</span>
-                </td>
-                <td className="rec-col">
-                  <span className="no">—</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-
-              <tr className="cat">
-                <td colSpan={4}>AI &amp; SALES TOOLS</td>
-              </tr>
-              <tr>
-                <td>AI Quote Engine</td>
-                <td>Add-on</td>
-                <td className="rec-col">Included</td>
-                <td>Unlimited</td>
-              </tr>
-              <tr>
-                <td>Win-probability scoring</td>
-                <td>
-                  <span className="no">—</span>
-                </td>
-                <td className="rec-col">
-                  <span className="yes">✓</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Digital Sales Room</td>
-                <td>
-                  <span className="no">—</span>
-                </td>
-                <td className="rec-col">
-                  <span className="yes">✓</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Product Configurator (CPQ)</td>
-                <td>
-                  <span className="no">—</span>
-                </td>
-                <td className="rec-col">Add-on</td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-
-              <tr className="cat">
-                <td colSpan={4}>INTEGRATIONS &amp; API</td>
-              </tr>
-              <tr>
-                <td>WordPress / WooCommerce</td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-                <td className="rec-col">
-                  <span className="yes">✓</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Webhooks</td>
-                <td>
-                  <span className="no">—</span>
-                </td>
-                <td className="rec-col">
-                  <span className="yes">✓</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Custom integrations</td>
-                <td>
-                  <span className="no">—</span>
-                </td>
-                <td className="rec-col">
-                  <span className="no">—</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-
-              <tr className="cat">
-                <td colSpan={4}>SUPPORT</td>
-              </tr>
-              <tr>
-                <td>Email support</td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-                <td className="rec-col">
-                  <span className="yes">✓</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Response time</td>
-                <td>24hr</td>
-                <td className="rec-col">12hr</td>
-                <td>2hr</td>
-              </tr>
-              <tr>
-                <td>Phone support</td>
-                <td>
-                  <span className="no">—</span>
-                </td>
-                <td className="rec-col">
-                  <span className="no">—</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Dedicated success manager</td>
-                <td>
-                  <span className="no">—</span>
-                </td>
-                <td className="rec-col">
-                  <span className="no">—</span>
-                </td>
-                <td>
-                  <span className="yes">✓</span>
-                </td>
-              </tr>
-              <tr>
-                <td>SLA guarantee</td>
-                <td>99.5%</td>
-                <td className="rec-col">99.5%</td>
-                <td>99.9%</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td></td>
-                <td>
-                  <Button variant="ghost" href="#trial">
-                    Start free trial
-                  </Button>
-                </td>
-                <td className="rec-col">
-                  <Button variant="primary" href="#trial">
-                    Start free trial
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="ghost" href="#contact">
-                    Contact sales
-                  </Button>
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+                return (
+                  <React.Fragment key={category.id}>
+                    <tbody className="cmp-cat-head">
+                      <tr className="cat">
+                        <td colSpan={4}>
+                          <button
+                            type="button"
+                            id={buttonId}
+                            className="cmp-cat-toggle"
+                            aria-expanded={isOpen}
+                            aria-controls={panelId}
+                            onClick={() => toggleSection(category.id)}
+                          >
+                            <span className="cmp-cat-label">{category.label}</span>
+                            <span className="cmp-cat-icon" aria-hidden="true">
+                              {isOpen ? "−" : "+"}
+                            </span>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tbody
+                      id={panelId}
+                      className="cmp-cat-panel"
+                      aria-labelledby={buttonId}
+                      hidden={!isOpen}
+                    >
+                      {category.rows.map((row) => (
+                        <tr key={row.feature}>
+                          <td>{row.feature}</td>
+                          <td>{row.grow}</td>
+                          <td className="rec-col">{row.pro}</td>
+                          <td>{row.enterprise}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </React.Fragment>
+                );
+              })}
+            </table>
+          </div>
         </motion.div>
       </div>
     </section>

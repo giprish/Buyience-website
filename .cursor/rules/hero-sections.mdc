@@ -25,10 +25,12 @@ viewports only**:
   center it (`justify-content: center`) — never `margin-top: auto` pushing a
   footer to the very bottom of a column (that leaves one oversized dead gap
   instead of even spacing).
-- Hero height = `100vh - navbar height - announcement-strip height`, via
-  `--home-hero-h: calc(100vh - var(--home-nav-h) - var(--home-strip-h))`.
+- Hero height = `100svh - navbar height - announcement-strip height`, via
+  `--home-hero-h: calc(100svh - var(--home-nav-h) - var(--home-strip-h))`
+  (`svh` stays stable while mobile URL chrome shows/hides; avoid `vh`/`dvh`).
   `--home-nav-h` must switch value at the same breakpoints as `Navbar`'s own
-  height (49px / 57px / 77px at <640 / 640–1023 / 1024+).
+  height (54px / 57px / 77px at <640 / 640–1023 / 1024+); drive the sticky
+  header border-box from that var.
 - Add `max-height` tiers so short-but-wide viewports (landscape phones) fall
   back to `height: auto` instead of clipping content.
 

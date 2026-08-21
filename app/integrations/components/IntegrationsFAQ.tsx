@@ -28,8 +28,6 @@ export default function IntegrationsFAQ() {
       eyebrow="QUESTIONS, ANSWERED"
       title="Integration FAQs"
       items={faqs}
-      className="dir"
-      style={{ paddingTop: "104px" }}
     />
   );
 }

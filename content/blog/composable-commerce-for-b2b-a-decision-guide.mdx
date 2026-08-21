@@ -1,0 +1,102 @@
+The composable commerce conversation in B2B has focused almost entirely on architecture. The harder question — and the one most teams skip — is whether the workflows underneath are composable too.
+
+## The Promise and the Gap
+Composable commerce has become the dominant architectural conversation in B2B ecommerce. The pitch is compelling: replace a monolithic platform with modular, independently deployable components — pricing, catalog, checkout, order management — connected through APIs and evolving at their own pace. No more waiting 18 months for a vendor to build what you need. No more replatforming because one capability outgrew the system.
+
+The MACH principles behind this shift — microservices, API-first, cloud-native, headless — are sound. The adoption is real. Industry data suggests that more than 90% of enterprise retail organisations have implemented some form of composable solution, and the majority of organisations project that over 60% of their tech stack will be MACH-based or composable by now. The technical case is settled.
+
+What's not settled is whether the operational reality matches the architectural promise — particularly in B2B.
+
+The gap isn't in the infrastructure. It's in the workflows. Most composable commerce conversations focus on the technology layer: which services to decouple, which vendors to assemble, how to manage API contracts. But in B2B, the complexity that actually stalls deals and erodes margin doesn't live in the service layer. It lives in the workflows that span multiple services — quoting, pricing, approvals, negotiations, reordering — and those workflows are often the last things to get decomposed.
+
+This is the decision B2B teams need to make before choosing a composable stack: are you composing services, or are you composing workflows? The answer determines whether the architecture delivers operational flexibility or just architectural flexibility.
+
+## Why B2B Composability Is Architecturally Different
+Composable commerce gained traction in DTC and B2C, where the primary composability challenge is the frontend: decouple the presentation layer, experiment with experiences, iterate faster than the monolith allows. A headless storefront with a composable backend delivers real value when the core workflow is browse → cart → checkout.
+
+B2B commerce doesn't follow that workflow. The core transaction pattern involves negotiated pricing, configured products, multi-stakeholder approvals, contracted terms, and often a quoting cycle that precedes any order. The operational spine of B2B isn't a shopping flow — it's a commercial negotiation expressed as a workflow.
+
+This distinction matters because composable architecture in B2B needs to decompose at a different boundary. Decoupling the frontend from the backend is necessary but insufficient. The critical decomposition points are within the commercial workflow itself: pricing logic needs to be independently queryable. Approval routing needs to be independently configurable. Inventory visibility needs to be available at the moment of quote creation, not after order submission. Customer-specific terms need to resolve in real time across every channel and touchpoint.
+
+When these workflow components remain tightly coupled — even inside a technically composable stack — the architecture is modular but the operations aren't. You've replaced a monolith with a collection of services that still depend on the same sequential, manually-coordinated process to generate a quote, get it approved, and convert it to an order.
+
+## The Three Composability Layers B2B Teams Actually Need
+Most composable commerce frameworks describe two layers: infrastructure composability (cloud, containers, deployment pipelines) and service composability (pricing service, catalog service, order service). B2B operations need a third layer that rarely appears in vendor architectures.
+
+**Infrastructure composability.** The foundation. Cloud-native deployment, independent scaling, CI/CD pipelines that allow services to ship independently. This is table stakes in 2026 and the layer where most MACH-aligned vendors deliver reliably. The decision here is straightforward: if your current platform can't deploy pricing updates without a full release cycle, you have an infrastructure problem.
+
+**Service composability.** The layer most composable commerce discussions focus on. Each commerce capability — pricing, catalog, search, checkout, inventory — operates as an independent service with its own API contract. You can swap a search provider without touching checkout. You can upgrade pricing logic without redeploying the catalog. This is where the best-of-breed promise lives, and it's genuinely valuable — until you reach the B2B-specific workflows that span multiple services simultaneously.
+
+**Workflow composability.** The layer most B2B teams need and most composable stacks don't provide. This is the ability to compose the commercial workflow itself — not just the services it calls, but the sequence, logic, and data flow between them. A quote-to-order workflow that requires pricing resolution, inventory check, approval routing, customer-term application, and margin validation isn't a single-service problem. It's an orchestration problem. If that orchestration is hardcoded, manually coordinated, or dependent on a specific vendor's workflow engine, the composability of the individual services underneath doesn't translate into operational flexibility.
+
+The decision framework for B2B composable commerce needs to evaluate all three layers. A stack that's composable at layers one and two but rigid at layer three will feel modular in the dev environment and monolithic in the sales workflow.
+
+## Where Workflow Composability Breaks Down
+The failure modes of missing workflow composability are predictable because they follow the same pattern: the architecture is flexible, but the commercial process isn't.
+
+**Pricing that's composable but not contextual.** You've deployed a standalone pricing service. It returns a price when queried. But it doesn't know the customer's contracted terms, can't check whether the requested quantity is available across warehouses, and doesn't evaluate whether the resulting margin meets approval thresholds. The pricing service is technically independent — and operationally isolated. The rep still assembles context manually to generate a quote that reflects commercial reality.
+
+**Approvals that are composable but not connected.** You've built an approval service that routes quotes based on configurable rules. But the approval service doesn't have access to the pricing logic that determined the discount, the inventory state that constrained the delivery date, or the customer history that makes the deal strategically important. The approver receives a quote for review without the context needed to make a fast, informed decision. Approval becomes a bottleneck not because the routing is slow, but because the data assembly is manual.
+
+**Inventory that's composable but not real-time at the point of sale.** Your inventory service is API-addressable and independently deployable. But it's queried after the quote is created, not during quote creation. The rep builds a quote, sends it for approval, and discovers after the fact that the warehouse allocation has changed. The quote has to be revised, re-approved, and re-sent. The composable inventory service is architecturally clean and operationally useless at the moment it matters most.
+
+Each of these scenarios shares the same root cause: the services are composed, but the workflow that connects them isn't. The data flows between services are sequential and manual rather than orchestrated and contextual.
+
+## The Decision Framework: Evaluating Composable Commerce for B2B
+Before selecting a composable stack, B2B teams need to evaluate the architecture against the workflows it's supposed to support — not just the services it can deploy.
+
+**Map your revenue-critical workflows first, not your service architecture.** Start with the workflows that directly affect deal velocity and margin: quote-to-order, customer-specific pricing resolution, approval routing, reorder processing, negotiation cycles. For each workflow, identify every service touchpoint and every manual handoff. If a workflow requires data from three services and a human to assemble it, that workflow isn't composable — regardless of how the services are deployed.
+
+**Evaluate data resolution at the point of action.** For each workflow, ask: does the system resolve all required data at the moment the action occurs? When a rep creates a quote, does the system simultaneously pull customer-specific pricing, check multi-warehouse inventory, apply contract terms, and evaluate approval thresholds? Or does resolution happen sequentially, across systems, with manual coordination? Composability without co-resolution creates the same latency problems monoliths created — just distributed across more endpoints.
+
+**Distinguish between integration composability and workflow composability.** Many composable platforms offer excellent integration capabilities — APIs, webhooks, event streams — that allow you to connect services. But connection is not composition. Integration composability means the services can talk to each other. Workflow composability means the commercial process itself is orchestrated, configurable, and adaptable without re-engineering the integration layer. The difference matters because B2B workflows change: a new approval tier, a new pricing rule, a new customer segment — these shouldn't require integration rework.
+
+**Assess the approval and governance layer independently.** Approval workflows in B2B aren't optional — they're compliance, margin protection, and commercial governance. If the composable stack treats approvals as an external service to be integrated later, you'll end up with the same email-and-Slack approval chains running alongside a technically modern architecture. Approvals need to be a first-class workflow component with access to the same data layer that pricing, inventory, and customer terms share.
+
+**Calculate total cost of orchestration, not just total cost of services.** Composable commerce reduces licensing costs by eliminating monolith vendor lock-in. But it can increase orchestration costs — the engineering and operational overhead of making independently deployed services behave as a coherent commercial workflow. If your team spends six months building middleware to coordinate pricing, inventory, and approvals into a functional quoting workflow, the composability savings are offset by orchestration debt. The lowest-TCO composable stack is one where workflow orchestration is native, not assembled.
+
+## Where This Connects to Platform Architecture
+The reason workflow composability is hard to achieve through pure service composition is that B2B commercial workflows require co-resolution — multiple data domains evaluated simultaneously within a single transaction context.
+
+A quote isn't a sequential query to a pricing service, then an inventory service, then a customer service, then an approval service. It's a single commercial decision that requires all four data domains to resolve together, in real time, against the current state of each. Architectures that treat this as an integration problem — stitching services together through middleware — create latency, consistency risks, and orchestration overhead that undermines the flexibility composable commerce was supposed to deliver.
+
+Platforms that solve this natively — where pricing logic, inventory state, customer terms, and approval rules share a data layer and resolve within the same transaction — deliver the composability promise without the orchestration tax. Nova Core's architecture reflects this approach: API-addressable pricing, real-time multi-warehouse inventory, customer-specific terms, and workflow-based approvals operate within a unified data layer. Services are independently queryable through APIs (supporting integration with any frontend, ERP, or channel) while the commercial workflow resolves cohesively — without requiring the buyer or seller to coordinate across systems.
+
+This is the architectural principle that separates composable commerce that works in B2B from composable commerce that works in theory: the services should be independently deployable, but the workflows should resolve as if they aren't.
+
+## The Readiness Assessment: Is Your Stack Ready for Composable B2B?
+Composable commerce isn't a binary upgrade — it's a maturity spectrum. Before committing to a composable migration, assess where your current architecture sits against the workflows that drive revenue.
+
+These signals indicate your stack is ready for composable B2B: your revenue-critical workflows (quoting, pricing, approvals) are well-documented and understood operationally; your team can identify the specific monolith constraints that limit workflow flexibility; you have API integration capability in-house or through a systems integrator; and your commercial workflows are stable enough to decompose without ambiguity about how they should function.
+
+These signals indicate you're not ready yet: your quoting, pricing, and approval workflows are informal and vary by rep or region; you're evaluating composable primarily to escape vendor lock-in without a clear workflow improvement target; you don't have visibility into which workflows create the most deal friction; or your commercial processes depend heavily on individual knowledge rather than system-enforced rules.
+
+If the first set describes your current state, the decision is about which composable stack evaluates well at all three layers — infrastructure, service, and workflow. If the second set is more accurate, the prerequisite work is workflow formalisation: document the commercial process before decomposing the architecture.
+
+## Moving Forward
+Composable commerce is the right architectural direction for B2B. The modular, API-first, cloud-native principles behind it are sound, and the adoption trajectory is clear. But architecture without workflow composability is infrastructure modernisation, not commercial transformation.
+
+The B2B teams getting the most from composable commerce aren't the ones with the most services deployed. They're the ones who decomposed their commercial workflows first — then selected an architecture that makes those workflows independently configurable, contextually resolved, and operationally coherent.
+
+The decision isn't whether to go composable. It's whether to compose at the layer that actually determines deal velocity, margin protection, and buyer experience — the workflow layer.
+
+## Frequently Asked Questions
+### What is composable commerce in B2B?
+
+Composable commerce is an architectural approach where commerce capabilities — pricing, catalog, inventory, checkout, order management — are assembled from independent, API-connected components rather than delivered as a single monolithic platform. In B2B, composability needs to extend beyond the service layer into the commercial workflows themselves: quoting, customer-specific pricing, approval routing, and negotiation cycles. The distinction matters because B2B complexity lives in how services interact during a commercial transaction, not just in how they're deployed.
+
+### How is composable commerce different from headless commerce?
+
+Headless commerce decouples the frontend presentation layer from the backend, allowing teams to build custom buyer experiences without modifying core commerce logic. Composable commerce goes further — it decomposes the backend itself into independent, swappable services. In B2B, the critical difference is that headless addresses the buyer interface while composable addresses the operational layer: pricing, approvals, inventory, and workflow orchestration. A headless storefront that connects to a monolithic backend is headless but not composable.
+
+### What are the risks of composable commerce for B2B?
+
+The primary risk is orchestration complexity — deploying independent services without a coherent workflow layer to coordinate them. In B2B, this manifests as pricing services that can't access customer-specific terms at quote creation, approval services that lack deal context, and inventory checks that happen after quotes are sent rather than during quote generation. The mitigation is to evaluate composable stacks at the workflow layer, not just the service layer, and to ensure that revenue-critical workflows resolve contextually rather than sequentially across disconnected services.
+
+### Is composable commerce only for large enterprises?
+
+No. While large enterprises adopted composable architectures early due to the cost of monolith customisation, mid-market B2B operations often benefit more. Mid-market teams typically run on platforms designed for B2C or DTC — Shopify, WooCommerce, BigCommerce — that work well for storefront and checkout but lack native support for B2B-specific workflows like customer-specific pricing, CPQ, and multi-tier approvals. Composable architecture allows these teams to add specialised B2B capabilities as modular layers without replacing their existing commerce platform.
+
+### How do I evaluate whether my B2B operation is ready for composable commerce?
+
+Readiness depends on workflow maturity more than technical capability. Start by mapping your revenue-critical workflows: quote-to-order, customer-specific pricing resolution, approval routing, reorder processing. If these workflows are well-documented, system-enforced, and understood operationally, your organisation can decompose them into composable components. If they're informal, rep-dependent, or vary by region, the prerequisite work is workflow formalisation — documenting the commercial process before decomposing the architecture. Composing unclear workflows produces distributed complexity, not flexibility.

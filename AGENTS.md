@@ -1,7 +1,11 @@
 <!-- BEGIN:nextjs-agent-rules -->
+
 # This is NOT the Next.js you know
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
 <!-- END:nextjs-agent-rules -->
 
 <!-- BEGIN:hero-section-rules -->
@@ -11,7 +15,7 @@ Applies to every hero section (the first, above-the-fold two-column section on
 a page — left column copy/CTA, right column visual/demo). Site chrome for
 context: `AnnouncementBar` (the promo strip) renders above `Navbar` in normal
 flow (not sticky); `Navbar` is `sticky top-0` with total height (content +
-1px bottom border) of 49px (<640px), 57px (640–1023px), 77px (1024px+).
+1px bottom border) of 54px (<640px), 57px (640–1023px), 77px (1024px+).
 
 On viewports **640px and wider** (Tailwind `sm:` breakpoint and up):
 
@@ -34,13 +38,17 @@ On viewports **640px and wider** (Tailwind `sm:` breakpoint and up):
    column — that produces a single oversized dead gap instead of evenly
    distributed spacing.
 2. **Fixed hero height.** The hero section's own height must equal
-   `100vh - navbar height - founder-launch-strip height`, expressed as CSS
+   `100svh - navbar height - founder-launch-strip height`, expressed as CSS
    custom properties:
-   `--home-hero-h: calc(100vh - var(--home-nav-h) - var(--home-strip-h))`.
-   `--home-nav-h` must switch value at the *same* breakpoints as `Navbar`'s
-   own height classes (49px → 57px at 640px, 57px → 77px at 1024px) — never a
-   single static value across the whole `sm+` range.
-3. **Short-viewport safety valve.** A hero pinned to `100vh - ...` breaks on
+   `--home-hero-h: calc(100svh - var(--home-nav-h) - var(--home-strip-h))`.
+   Use `svh` (small viewport), not classic `vh` / `dvh` — those change while
+   mobile browser chrome shows/hides and reflow the layout under a sticky
+   navbar. `--home-nav-h` must switch value at the *same* breakpoints as
+   `Navbar`'s own height (54px → 57px at 640px, 57px → 77px at 1024px) —
+   never a single static value across the whole `sm+` range. Prefer driving
+   the sticky header's border-box height from `var(--home-nav-h)` so the CSS
+   var and the rendered bar cannot drift.
+3. **Short-viewport safety valve.** A hero pinned to `100svh - ...` breaks on
    viewports that are wide but short (landscape phones, e.g. ~844×390 or
    ~926×428). Add graduated `max-height` tiers: first tighten
    spacing/type-size, then — below a "genuinely too short" threshold —

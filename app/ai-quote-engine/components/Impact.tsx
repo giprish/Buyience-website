@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function Impact() {
+export default function Impact({ purple = false }: { purple?: boolean }) {
   const cards = [
     {
       metric: "Seconds",
@@ -28,7 +28,7 @@ export default function Impact() {
   ];
 
   return (
-    <section>
+    <section className={purple ? "bg-(--surface)" : undefined}>
       <div className="container">
         {/* Section Header */}
         <div className="center-head">

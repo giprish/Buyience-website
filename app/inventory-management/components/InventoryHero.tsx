@@ -15,6 +15,13 @@ interface ProductData {
   ber: number;
 }
 
+const ROTATING_WORDS = [
+  "Every product.",
+  "Every warehouse.",
+  "One dashboard.",
+  "Every product.",
+];
+
 export default function InventoryHero() {
   const [activeWarehouse, setActiveWarehouse] = useState<WarehouseKey>("all");
 
@@ -62,8 +69,17 @@ export default function InventoryHero() {
         <div className="flex flex-col text-left">
           <SectionCapsule>Inventory Management</SectionCapsule>
           <h1>
-            B2B inventory management. Every product, every warehouse,{" "}
-            <span className="grad-text">one dashboard.</span>
+            B2B inventory management.{" "}
+            <span className="home-rotator" aria-hidden="true">
+              <span className="home-rotator-track">
+                {ROTATING_WORDS.map((word, i) => (
+                  <span key={`${word}-${i}`} className="home-rotator-word grad-text">
+                    {word}
+                  </span>
+                ))}
+              </span>
+            </span>
+            <span className="sr-only">Every product, every warehouse, one dashboard.</span>
           </h1>
           <p className="lede">
             Track inventory across unlimited locations, generate purchase orders when stock runs low, and transfer

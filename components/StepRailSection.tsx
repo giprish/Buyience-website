@@ -79,13 +79,13 @@ export default function StepRailSection({
         </motion.div>
 
         <ol
-          className="relative mx-auto mt-14 grid max-w-280 list-none grid-cols-1 gap-8 p-0 max-md:pl-1 md:mt-16 md:gap-0"
-          style={{ gridTemplateColumns: `repeat(${colCount}, 1fr)` } as React.CSSProperties}
+          className="relative mx-auto mt-14 grid w-full max-w-280 list-none grid-cols-1 gap-8 p-0 max-md:pl-1 md:mt-16 md:gap-0 md:[grid-template-columns:repeat(var(--step-cols),minmax(0,1fr))]"
+          style={{ ["--step-cols" as string]: colCount } as React.CSSProperties}
           aria-label={heading}
         >
-          {/* Mobile: vertical fill track */}
+          {/* Mobile: vertical fill track — left offset centers on size-12 icons (+ max-md:pl-1) */}
           <div
-            className="pointer-events-none absolute top-7 bottom-7 left-5.5 w-1.5 overflow-hidden rounded-full bg-white max-md:block md:hidden"
+            className="pointer-events-none absolute top-7 bottom-7 left-[25px] w-1.5 overflow-hidden rounded-full bg-white max-md:block md:hidden"
             aria-hidden="true"
           >
             <motion.div

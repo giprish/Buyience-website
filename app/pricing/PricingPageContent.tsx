@@ -65,10 +65,10 @@ export default function PricingPageContent() {
         setCurrency={handleSetCurrency}
       />
       <PricingPlans billingPeriod={billingPeriod} currency={currency} />
-      <ComparisonTable currency={currency} />
+      <ComparisonTable />
       <AddonsSection currency={currency} />
-      <PricingFAQ />
       <LearnMoreSection />
+      <PricingFAQ />
     </MarketingLayout>
   );
 }

@@ -11,6 +11,7 @@ export default function SalesRoomDivesSection({ purple = false }: { purple?: boo
   return (
     <SplitFeatureSection
       purple={purple}
+      className="sales-room-dives"
       header={{
         eyebrow: "THE AI IN THE ROOM",
         sparkles: "both",

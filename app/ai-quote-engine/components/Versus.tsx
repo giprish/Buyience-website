@@ -24,7 +24,7 @@ export default function Versus() {
   ];
 
   return (
-    <section>
+    <section className="versus">
       <div className="container">
         {/* Section Header */}
         <div className="center-head">

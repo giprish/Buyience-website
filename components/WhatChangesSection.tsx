@@ -16,12 +16,12 @@ export type WhatChangesItem = {
 
 export type WhatChangesSectionProps = {
   eyebrow?: string;
-  heading,
-  lede,
+  heading: string;
+  lede?: string;
   outcomeLabel?: string;
   fromLabel: string;
   toLabel: string;
-  items,
+  items: WhatChangesItem[];
   purple?: boolean;
 };
 

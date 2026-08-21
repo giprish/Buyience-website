@@ -17,10 +17,10 @@ export default function MarketingLayout({
   cta = true,
 }: MarketingLayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-svh flex-col bg-white">
       <AnnouncementBar />
       <Navbar />
-      <main className={`flex-grow ${mainClassName}`.trim()}>
+      <main className={`min-w-0 flex-grow overflow-x-clip ${mainClassName}`.trim()}>
         {children}
         {cta !== false && <FinalCTA {...(cta === true ? {} : cta)} />}
       </main>

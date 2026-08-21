@@ -15,8 +15,9 @@ type MACHSectionProps = {
   title: React.ReactNode;
   lede: string;
   cards: MACHCard[];
-  ctaHref: string;
-  ctaLabel: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  children?: React.ReactNode;
   /** Sitewide alternating-section-background rule: true = purple (var(--surface)); default/false = white. */
   purple?: boolean;
 };
@@ -28,8 +29,11 @@ export default function MACHSection({
   cards,
   ctaHref,
   ctaLabel,
+  children,
   purple = false,
 }: MACHSectionProps) {
+  const showCta = Boolean(ctaHref && ctaLabel);
+
   return (
     <section className={`mach mach-section ${purple ? "bg-(--surface)" : ""}`.trim()}>
       <div className="container">
@@ -67,17 +71,21 @@ export default function MACHSection({
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="cta-row reveal in mt-8 flex justify-center"
-        >
-          <Button variant="primary" size="lg" href={ctaHref}>
-            {ctaLabel}
-          </Button>
-        </motion.div>
+        {children}
+
+        {showCta ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="cta-row reveal in mt-8 flex justify-center"
+          >
+            <Button variant="primary" size="lg" href={ctaHref!}>
+              {ctaLabel}
+            </Button>
+          </motion.div>
+        ) : null}
       </div>
     </section>
   );

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import styles from "./PlatformOutcomes.module.css";
+import OutcomesStrip from "@/components/OutcomesStrip";
 
 const OUTCOMES = [
   {
@@ -42,25 +42,7 @@ export default function PlatformOutcomes({ purple = false }: { purple?: boolean 
           <h2>What Changes When B2B Commerce Works</h2>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.55 }}
-          className={styles.banner}
-          style={{
-            background:
-              "linear-gradient(105deg, #8b5cf6 0%, #6e2cf4 42%, #4c1d95 100%)",
-          }}
-        >
-          {OUTCOMES.map((out) => (
-            <div key={out.title} className={styles.item}>
-              <span className={styles.value}>{out.big}</span>
-              <b className={styles.title}>{out.title}</b>
-              <p className={styles.desc}>{out.description}</p>
-            </div>
-          ))}
-        </motion.div>
+        <OutcomesStrip items={OUTCOMES} />
       </div>
     </section>
   );

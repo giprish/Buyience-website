@@ -9,21 +9,21 @@ export default function AnnouncementBar() {
 
   return (
     <div className="announcement-bar relative w-full overflow-hidden select-none">
-      <div className="relative z-10 mx-auto flex max-w-[var(--w-max,1200px)] flex-col items-center justify-center gap-2 px-5 py-3 text-center sm:flex-row sm:flex-wrap sm:gap-x-3 sm:gap-y-1 sm:px-8 sm:py-2.5">
-        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#D6FB4F] px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.1em] text-[#1B1033] sm:px-3 sm:py-1 sm:text-[11px] sm:tracking-[0.06em]">
-          <span aria-hidden="true" className="text-[9px] opacity-80">
+      <div className="relative z-10 mx-auto flex max-w-[var(--w-max,1200px)] flex-row items-center justify-between gap-2 px-3 py-2 sm:flex-wrap sm:justify-center sm:gap-x-3 sm:gap-y-1 sm:px-8 sm:py-2.5 sm:text-center">
+        <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-[#D6FB4F] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.08em] text-[#1B1033] sm:gap-1.5 sm:px-3 sm:py-1 sm:text-[11px] sm:tracking-[0.06em]">
+          <span aria-hidden="true" className="text-[8px] opacity-80 sm:text-[9px]">
             ✦
           </span>
           Founder launch
         </span>
-        <p className="max-w-[20rem] text-[12.5px] font-medium leading-relaxed tracking-wide text-white/90 sm:max-w-none sm:text-[13px] sm:leading-snug">
+        <p className="min-w-0 flex-1 text-right text-[11px] font-medium leading-snug tracking-wide text-white/90 sm:max-w-none sm:flex-none sm:text-center sm:text-[13px]">
           lock in <b className="font-bold text-white">{format(prices.growMonthly)}/mo</b>
           <span className="hidden sm:inline"> before standard pricing rises to $249</span>
-          <span className="mx-1.5 text-white/35" aria-hidden="true">
+          <span className="mx-1 text-white/35 sm:mx-1.5" aria-hidden="true">
             ·
           </span>
           <b className="font-semibold text-white">31 of 50</b> spots taken
-          <span className="mx-1.5 text-white/35" aria-hidden="true">
+          <span className="mx-1 text-white/35 sm:mx-1.5" aria-hidden="true">
             ·
           </span>
           <Link

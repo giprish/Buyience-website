@@ -51,7 +51,7 @@ export default function SplitCopyCards({
               {eyebrow}
             </p>
             <h2 className="mt-3 mb-4">{heading}</h2>
-            <div className="text-[16.5px] leading-[1.55] text-(--muted) [&_p]:m-0">
+            <div className="text-[15.5px] leading-[1.6] text-(--muted) sm:text-[16.5px] sm:leading-[1.55] [&_p]:m-0">
               {body}
             </div>
             {cta ? <div className="mt-7 flex justify-start">{cta}</div> : null}

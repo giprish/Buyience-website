@@ -5,6 +5,11 @@ import { fileURLToPath } from "url";
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "framerusercontent.com", pathname: "/images/**" },
+    ],
+  },
   // Pin Turbopack to this repo so the parent ~/package-lock.json is not treated as root
   turbopack: {
     root: projectRoot,

@@ -31,8 +31,8 @@ export default function InventoryPageContent() {
       <InventoryCapabilities />
       <InventoryHowItWorks />
       <InventoryPOComparison />
+      <InventoryWhatChanges purple />
       <InventoryLocationDives />
-      <InventoryWhatChanges />
       <InventoryFAQ />
     </MarketingLayout>
   );

@@ -4,6 +4,7 @@ import MarketingLayout from "@/components/MarketingLayout";
 import IntegrationsHero from "./components/IntegrationsHero";
 import IntegrationsDirectory from "./components/IntegrationsDirectory";
 import HowItConnects from "./components/HowItConnects";
+import IntegrationsChallenge from "./components/IntegrationsChallenge";
 import IntegrationsFAQ from "./components/IntegrationsFAQ";
 
 export const metadata: Metadata = {
@@ -34,11 +35,13 @@ export default function IntegrationsPage() {
           href: "/pricing",
           variant: "primary",
         },
+        purple: true,
       }}
     >
       <IntegrationsHero />
       <IntegrationsDirectory />
       <HowItConnects />
+      <IntegrationsChallenge purple />
       <IntegrationsFAQ />
     </MarketingLayout>
   );

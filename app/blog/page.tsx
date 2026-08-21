@@ -1,17 +1,34 @@
-import React from "react";
 import type { Metadata } from "next";
 import MarketingLayout from "@/components/MarketingLayout";
 import BlogHero from "./components/BlogHero";
-import BlogFeatured from "./components/BlogFeatured";
-import BlogDirectory from "./components/BlogDirectory";
+import BlogListing from "./components/BlogListing";
+import { getAllPosts, getCategoryCounts, getFeaturedPost } from "./lib/posts";
 
 export const metadata: Metadata = {
-  title: "B2B Commerce Blog | Tips, Guides & Industry Insights | Buyience",
+  title: "B2B Commerce Blog | Tips, Guides & Industry Insights",
   description:
-    "Practical insights on B2B commerce, AI-powered quoting, composable architecture, and wholesale operations — written for teams running modern B2B sales.",
+    "Expert insights on B2B commerce, wholesale operations, and AI in sales. Practical guides for wholesalers, distributors & manufacturers.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "B2B Commerce Blog | Tips, Guides & Industry Insights | Buyience",
+    description:
+      "Expert insights on B2B commerce, wholesale operations, and AI in sales. Practical guides for wholesalers, distributors & manufacturers.",
+    url: "/blog",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "B2B Commerce Blog | Tips, Guides & Industry Insights | Buyience",
+    description:
+      "Expert insights on B2B commerce, wholesale operations, and AI in sales. Practical guides for wholesalers, distributors & manufacturers.",
+  },
 };
 
 export default function BlogPage() {
+  const posts = getAllPosts();
+  const featured = getFeaturedPost();
+  const counts = getCategoryCounts();
+
   return (
     <MarketingLayout
       mainClassName="blog-page"
@@ -23,7 +40,8 @@ export default function BlogPage() {
             <span className="final-card-accent">your platform?</span>
           </>
         ),
-        description: "Start your 14-day free trial. No credit card required. Full access to all features.",
+        description:
+          "Start your 14-day free trial. No credit card required. Full access to all features.",
         primaryAction: {
           label: "Start For Free",
           href: "https://app.buyience.com/register",
@@ -32,8 +50,7 @@ export default function BlogPage() {
       }}
     >
       <BlogHero />
-      <BlogFeatured />
-      <BlogDirectory />
+      <BlogListing posts={posts} featuredSlug={featured.slug} counts={counts} />
     </MarketingLayout>
   );
 }

@@ -46,16 +46,18 @@ export default function QuoteHero() {
                 Request a demo
               </Button>
             </div>
-            <dl className="quote-hero-stats flex flex-wrap items-stretch sm:flex-nowrap">
+            <dl className="quote-hero-stats flex flex-row flex-nowrap items-stretch gap-0">
               {HERO_STATS.map((stat, i) => (
                 <div
                   key={stat.label}
-                  className={`flex min-w-0 flex-col ${i > 0 ? "max-sm:mt-3 sm:ml-7 sm:border-l sm:border-[#E7DEFB] sm:pl-7" : ""}`}
+                  className={`flex min-w-0 flex-1 flex-col ${
+                    i > 0 ? "border-l border-[#E7DEFB] pl-2.5 sm:ml-7 sm:pl-7" : ""
+                  }`}
                 >
-                  <dt className="font-heading text-[26px] leading-none font-extrabold tracking-tight text-[#1B1033]">
+                  <dt className="font-heading text-[18px] leading-none font-extrabold tracking-tight whitespace-nowrap text-[#1B1033] sm:text-[26px]">
                     {stat.value}
                   </dt>
-                  <dd className="m-0 mt-1.5 text-[13px] leading-snug font-semibold text-[#6A5A8C]">
+                  <dd className="m-0 mt-1 text-[11px] leading-snug font-semibold text-[#6A5A8C] sm:mt-1.5 sm:text-[13px]">
                     {stat.label}
                   </dd>
                 </div>

@@ -38,7 +38,6 @@ export default function PricingFAQ() {
       eyebrow="QUESTIONS, ANSWERED"
       title="Pricing FAQs"
       items={faqs}
-      style={{ paddingTop: 0 }}
     />
   );
 }

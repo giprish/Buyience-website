@@ -33,13 +33,13 @@ export default function SolutionsPage() {
         secondaryAction: {
           label: "Request a demo",
           href: "/request-a-demo",
-          variant: "primary",
+          variant: "ghost",
         },
       }}
     >
       <SolutionsHero />
       <CapabilitiesSuite />
-      <IndustriesSection />
+      <IndustriesSection purple />
       <IntegrationsSection />
     </MarketingLayout>
   );
