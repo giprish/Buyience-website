@@ -1,12 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
 import SimpleMarketingPage from "@/components/SimpleMarketingPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "B2B Storefront | Self-Service Customer Portal",
+export const metadata: Metadata = pageMetadata({
+  title: "B2B Storefront | Self-Service Customer Portal | Buyience",
   description:
-    "A branded B2B portal where customers see their pricing, place orders, track shipments, and reorder — without calling your sales team.",
-};
+    "Launch a B2B storefront your customers will love. Customer-specific pricing, quick order, saved lists, quote requests, and account management-built in.",
+  path: "/b2b-storefront",
+});
 
 export default function B2BStorefrontPage() {
   return (

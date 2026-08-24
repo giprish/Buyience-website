@@ -1,12 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
 import MarketingLayout from "@/components/MarketingLayout";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Refund Policy",
+export const metadata: Metadata = pageMetadata({
+  title: "Refund Policy | Buyience",
   description:
     "Buyience refund policy. 14-day money-back guarantee on all plans. No questions asked. Cancel anytime with no long-term contracts.",
-};
+  path: "/refund-policy",
+});
 
 export default function RefundPolicyPage() {
   return (

@@ -59,10 +59,10 @@ export default function AboutFounders({ purple = false }: { purple?: boolean }) 
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={cardVariants}
-              className="rounded-(--radius-card) border border-(--border) bg-white p-7 text-left shadow-(--shadow-1) sm:p-8"
+              className="rounded-3xl border border-(--border) bg-white p-7 text-left shadow-(--shadow-1) sm:p-8"
             >
               <div
-                className="mb-5 flex size-12 items-center justify-center rounded-[12px] bg-(--violet-tint) text-[18px] font-extrabold text-(--violet-deep)"
+                className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-(--violet-tint) text-[18px] font-extrabold text-(--violet-deep)"
                 style={{ fontFamily: "var(--font-heading)" }}
                 aria-hidden="true"
               >
@@ -84,7 +84,7 @@ export default function AboutFounders({ purple = false }: { purple?: boolean }) 
           transition={{ duration: 0.5, delay: 0.12 }}
           className="mx-auto mt-10 max-w-[52ch] border-0 p-0 text-center"
         >
-          <p className="m-0 text-[17px] leading-snug font-semibold tracking-[-0.015em] text-(--ink) sm:text-[18.5px]">
+          <p className="m-0 text-[20px] leading-snug font-semibold tracking-[-0.02em] text-(--ink) sm:text-[24px]">
             &ldquo;We&apos;re not trying to be the biggest B2B platform. We&apos;re trying to be the
             one that finally fits the businesses everyone else overlooked.&rdquo;
           </p>

@@ -194,6 +194,7 @@ export default function PartnerHero() {
                     type="text"
                     id="first"
                     autoComplete="given-name"
+                    placeholder="e.g. Alex"
                     value={first}
                     onChange={(e) => {
                       setFirst(e.target.value);
@@ -206,7 +207,14 @@ export default function PartnerHero() {
                   <label htmlFor="last">
                     Last name <span className="opt">(optional)</span>
                   </label>
-                  <input type="text" id="last" autoComplete="family-name" value={last} onChange={(e) => setLast(e.target.value)} />
+                  <input
+                    type="text"
+                    id="last"
+                    autoComplete="family-name"
+                    placeholder="e.g. Sharma"
+                    value={last}
+                    onChange={(e) => setLast(e.target.value)}
+                  />
                 </div>
               </div>
 
@@ -217,7 +225,7 @@ export default function PartnerHero() {
                   type="email"
                   id="email"
                   autoComplete="email"
-                  placeholder="you@company.com"
+                  placeholder="e.g. alex@acme.com"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -233,7 +241,14 @@ export default function PartnerHero() {
                   <label htmlFor="phone">
                     Phone <span className="opt">(optional)</span>
                   </label>
-                  <input type="text" id="phone" autoComplete="tel" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                  <input
+                    type="text"
+                    id="phone"
+                    autoComplete="tel"
+                    placeholder="e.g. +44 20 1234 5678"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
                 </div>
                 <div className={`f ${errors.location ? "invalid" : ""}`} id="fLoc">
                   <label htmlFor="loc">Location *</label>
@@ -274,6 +289,7 @@ export default function PartnerHero() {
                   type="text"
                   id="company"
                   autoComplete="organization"
+                  placeholder="e.g. Acme ERP"
                   value={company}
                   onChange={(e) => {
                     setCompany(e.target.value);
@@ -312,7 +328,7 @@ export default function PartnerHero() {
                   <input
                     type="url"
                     id="site"
-                    placeholder="https://"
+                    placeholder="e.g. https://acme.com"
                     value={site}
                     onChange={(e) => {
                       setSite(e.target.value);
@@ -330,7 +346,7 @@ export default function PartnerHero() {
                 </label>
                 <textarea
                   id="plans"
-                  placeholder="What you'd connect, which direction data flows, whether a shared customer is already asking…"
+                  placeholder="e.g. Sync orders from Nova Core into our ERP, and a shared customer is already asking."
                   value={plans}
                   onChange={(e) => setPlans(e.target.value)}
                 ></textarea>

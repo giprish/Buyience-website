@@ -68,7 +68,7 @@ export default function SplitCopyCards({
                   whileInView="visible"
                   viewport={{ once: true, margin: "-50px" }}
                   variants={cardVariants}
-                  className="rounded-(--radius-card) border border-(--border) bg-white p-6 text-left shadow-(--shadow-1) transition-[transform,box-shadow,border-color] duration-180 hover:-translate-y-0.5 hover:border-(--border-strong)"
+                  className="rounded-[var(--radius-card)] border border-(--border) bg-white p-6 text-left shadow-(--shadow-1) transition-[transform,box-shadow,border-color] duration-180 hover:-translate-y-0.5 hover:border-(--border-strong)"
                 >
                   <div className="mb-4 flex size-10 items-center justify-center rounded-[10px] bg-(--violet-tint) text-(--violet-deep)" aria-hidden="true">
                     <Icon size={20} strokeWidth={2} />

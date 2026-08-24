@@ -29,7 +29,7 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
   > = {
     demo: {
       hint: "Demos are run by the team that built the product — tell us what you sell and we'll tailor it to your workflow.",
-      placeholder: "What do you sell, and what does your quoting or ordering process look like today?",
+      placeholder: "e.g. We sell industrial fasteners and still quote by email and spreadsheet.",
       eta: "REPLY: SAME BUSINESS DAY",
       done: "A demo request is with the founding team — we'll come back with times.",
     },
@@ -43,25 +43,25 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
           first if you haven't. Happy to talk through plan fit, migration, or Enterprise terms.
         </>
       ),
-      placeholder: "What are you weighing up — plan fit, migration, Enterprise terms?",
+      placeholder: "e.g. We want to compare Growth vs Enterprise and talk through migration.",
       eta: "REPLY: WITHIN 24 HOURS",
       done: "Your question is with the team.",
     },
     support: {
       hint: "If you're logged in, mention your company name so we can find your tenant quickly.",
-      placeholder: "What's happening, what you expected instead, and your company name if you have an account.",
+      placeholder: "e.g. Quotes aren't syncing to our ERP — company: Acme Distribution.",
       eta: "REPLY: WITHIN 24 HOURS",
       done: "Support has your message — we'll get on it.",
     },
     partnership: {
       hint: "Building a partner practice or an integration? The solution partner and technology partner areas have the full picture.",
-      placeholder: "Who you are, who your clients are, and what you'd want to build together.",
+      placeholder: "e.g. We're a digital agency serving B2B distributors and want to implement Nova Core.",
       eta: "REPLY: WITHIN 2 DAYS",
       done: "Your partnership enquiry is with the founding team.",
     },
     other: {
       hint: "",
-      placeholder: "Tell us what you sell, what's slowing you down, or what you'd like to see…",
+      placeholder: "e.g. Tell us what you sell, what's slowing you down, or what you'd like to see.",
       eta: "REPLY: WITHIN 2 DAYS",
       done: "It's with the founding team.",
     },
@@ -188,11 +188,14 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
               {/* Row: Name and Email */}
               <div className="row2">
                 <div className={`f ${errors.name ? "invalid" : ""}`} id="fName">
-                  <label htmlFor="name">Name *</label>
+                  <label htmlFor="name">
+                    Name <span className="req">*</span>
+                  </label>
                   <input
                     type="text"
                     id="name"
                     autoComplete="name"
+                    placeholder="e.g. Alex Sharma"
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
@@ -202,12 +205,14 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
                   <span className="err">Required.</span>
                 </div>
                 <div className={`f ${errors.email ? "invalid" : ""}`} id="fEmail">
-                  <label htmlFor="email">Work email *</label>
+                  <label htmlFor="email">
+                    Work email <span className="req">*</span>
+                  </label>
                   <input
                     type="email"
                     id="email"
                     autoComplete="email"
-                    placeholder="you@company.com"
+                    placeholder="e.g. alex@acme.com"
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -228,6 +233,7 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
                     type="text"
                     id="company"
                     autoComplete="organization"
+                    placeholder="e.g. Acme Distribution Pvt Ltd"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                   />
@@ -240,6 +246,7 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
                     type="text"
                     id="phone"
                     autoComplete="tel"
+                    placeholder="e.g. +44 20 1234 5678"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
@@ -248,7 +255,9 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
 
               {/* Message Block */}
               <div className={`f ${errors.message ? "invalid" : ""}`} id="fMsg">
-                <label htmlFor="msg">Your message *</label>
+                <label htmlFor="msg">
+                  Your message <span className="req">*</span>
+                </label>
                 <textarea
                   id="msg"
                   placeholder={currentConfig.placeholder}

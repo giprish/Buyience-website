@@ -29,7 +29,7 @@ const CARDS = [
 export default function HomeMACH({ purple = false }: { purple?: boolean }) {
   return (
     <MACHSection
-      purple={purple}
+      purple={true}
       eyebrow="OUR PLATFORM"
       title="Built on MACH principles"
       lede="Modern architecture that scales with your business — from first order to enterprise."

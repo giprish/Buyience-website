@@ -58,7 +58,8 @@ export default function RequestDemoPage() {
                   <input
                     required
                     name="firstName"
-                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
+                    placeholder="e.g. Alex"
+                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
                   />
                 </label>
                 <label className="block text-left text-sm font-semibold text-[#1B1033]">
@@ -66,7 +67,8 @@ export default function RequestDemoPage() {
                   <input
                     required
                     name="lastName"
-                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
+                    placeholder="e.g. Sharma"
+                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
                   />
                 </label>
               </div>
@@ -76,7 +78,8 @@ export default function RequestDemoPage() {
                   required
                   type="email"
                   name="email"
-                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
+                  placeholder="e.g. alex@acme.com"
+                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
                 />
               </label>
               <label className="mt-4 block text-left text-sm font-semibold text-[#1B1033]">
@@ -84,7 +87,8 @@ export default function RequestDemoPage() {
                 <input
                   required
                   name="company"
-                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
+                  placeholder="e.g. Acme Distribution Pvt Ltd"
+                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
                 />
               </label>
               <label className="mt-4 block text-left text-sm font-semibold text-[#1B1033]">
@@ -92,7 +96,8 @@ export default function RequestDemoPage() {
                 <textarea
                   name="message"
                   rows={4}
-                  className="mt-1.5 w-full resize-y rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
+                  placeholder="e.g. We want faster quote approvals and better inventory visibility."
+                  className="mt-1.5 w-full resize-y rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
                 />
               </label>
               <Button

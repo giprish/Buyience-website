@@ -39,7 +39,7 @@ export default function HomeFAQ({ purple = false }: { purple?: boolean }) {
       eyebrow="FAQ"
       title="Questions, answered"
       items={faqs}
-      purple={false}
+      purple={true}
       card
     />
   );

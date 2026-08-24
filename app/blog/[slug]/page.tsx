@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const url = `/blog/${post.slug}`;
   return {
-    title: post.title,
+    title: { absolute: post.title },
     description: post.description,
     alternates: { canonical: url },
     openGraph: {

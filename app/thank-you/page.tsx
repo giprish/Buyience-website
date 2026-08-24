@@ -3,11 +3,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import MarketingLayout from "@/components/MarketingLayout";
 import Button from "@/components/Button";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Thank You",
+export const metadata: Metadata = pageMetadata({
+  title: "Thank You | Buyience",
   description: "Thanks for reaching out to Buyience. Our team will be in touch shortly.",
-};
+  path: "/thank-you",
+});
 
 export default function ThankYouPage() {
   return (

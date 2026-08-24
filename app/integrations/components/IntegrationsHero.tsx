@@ -1,32 +1,8 @@
-"use client";
-
 import React from "react";
-import { motion } from "framer-motion";
 import Button from "@/components/Button";
 import SectionCapsule from "@/components/SectionCapsule";
-import { integrationsData } from "../data/integrations";
 
 export default function IntegrationsHero() {
-  const liveCount = integrationsData.filter((i) => i.status === "live").length;
-  const soonCount = integrationsData.filter((i) => i.status === "soon").length;
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.08 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" as const },
-    },
-  };
-
   const nodes = [
     { cx: 280, cy: 58, label: "PAYMENTS" },
     { cx: 468, cy: 148, label: "COMMERCE" },
@@ -37,54 +13,35 @@ export default function IntegrationsHero() {
   ] as const;
 
   return (
-    <header className="hero relative overflow-hidden bg-hero-grid">
+    <header className="integrations-hero relative flex flex-col overflow-hidden bg-hero-grid sm:min-h-[var(--home-hero-h)] sm:justify-center">
       <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
-      <div className="container hero-grid relative z-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-left"
-        >
-          <motion.div variants={itemVariants}>
+      <div className="integrations-hero-inner relative z-10 mx-auto grid w-full max-w-[var(--w-max,1200px)] grid-cols-1 items-stretch gap-10 px-5 py-12 sm:grid-cols-2 sm:px-8">
+        <div className="integrations-hero-copy flex min-h-0 flex-col text-left">
+          <div className="integrations-hero-copy-main">
             <SectionCapsule>Integrations</SectionCapsule>
-          </motion.div>
+            <h1 className="text-[1.75rem] leading-[1.1] font-extrabold tracking-normal sm:text-[clamp(2.1rem,5vw,4rem)] sm:leading-[1.03]">
+              Integrations that connect Nova Core to{" "}
+              <span className="grad-text">the stack you already run.</span>
+            </h1>
+            <p className="lede">
+              Payments, commerce platforms, marketing, shipping, and analytics — connected in settings, kept in sync by
+              webhooks. And when a tool isn&apos;t here yet, the API is.
+            </p>
+          </div>
+          <div className="integrations-hero-copy-foot">
+            <div className="cta-row">
+              <Button variant="primary" size="lg" href="#directory">
+                Browse integrations
+              </Button>
+              <Button variant="ghost" size="lg" href="#trial">
+                Start free trial
+              </Button>
+            </div>
+          </div>
+        </div>
 
-          <motion.h1 variants={itemVariants}>
-            Integrations that connect Nova Core to{" "}
-            <span className="grad-text">the stack you already run.</span>
-          </motion.h1>
-
-          <motion.p variants={itemVariants} className="lede">
-            Payments, commerce platforms, marketing, shipping, and analytics — connected in settings, kept in sync by
-            webhooks. And when a tool isn&apos;t here yet, the API is.
-          </motion.p>
-
-          <motion.div variants={itemVariants} className="hero-count">
-            <span className="pulse" aria-hidden="true"></span>
-            <span>
-              {liveCount} live integrations {soonCount > 0 && `· ${soonCount} coming soon`}
-            </span>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="cta-row">
-            <Button variant="primary" size="lg" href="#directory">
-              Browse integrations
-            </Button>
-            <Button variant="ghost" size="lg" href="#trial">
-              Start free trial
-            </Button>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.75, delay: 0.18 }}
-          className="constellation reveal in"
-          aria-hidden="true"
-        >
-          <svg viewBox="0 0 560 490" xmlns="http://www.w3.org/2000/svg" role="presentation">
+        <div className="integrations-hero-visual constellation min-h-0 w-full" aria-hidden="true">
+          <svg viewBox="0 0 560 490" xmlns="http://www.w3.org/2000/svg" role="presentation" className="h-auto w-full">
             <defs>
               <linearGradient id="hubGrad" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stopColor="#D444EE" />
@@ -144,7 +101,7 @@ export default function IntegrationsHero() {
               CORE
             </text>
           </svg>
-        </motion.div>
+        </div>
       </div>
     </header>
   );

@@ -1,12 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
 import SimpleMarketingPage from "@/components/SimpleMarketingPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "MRO B2B Commerce Solutions | Buyience",
   description:
     "B2B commerce for MRO suppliers — contract pricing, multi-warehouse inventory, and faster quote-to-order cycles.",
-};
+  path: "/mro-solutions",
+});
 
 export default function MroSolutionsPage() {
   return (

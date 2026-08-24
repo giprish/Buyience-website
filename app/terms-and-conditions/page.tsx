@@ -1,12 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
 import MarketingLayout from "@/components/MarketingLayout";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions",
+export const metadata: Metadata = pageMetadata({
+  title: "Terms & Conditions | Buyience",
   description:
-    "Terms and conditions for using Buyience Nova Core B2B commerce platform. Service agreement, acceptable use, and legal terms.",
-};
+    "Terms and conditions for using Buyience Nova Core B2B commerce platform. Service agreement, acceptable use, and legal terms for customers and partners.",
+  path: "/terms-and-conditions",
+});
 
 export default function TermsPage() {
   return (

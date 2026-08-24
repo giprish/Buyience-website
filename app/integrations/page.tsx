@@ -1,48 +1,49 @@
 import React from "react";
 import type { Metadata } from "next";
 import MarketingLayout from "@/components/MarketingLayout";
+import FinalCTA from "@/components/FinalCTA";
+import { pageMetadata } from "@/lib/seo";
 import IntegrationsHero from "./components/IntegrationsHero";
 import IntegrationsDirectory from "./components/IntegrationsDirectory";
 import HowItConnects from "./components/HowItConnects";
 import IntegrationsChallenge from "./components/IntegrationsChallenge";
 import IntegrationsFAQ from "./components/IntegrationsFAQ";
 
-export const metadata: Metadata = {
-  title: "Integrations | Connect Payments, Commerce & Marketing Tools | Buyience",
+export const metadata: Metadata = pageMetadata({
+  title: "All-in-One B2B Integrations | Payments, Shipping, Marketing & SEO",
   description:
-    "Connect Nova Core to Stripe, Razorpay, PayPal, Shopify, WooCommerce, Klaviyo, Brevo, Google Ads, Shiprocket and more — plus 80+ REST endpoints and 38 webhooks to build your own.",
-};
+    "Unify your entire business with Buyience integrations. Sync products, automate orders, track analytics & connect Multiple tools in one platform.",
+  path: "/integrations",
+});
 
 export default function IntegrationsPage() {
   return (
-    <MarketingLayout
-      mainClassName="integrations-page"
-      cta={{
-        title: (
-          <>
-            Your stack, connected{" "}
-            <span className="final-card-accent">in an afternoon.</span>
-          </>
-        ),
-        description: "Payments, commerce, marketing, shipping, analytics — plus an API for everything else.",
-        primaryAction: {
-          label: "Start free trial",
-          href: "https://app.buyience.com/register",
-          variant: "primary",
-        },
-        secondaryAction: {
-          label: "See Pricing",
-          href: "/pricing",
-          variant: "primary",
-        },
-        purple: true,
-      }}
-    >
+    <MarketingLayout mainClassName="integrations-page" cta={false}>
       <IntegrationsHero />
       <IntegrationsDirectory />
       <HowItConnects />
       <IntegrationsChallenge purple />
       <IntegrationsFAQ />
+      <FinalCTA
+        title={
+          <>
+            Your stack, connected{" "}
+            <span className="final-card-accent">in an afternoon.</span>
+          </>
+        }
+        description="Payments, commerce, marketing, shipping, analytics — plus an API for everything else."
+        primaryAction={{
+          label: "Start free trial",
+          href: "https://app.buyience.com/register",
+          variant: "primary",
+        }}
+        secondaryAction={{
+          label: "See Pricing",
+          href: "/pricing",
+          variant: "ghost",
+        }}
+        purple
+      />
     </MarketingLayout>
   );
 }

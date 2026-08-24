@@ -1,16 +1,18 @@
 import React from "react";
 import type { Metadata } from "next";
 import MarketingLayout from "@/components/MarketingLayout";
+import { pageMetadata } from "@/lib/seo";
 import SolutionsHero from "./components/SolutionsHero";
 import CapabilitiesSuite from "./components/CapabilitiesSuite";
 import IndustriesSection from "./components/IndustriesSection";
 import IntegrationsSection from "./components/IntegrationsSection";
 
-export const metadata: Metadata = {
-  title: "B2B Commerce Solutions | AI Quoting, CPQ & Sales Rooms — Buyience",
+export const metadata: Metadata = pageMetadata({
+  title: "B2B Commerce Solutions | Wholesale & Distribution | Buyience",
   description:
-    "One platform for the whole B2B sale: AI Quote Engine, CPQ with real BOMs, Digital Sales Rooms, and margin-protected pricing — by capability and by industry.",
-};
+    "Complete B2B commerce suite—AI Quote Engine, inventory management, customer portals, and order management. Built for wholesalers, distributors & manufacturers.",
+  path: "/solutions",
+});
 
 export default function SolutionsPage() {
   return (

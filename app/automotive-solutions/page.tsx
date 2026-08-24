@@ -1,12 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
 import SimpleMarketingPage from "@/components/SimpleMarketingPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Automotive B2B Commerce Solutions | Buyience",
   description:
     "B2B commerce for automotive distributors and parts wholesalers — complex catalogs, customer pricing, and AI quoting.",
-};
+  path: "/automotive-solutions",
+});
 
 export default function AutomotiveSolutionsPage() {
   return (

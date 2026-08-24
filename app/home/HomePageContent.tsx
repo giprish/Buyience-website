@@ -18,7 +18,7 @@ export default function HomePageContent() {
       <HomeStats />
       <HomeModuleTabs />
       <HomeMACH />
-      <HomeAudiences purple />
+      <HomeAudiences  />
       <HomeFAQ purple />
     </MarketingLayout>
   );

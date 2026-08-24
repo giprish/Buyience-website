@@ -154,14 +154,28 @@ export default function PartnerHero() {
               <div className="row2">
                 <div className={`f ${errors.first ? "invalid" : ""}`}>
                   <label htmlFor="first">First name *</label>
-                  <input type="text" id="first" value={formData.first} onChange={handleChange} autoComplete="given-name" />
+                  <input
+                    type="text"
+                    id="first"
+                    value={formData.first}
+                    onChange={handleChange}
+                    autoComplete="given-name"
+                    placeholder="e.g. Alex"
+                  />
                   <span className="err">Required.</span>
                 </div>
                 <div className="f">
                   <label htmlFor="last">
                     Last name <span className="opt">(optional)</span>
                   </label>
-                  <input type="text" id="last" value={formData.last} onChange={handleChange} autoComplete="family-name" />
+                  <input
+                    type="text"
+                    id="last"
+                    value={formData.last}
+                    onChange={handleChange}
+                    autoComplete="family-name"
+                    placeholder="e.g. Sharma"
+                  />
                 </div>
               </div>
 
@@ -173,7 +187,7 @@ export default function PartnerHero() {
                   value={formData.email}
                   onChange={handleChange}
                   autoComplete="email"
-                  placeholder="you@agency.com"
+                  placeholder="e.g. alex@agency.com"
                 />
                 <span className="err">Please enter a valid email.</span>
               </div>
@@ -183,7 +197,14 @@ export default function PartnerHero() {
                   <label htmlFor="phone">
                     Phone <span className="opt">(optional)</span>
                   </label>
-                  <input type="text" id="phone" value={formData.phone} onChange={handleChange} autoComplete="tel" />
+                  <input
+                    type="text"
+                    id="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    autoComplete="tel"
+                    placeholder="e.g. +44 20 1234 5678"
+                  />
                 </div>
                 <div className={`f ${errors.loc ? "invalid" : ""}`}>
                   <label htmlFor="loc">Location *</label>
@@ -212,7 +233,14 @@ export default function PartnerHero() {
 
               <div className={`f ${errors.company ? "invalid" : ""}`}>
                 <label htmlFor="company">Company *</label>
-                <input type="text" id="company" value={formData.company} onChange={handleChange} autoComplete="organization" />
+                <input
+                  type="text"
+                  id="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  autoComplete="organization"
+                  placeholder="e.g. Northwind Digital"
+                />
                 <span className="err">Required.</span>
               </div>
 
@@ -237,7 +265,7 @@ export default function PartnerHero() {
                   id="about"
                   value={formData.about}
                   onChange={handleChange}
-                  placeholder="Your clients, your services, why Nova Core fits your practice…"
+                  placeholder="e.g. We implement commerce for B2B distributors and want Nova Core in our practice."
                 ></textarea>
               </div>
 

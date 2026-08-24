@@ -1,12 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
 import SimpleMarketingPage from "@/components/SimpleMarketingPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "WooCommerce B2B Plugin | WordPress Integration",
+export const metadata: Metadata = pageMetadata({
+  title: "WooCommerce B2B Plugin | WordPress Integration | Buyience",
   description:
-    "Connect WordPress and WooCommerce to Nova Core for AI quoting, B2B pricing, and wholesale workflows — without rebuilding your front end.",
-};
+    "Turn WooCommerce into a B2B powerhouse. Customer-specific pricing, quote requests, buyer portal, and real-time sync with Nova Core. Install in minutes.",
+  path: "/wordpress-plugin-buyience-novacore-b2b-quote-engine",
+});
 
 export default function WordpressPluginPage() {
   return (

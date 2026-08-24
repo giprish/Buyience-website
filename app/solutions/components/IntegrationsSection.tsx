@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import StackLogoMarquee from "@/app/components/StackLogoMarquee";
+import EyebrowPill from "@/components/EyebrowPill";
 
 export default function IntegrationsSection({ purple = false }: { purple?: boolean }) {
   return (
@@ -18,7 +19,7 @@ export default function IntegrationsSection({ purple = false }: { purple?: boole
         className="container"
       >
         <div className="center-head">
-          <p className="eyebrow">FITS YOUR STACK</p>
+          <EyebrowPill>FITS YOUR STACK</EyebrowPill>
           <h2 className="integrations-title">
             Connects to the tools <span className="grad-text">you already run.</span>
           </h2>

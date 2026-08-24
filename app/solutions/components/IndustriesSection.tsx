@@ -14,6 +14,7 @@ import {
   Wrench,
   type LucideIcon,
 } from "lucide-react";
+import EyebrowPill from "@/components/EyebrowPill";
 
 type IndustryStatus = "ready" | "inquire";
 
@@ -67,12 +68,7 @@ function IndustryCard({
         <span className="font-mono text-[10.5px] tracking-[0.12em] text-(--violet-deep) uppercase">
           {industry.label}
         </span>
-        {isReady ? (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-(--violet-tint) px-2 py-0.5 font-mono text-[10px] tracking-[0.06em] text-(--violet-deep) uppercase">
-            <span className="size-1.5 rounded-full bg-(--violet)" aria-hidden="true" />
-            Page live
-          </span>
-        ) : null}
+        {isReady ? <EyebrowPill>Page live</EyebrowPill> : null}
       </div>
 
       <h3 className="m-0 mb-2 text-[1.0625rem] leading-snug tracking-[-0.01em] text-(--ink)">
@@ -195,7 +191,7 @@ export default function IndustriesSection({ purple = false }: { purple?: boolean
           variants={headerVariants}
           className="center-head"
         >
-          <p className="eyebrow">BY INDUSTRY</p>
+          <EyebrowPill>BY INDUSTRY</EyebrowPill>
           <h2>
             Built for the way <span className="grad-text">your industry sells.</span>
           </h2>
@@ -216,10 +212,7 @@ export default function IndustriesSection({ purple = false }: { purple?: boolean
         >
           <div>
             <div className="mb-4 flex flex-wrap items-center gap-2.5">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-(--violet-tint) px-2.5 py-1 font-mono text-[10.5px] tracking-[0.08em] text-(--violet-deep) uppercase">
-                <span className="size-1.5 rounded-full bg-(--violet)" aria-hidden="true" />
-                Live solution
-              </span>
+              <EyebrowPill>Live solution</EyebrowPill>
               <span className="font-mono text-[11px] tracking-[0.12em] text-(--violet-deep) uppercase">
                 Corporate Gifting
               </span>

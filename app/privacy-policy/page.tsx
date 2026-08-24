@@ -1,12 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
 import MarketingLayout from "@/components/MarketingLayout";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy Policy | Buyience",
   description:
-    "Buyience privacy policy. How we collect, use, and protect your data on Nova Core B2B commerce platform. GDPR compliant.",
-};
+    "Buyience privacy policy. How we collect, use, and protect your data on Nova Core B2B commerce platform. GDPR compliant. Your data is yours.",
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   return (

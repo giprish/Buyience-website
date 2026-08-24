@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import StackLogoMarquee from "@/app/components/StackLogoMarquee";
+import EyebrowPill from "@/components/EyebrowPill";
 
 export default function GiftingIntegrations() {
   return (
@@ -15,7 +16,7 @@ export default function GiftingIntegrations() {
           transition={{ duration: 0.6 }}
           className="reveal in"
         >
-          <p className="eyebrow">FITS YOUR STACK</p>
+          <EyebrowPill>FITS YOUR STACK</EyebrowPill>
           <StackLogoMarquee />
           <p>
             Nova Core connects to the store, email, and shipping tools you already run — with 80+ API endpoints and 38
