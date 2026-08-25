@@ -32,6 +32,10 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description: defaultDescription,
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: defaultTitle,
     description: defaultDescription,
