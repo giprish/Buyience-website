@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/app/blog/lib/posts";
-import { SITE_URL } from "@/lib/seo";
+import { getSiteUrl } from "@/lib/seo";
 
 const STATIC_ROUTES = [
   "/",
@@ -34,12 +34,14 @@ const STATIC_ROUTES = [
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const siteUrl = getSiteUrl();
+
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((path) => ({
-    url: path === "/" ? SITE_URL : `${SITE_URL}${path}`,
+    url: path === "/" ? siteUrl : `${siteUrl}${path}`,
   }));
 
   const blogEntries: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug}`,
+    url: `${siteUrl}/blog/${post.slug}`,
     lastModified: post.publishedAt ? new Date(post.publishedAt) : undefined,
   }));
 

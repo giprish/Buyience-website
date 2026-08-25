@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import { CurrencyProvider } from "@/components/CurrencyProvider";
-import { SITE_URL } from "@/lib/seo";
+import { getSiteUrl } from "@/lib/seo";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -26,7 +26,7 @@ const defaultDescription =
   "AI-powered B2B commerce platform for wholesalers & distributors. Customer-specific pricing, real-time inventory, and quote generation. Launch in days.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: defaultTitle,
     template: "%s",

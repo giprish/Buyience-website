@@ -6,6 +6,7 @@ import BlogArticleContent from "../components/BlogArticleContent";
 import BlogAuthor from "../components/BlogAuthor";
 import BlogNavigation from "../components/BlogNavigation";
 import RelatedPosts from "../components/RelatedPosts";
+import { getSiteUrl } from "@/lib/seo";
 import {
   getAdjacentPosts,
   getAllPosts,
@@ -59,6 +60,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { prev, next } = getAdjacentPosts(slug);
   const related = getRelatedPosts(slug, 3);
 
+  const siteUrl = getSiteUrl();
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -73,11 +75,11 @@ export default async function BlogPostPage({ params }: PageProps) {
     publisher: {
       "@type": "Organization",
       name: "Buyience",
-      url: "https://buyience.com",
+      url: siteUrl,
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://buyience.com/blog/${post.slug}`,
+      "@id": `${siteUrl}/blog/${post.slug}`,
     },
   };
 

@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://buyience.com";
+/**
+ * Public site origin for this deployment.
+ * Set NEXT_PUBLIC_SITE_URL only when you need a fixed domain (e.g. https://buyience.com).
+ * Otherwise uses Vercel's VERCEL_URL, or localhost in local dev.
+ */
+export function getSiteUrl(): string {
+  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL;
+  if (fromEnv) return fromEnv.replace(/\/$/, "");
+
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL.replace(/^https?:\/\//, "")}`;
+  }
+
+  return "http://localhost:3000";
+}
 
 const DEFAULT_OG_IMAGE = "/og.png";
 
@@ -8,7 +22,6 @@ type PageMetadataInput = {
   title: string;
   description: string;
   path: string;
-  /** Override default OG/Twitter image path or absolute URL */
   image?: string;
 };
 
