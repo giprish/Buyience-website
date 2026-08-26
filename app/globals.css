@@ -2980,7 +2980,8 @@ a.nav-btn-outline-block {
 .configurator-page .final-card-section,
 .packaging-page .final-card-section,
 .gifting-page .final-card-section,
-.about-page .final-card-section {
+.about-page .final-card-section,
+.margin-page .final-card-section {
   padding: 72px 0 88px;
   background: #ffffff;
   text-align: left;
@@ -16832,6 +16833,9 @@ a.nav-btn-outline-block {
   .packaging-page .feat-grid,
   .sales-room-page .feat-grid,
   .sales-room-page .chal-grid,
+  .margin-page .chal-grid,
+  .margin-page .out-grid,
+  .margin-page .cap-grid,
   .order-management-page .feat-grid,
   .order-management-page .chal-grid,
   .gifting-page .cap-grid,
@@ -19768,6 +19772,418 @@ a.nav-btn-outline-block {
 
 .about-page .cap-link:hover {
   text-decoration: underline;
+}
+
+/* ============ PRICING & MARGIN CONTROL PAGE ============ */
+.margin-page {
+  --bg: #FFFFFF;
+  --surface: #F4EFFF;
+  --surface-2: #ECE8F8;
+  --ink: #1B1033;
+  --ink-soft: #4A3B6B;
+  --muted: #5A4B7C;
+  --border: #E8E4F4;
+  --border-strong: #D7D0EC;
+  --violet: #6E2CF4;
+  --violet-deep: #5B21D8;
+  --violet-tint: #F4EFFF;
+  --grad: linear-gradient(120deg, #6E2CF4 0%, #9B5DE5 100%);
+  --navy: #170D3F;
+  --mint: #0E9E7E;
+  --mint-tint: #E7F6F1;
+  --amber: #9A6516;
+  --amber-tint: #FDF4E5;
+  --red: #D14343;
+  --red-tint: #FDEBEB;
+  --radius-card: 16px;
+  --radius-btn: 10px;
+  --shadow-1: 0 1px 2px rgba(23, 18, 65, .05), 0 4px 16px rgba(23, 18, 65, .07);
+  --shadow-2: 0 2px 4px rgba(23, 18, 65, .06), 0 12px 32px rgba(23, 18, 65, .11);
+  --w-text: 62ch;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.margin-page .container {
+  max-width: var(--w-max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Same unlayered purple as inventory / quote-engine / sales-room so
+   StepRail icon rings (`box-shadow: 6px var(--surface)`) blend into the band. */
+.margin-page .challenge,
+.margin-page .how,
+.margin-page .impact {
+  background: var(--surface);
+}
+
+.margin-page section {
+  padding: 104px 0;
+}
+
+@media (max-width: 768px) {
+  .margin-page section {
+    padding: 64px 0;
+  }
+}
+
+.margin-page .margin-dives {
+  padding: 72px 0;
+}
+
+@media (max-width: 768px) {
+  .margin-page .margin-dives {
+    padding: 48px 0;
+  }
+}
+
+.margin-page .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  font-family: var(--font-manrope), Manrope, system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #6818C4;
+  background: #fff;
+  border: 1px solid #985eff;
+  border-radius: 999px;
+  padding: 0 14px;
+  height: 32px;
+  margin: 0 auto 4px;
+  line-height: 1;
+}
+
+.margin-page .eyebrow::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  background-color: #6818C4;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='black'%3E%3Cpath d='M208,144a15.78,15.78,0,0,1-10.42,14.94L146,178l-19,51.62a15.92,15.92,0,0,1-29.88,0L78,178l-51.62-19a15.92,15.92,0,0,1,0-29.88L78,110l19-51.62a15.92,15.92,0,0,1,29.88,0L146,110l51.62,19A15.78,15.78,0,0,1,208,144ZM152,48h16V64a8,8,0,0,0,16,0V48h16a8,8,0,0,0,0-16H184V16a8,8,0,0,0-16,0V32H152a8,8,0,0,0,0,16Zm88,32h-8V72a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0V96h8a8,8,0,0,0,0-16Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='black'%3E%3Cpath d='M208,144a15.78,15.78,0,0,1-10.42,14.94L146,178l-19,51.62a15.92,15.92,0,0,1-29.88,0L78,178l-51.62-19a15.92,15.92,0,0,1,0-29.88L78,110l19-51.62a15.92,15.92,0,0,1,29.88,0L146,110l51.62,19A15.78,15.78,0,0,1,208,144ZM152,48h16V64a8,8,0,0,0,16,0V48h16a8,8,0,0,0,0-16H184V16a8,8,0,0,0-16,0V32H152a8,8,0,0,0,0,16Zm88,32h-8V72a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0V96h8a8,8,0,0,0,0-16Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.margin-page h1 {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: normal;
+  line-height: 1.03;
+}
+
+.margin-page h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.06;
+}
+
+.margin-page h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.margin-page .lede {
+  font-size: 18.5px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.margin-page .center-head {
+  text-align: center;
+  max-width: var(--w-text);
+  margin: 0 auto;
+}
+
+.margin-page .center-head h2 {
+  margin-top: 14px;
+}
+
+.margin-page .center-head .lede {
+  font-size: 16.5px;
+  margin-top: 12px;
+}
+
+.margin-page .cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.margin-page a.inline-flex:hover,
+.margin-page .btn:hover,
+.margin-page .btn-primary:hover,
+.margin-page .btn-ghost:hover,
+.final-card-actions a:hover {
+  text-decoration: none;
+}
+
+.margin-page .margin-hero-copy-main h1 {
+  margin: 16px 0 20px;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: normal;
+}
+
+.margin-page .margin-hero-copy-main .lede {
+  max-width: 34rem;
+  margin: 0;
+}
+
+.margin-page .margin-hero-copy-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.margin-page .home-rotator {
+  display: block;
+  height: 1.12em;
+  overflow: hidden;
+  margin-top: 0.04em;
+}
+
+.margin-page .home-rotator-track {
+  display: flex;
+  flex-direction: column;
+  animation: margin-rot-words 8s cubic-bezier(.7, 0, .2, 1) infinite;
+}
+
+.margin-page .home-rotator-word {
+  display: flex;
+  align-items: center;
+  height: 1.12em;
+  line-height: 1.12;
+}
+
+@keyframes margin-rot-words {
+  0%, 15% { transform: translateY(0); }
+  20%, 45% { transform: translateY(-25%); }
+  50%, 73% { transform: translateY(-50%); }
+  78%, 100% { transform: translateY(-75%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .margin-page .home-rotator-track {
+    animation: none;
+  }
+}
+
+@media (min-width: 40rem) {
+  .margin-page .margin-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: var(--home-hero-h);
+  }
+
+  .margin-page .margin-hero-inner {
+    flex: 0 1 auto;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: start;
+    column-gap: clamp(24px, 2.4vw, 36px);
+    row-gap: 0;
+    padding-top: clamp(20px, 3vh, 36px);
+    padding-bottom: clamp(20px, 3vh, 36px);
+  }
+
+  /* Capsule on its own row; copy and card share the next row, so the card
+     starts on the "Price every" line and both columns end together. */
+  .margin-page .margin-hero-capsule {
+    grid-column: 1;
+    grid-row: 1;
+    padding-bottom: 16px;
+  }
+
+  .margin-page .margin-hero-copy {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    min-height: 0;
+    gap: clamp(22px, 2.6vh, 30px);
+  }
+
+  .margin-page .margin-hero-copy-main h1 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: clamp(1.8rem, 3.2vw, 2.85rem);
+    line-height: 1.08;
+  }
+
+  .margin-page .margin-hero-copy-main .lede {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .margin-page .margin-hero-copy-foot {
+    margin-top: 0;
+  }
+
+  .margin-page .margin-hero-visual {
+    grid-column: 2;
+    grid-row: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    min-height: 0;
+    height: 100%;
+  }
+
+  /* Keep the console's natural height under the copy column's, so it always
+     stretches to match instead of forcing dead space above the CTAs. The
+     stretched body re-centers its content, so the card never reads cramped. */
+  .margin-page .margin-hero-visual .aiq-console {
+    --hero-fit: .62;
+    --aiq-dial: 104px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .margin-page .margin-hero-visual .aiq-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 40rem) and (max-height: 900px) {
+  .margin-page .margin-hero-inner {
+    column-gap: 24px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .margin-page .margin-hero-copy-main h1 {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  .margin-page .margin-hero-copy-main .lede {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .margin-page .margin-hero-copy-foot {
+    gap: 12px;
+  }
+}
+
+@media (min-width: 40rem) and (max-height: 560px) {
+  .margin-page .margin-hero {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+.margin-page .chal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+@media (max-width: 860px) {
+  .margin-page .chal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.margin-page .chal-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 30px;
+  text-align: left;
+}
+
+.margin-page .chal-card .num {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1;
+  color: var(--violet-deep);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.margin-page .chal-card h3 {
+  margin-bottom: 8px;
+}
+
+.margin-page .chal-card p {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.margin-page .out-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+@media (max-width: 960px) {
+  .margin-page .out-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .margin-page .out-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.margin-page .out-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  text-align: center;
+}
+
+.margin-page .out-card .big {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: block;
+}
+
+.margin-page .out-card b {
+  display: block;
+  font-size: 15px;
+  margin: 8px 0 4px;
+}
+
+.margin-page .out-card p {
+  font-size: 13px;
+  color: var(--muted);
 }
 
 /*

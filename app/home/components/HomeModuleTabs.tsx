@@ -38,7 +38,7 @@ const TABS = [
   {
     id: "dynamic-pricing",
     label: "Dynamic Pricing",
-    href: "/ai-quote-engine",
+    href: "/pricing-and-margin-control",
     desc: "Customer-specific and tiered pricing that updates in real time. Volume breaks, contract rates, and promotions resolve instantly at the line level.",
     points: [
       "Tiered & volume pricing",

@@ -277,6 +277,15 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-600 font-semibold mt-0.5 leading-relaxed">Real-time negotiation &amp; deal rooms</span>
                               </div>
                             </Link>
+                            <Link href="/pricing-and-margin-control" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                              <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-emerald-50 text-emerald-600 group-hover/item:bg-emerald-100 transition-colors">
+                                {icons.shield}
+                              </span>
+                              <div>
+                                <span className="block text-sm font-medium text-slate-900 group-hover/item:text-violet-600 transition-colors">Pricing &amp; Margin Control</span>
+                                <span className="block text-[12px] text-slate-600 font-semibold mt-0.5 leading-relaxed">Floors, customer rates, volume tiers</span>
+                              </div>
+                            </Link>
                             <Link href="/cpq-configurator" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-orange-50 text-orange-600 group-hover/item:bg-orange-100 transition-colors">
                                 {icons.cog}
@@ -432,7 +441,7 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-600 font-semibold mt-0.5 leading-relaxed">One live link for the whole committee</span>
                               </div>
                             </Link>
-                            <Link href="/solutions" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
+                            <Link href="/pricing-and-margin-control" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-emerald-50 text-emerald-600 group-hover/item:bg-emerald-100 transition-colors">
                                 {icons.shield}
                               </span>
@@ -722,6 +731,7 @@ export default function Navbar() {
                         <Link href="/platform-overview" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Platform Overview</Link>
                         <Link href="/ai-quote-engine" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>AI Quote Engine</Link>
                         <Link href="/digital-sales-room" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Digital Sales Room</Link>
+                        <Link href="/pricing-and-margin-control" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Pricing &amp; Margin Control</Link>
                         <Link href="/cpq-configurator" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Product Configurator</Link>
                         
                         <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase font-mono mt-2">Operations</div>
@@ -760,7 +770,7 @@ export default function Navbar() {
                         <Link href="/solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Unified B2B Commerce</Link>
                         <Link href="/ai-quote-engine" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>AI Quote Engine</Link>
                         <Link href="/digital-sales-room" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Digital Sales Room</Link>
-                        <Link href="/solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Pricing &amp; Margin Control</Link>
+                        <Link href="/pricing-and-margin-control" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Pricing &amp; Margin Control</Link>
                         
                         <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase font-mono mt-2">By Industry</div>
                         <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase font-mono mt-2">By Industry</div>

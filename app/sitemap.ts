@@ -22,6 +22,7 @@ const STATIC_ROUTES = [
   "/mach-architecture",
   "/ai-quote-engine",
   "/digital-sales-room",
+  "/pricing-and-margin-control",
   "/become-a-solution-partner",
   "/become-a-technology-partner",
   "/thank-you",

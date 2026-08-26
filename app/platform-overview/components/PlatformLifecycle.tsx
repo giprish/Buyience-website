@@ -75,7 +75,7 @@ const lifecycle: {
         title: "Dynamic Pricing Engine",
         description:
           "Customer-specific pricing, tiered rules, and margin floors — and pricing adjusts dynamically as configurations change.",
-        href: "/ai-quote-engine",
+        href: "/pricing-and-margin-control",
         icon: BadgePercent,
       },
       {

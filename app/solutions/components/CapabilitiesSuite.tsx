@@ -80,7 +80,7 @@ export default function CapabilitiesSuite() {
         "Repeat buyers get their pricing history and preferences pre-loaded through the Customer Context Engine, so returning business doesn't restart from zero.",
       ],
       linkText: "See how pricing works →",
-      linkHref: "/pricing",
+      linkHref: "/pricing-and-margin-control",
       features: [
         "Configurable margin floors",
         "Customer-specific & tiered pricing",
