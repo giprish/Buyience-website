@@ -27,6 +27,7 @@ export default function SupplierPageContent() {
           href: "https://app.buyience.com/register",
           variant: "primary",
         },
+        purple: true,
       }}
     >
       <SupplierHero />
@@ -34,7 +35,7 @@ export default function SupplierPageContent() {
       <SupplierCapabilities />
       <SupplierHowItWorks />
       <SupplierDivesSection />
-      <SupplierWhatChanges />
+      <SupplierWhatChanges purple />
       <SupplierFAQ />
     </MarketingLayout>
   );

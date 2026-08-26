@@ -10,6 +10,10 @@ interface SimpleMarketingPageProps {
   children?: React.ReactNode;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
+  /** Purple the content section under the hero (alternating-band rule). */
+  contentPurple?: boolean;
+  /** Purple the Final CTA. Prefer false when contentPurple is true. */
+  ctaPurple?: boolean;
 }
 
 export default function SimpleMarketingPage({
@@ -19,9 +23,11 @@ export default function SimpleMarketingPage({
   children,
   primaryCta = { label: "Request a Demo", href: "/request-a-demo" },
   secondaryCta = { label: "Start Free Trial", href: "https://app.buyience.com/register" },
+  contentPurple = false,
+  ctaPurple = false,
 }: SimpleMarketingPageProps) {
   return (
-    <MarketingLayout>
+    <MarketingLayout cta={ctaPurple ? { purple: true } : true}>
       <header className="relative overflow-hidden bg-hero-grid">
         <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-3xl px-5 pb-12 pt-14 text-center sm:px-8 sm:pt-24 sm:pb-16">
@@ -41,7 +47,12 @@ export default function SimpleMarketingPage({
         </div>
       </header>
       {children && (
-        <section className="mx-auto max-w-3xl px-5 py-16 text-[#5A4B7C] sm:px-8">{children}</section>
+        <section
+          className={`px-5 py-16 text-[#5A4B7C] sm:px-8 ${contentPurple ? "bg-(--surface)" : ""}`.trim()}
+          style={contentPurple ? { background: "var(--surface)" } : undefined}
+        >
+          <div className="mx-auto max-w-3xl">{children}</div>
+        </section>
       )}
     </MarketingLayout>
   );

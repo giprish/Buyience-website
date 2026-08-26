@@ -29,12 +29,13 @@ export default function PackagingPageContent() {
           href: "/request-a-demo",
           variant: "ghost",
         },
+        purple: true,
       }}
     >
       <PackagingHero />
       <PackagingProblem />
       <PackagingCapabilities />
-      <PackagingDivesSection />
+      <PackagingDivesSection purple />
       <PackagingHowItWorks />
       <PackagingIntegrations />
       <PackagingPricing />

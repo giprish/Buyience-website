@@ -79,7 +79,7 @@ export default function SplitFeatureSection({
             <div
               id={row.id}
               key={row.id ?? (typeof row.title === "string" ? row.title : index)}
-              className="grid grid-cols-1 items-center gap-9 py-11 min-[921px]:grid-cols-2 min-[921px]:gap-18 min-[921px]:py-15"
+              className="grid grid-cols-1 items-center gap-9 py-8 min-[921px]:grid-cols-2 min-[921px]:gap-14 min-[921px]:py-10"
             >
               <motion.div {...copyReveal} className="text-left">
                 {typeof row.eyebrow === "string" ? (

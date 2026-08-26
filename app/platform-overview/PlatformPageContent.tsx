@@ -31,6 +31,7 @@ export default function PlatformPageContent() {
           href: "https://app.buyience.com/register",
           variant: "primary",
         },
+        purple: true,
       }}
     >
       <PlatformHero />
@@ -42,7 +43,7 @@ export default function PlatformPageContent() {
       <PlatformMACH />
       <PlatformWordPress />
       <PlatformTargetAudience />
-      <PlatformOutcomes />
+      <PlatformOutcomes purple />
       <PlatformFAQ />
     </MarketingLayout>
   );

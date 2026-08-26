@@ -24,15 +24,16 @@ export default function ConfiguratorPageContent() {
         ),
         description:
           "One product. Multiple options. Every combination priced in real time — and the invalid ones never reach a quote.",
+        purple: true,
       }}
     >
       <ConfiguratorHero />
       <ConfiguratorProblem />
       <ConfiguratorCapabilities />
-      <ConfiguratorDivesSection />
+      <ConfiguratorDivesSection purple />
       <ConfiguratorWho />
       <ConfiguratorComparison />
-      <ConfiguratorWhatChanges />
+      <ConfiguratorWhatChanges purple />
       <ConfiguratorFAQ />
     </MarketingLayout>
   );

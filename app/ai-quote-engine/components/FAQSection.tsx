@@ -39,7 +39,6 @@ export default function FAQSection() {
       title="AI Quote Engine FAQs"
       items={faqs}
       purple={false}
-      className="challenge"
       card
     />
   );

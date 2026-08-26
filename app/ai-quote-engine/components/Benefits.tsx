@@ -4,9 +4,10 @@ import React from "react";
 import { MiniRow, MiniUi } from "@/components/MiniUi";
 import SplitFeatureSection from "@/components/SplitFeatureSection";
 
-export default function Benefits() {
+export default function Benefits({ purple = false }: { purple?: boolean }) {
   return (
     <SplitFeatureSection
+      purple={purple}
       className="benefits"
       header={{
         eyebrow: "BENEFITS",

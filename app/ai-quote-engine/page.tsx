@@ -41,6 +41,7 @@ export default function AIQuoteEnginePage() {
           variant: "ghost",
         },
         description: "Price your next quote with AI — scored, margin-protected, and ready in seconds.",
+        purple: true,
       }}
     >
       <QuoteHero />
@@ -48,9 +49,9 @@ export default function AIQuoteEnginePage() {
       <Capabilities />
       <HowItWorks />
       <Versus />
-      <Benefits />
-      <Impact purple />
-      <DigitalSalesRoomSection />
+      <Benefits purple />
+      <Impact />
+      <DigitalSalesRoomSection purple />
       <FAQSection />
     </MarketingLayout>
   );

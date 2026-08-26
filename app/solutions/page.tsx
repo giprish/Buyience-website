@@ -37,6 +37,7 @@ export default function SolutionsPage() {
           href: "/request-a-demo",
           variant: "ghost",
         },
+        purple: true,
       }}
     >
       <SolutionsHero />

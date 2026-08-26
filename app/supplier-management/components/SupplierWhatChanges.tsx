@@ -3,7 +3,7 @@
 import React from "react";
 import WhatChangesCardsSection, { type WhatChangesCardItem } from "@/components/WhatChangesCardsSection";
 
-export default function SupplierWhatChanges() {
+export default function SupplierWhatChanges({ purple = false }: { purple?: boolean }) {
   const items: WhatChangesCardItem[] = [
     {
       title: "Structured onboarding",
@@ -30,5 +30,11 @@ export default function SupplierWhatChanges() {
       desc: "Manage multiple suppliers at once with bulk operations.",
     },
   ];
-  return <WhatChangesCardsSection heading="What changes when suppliers are organized." items={items} />;
+  return (
+    <WhatChangesCardsSection
+      heading="What changes when suppliers are organized."
+      items={items}
+      purple={purple}
+    />
+  );
 }

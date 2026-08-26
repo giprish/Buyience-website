@@ -17,6 +17,7 @@ export default function MroSolutionsPage() {
       title="MRO sales that move as fast as the floor needs parts"
       description="Maintenance, repair, and operations buyers expect contract pricing and rapid turnaround. Nova Core delivers both — with margin protection built in."
       secondaryCta={{ label: "All Solutions", href: "/solutions" }}
+      contentPurple
     >
       <div className="space-y-6">
         <p>

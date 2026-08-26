@@ -36,7 +36,6 @@ export default function ConfiguratorFAQ() {
       eyebrow="QUESTIONS, ANSWERED"
       title="CPQ configurator FAQs"
       items={faqs}
-      className="problem"
       card
     />
   );

@@ -38,9 +38,9 @@ export default function SalesRoomPageContent() {
       <SalesRoomHero />
       <SalesRoomChallenge />
       <SalesRoomSolution />
-      <SalesRoomDivesSection />
+      <SalesRoomDivesSection purple />
       <SalesRoomHowItWorks />
-      <SalesRoomUseCases />
+      <SalesRoomUseCases purple />
       <SalesRoomWhatChanges />
       <SalesRoomFAQ />
     </MarketingLayout>

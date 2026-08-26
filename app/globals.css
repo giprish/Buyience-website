@@ -1382,12 +1382,12 @@ a.nav-btn-outline-block {
 }
 
 .quote-engine-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .quote-engine-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -1647,8 +1647,8 @@ a.nav-btn-outline-block {
 .quote-engine-page .quote-hero-copy-foot {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  margin-top: 28px;
+  gap: 18px;
+  margin-top: 20px;
 }
 
 .quote-engine-page .quote-hero {
@@ -1717,7 +1717,7 @@ a.nav-btn-outline-block {
     align-self: stretch;
     height: auto;
     min-height: 0;
-    gap: clamp(28px, 4vh, 56px);
+    gap: clamp(22px, 2.6vh, 30px);
   }
 
   .quote-engine-page .quote-hero-copy-foot {
@@ -1939,7 +1939,7 @@ a.nav-btn-outline-block {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  margin-top: 48px;
+  margin-top: 36px;
 }
 
 @media(max-width: 860px) {
@@ -2090,7 +2090,7 @@ a.nav-btn-outline-block {
 /* steps — premium minimalist process rail */
 .quote-engine-page .how {
   background: var(--surface);
-  padding: 96px 0 108px;
+  padding: 72px 0 80px;
 }
 
 .quote-engine-page .how .center-head {
@@ -2537,7 +2537,7 @@ a.nav-btn-outline-block {
 
 @media(max-width: 768px) {
   .quote-engine-page .dsr {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -3174,12 +3174,12 @@ a.nav-btn-outline-block {
 }
 
 .solutions-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .solutions-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -3600,10 +3600,10 @@ a.nav-btn-outline-block {
   margin-top: 28px;
 }
 
-/* integrations */
+/* integrations — keep white so Industries (purple) → Integrations (white) → FinalCTA (purple) can alternate */
 .solutions-page .integrations {
   text-align: center;
-  background: var(--surface);
+  background: transparent;
 }
 
 .solutions-page .integrations p {
@@ -3764,12 +3764,12 @@ a.nav-btn-outline-block {
 }
 
 .integrations-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .integrations-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -3949,7 +3949,7 @@ a.nav-btn-outline-block {
     height: 100%;
     min-height: 0;
     min-width: 0;
-    gap: clamp(28px, 4vh, 56px);
+    gap: clamp(22px, 2.6vh, 30px);
   }
 
   .integrations-page .integrations-hero-copy-foot {
@@ -4693,7 +4693,7 @@ a.nav-btn-outline-block {
 }
 
 .pricing-page section {
-  padding: 96px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
@@ -6574,7 +6574,7 @@ a.nav-btn-outline-block {
 }
 
 .contact-page section {
-  padding: 96px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
@@ -7302,12 +7302,12 @@ a.nav-btn-outline-block {
 }
 
 .tech-partner-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .tech-partner-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -7875,9 +7875,9 @@ a.nav-btn-outline-block {
   color: var(--muted);
 }
 
-/* gaps */
+/* gaps — white so How (purple) → Gaps (white) → FAQ/Final can alternate */
 .tech-partner-page .gaps {
-  background: var(--surface);
+  background: transparent;
 }
 
 .tech-partner-page .gap-grid {
@@ -8038,12 +8038,12 @@ a.nav-btn-outline-block {
 }
 
 .platform-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .platform-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -8203,7 +8203,7 @@ a.nav-btn-outline-block {
     align-self: stretch;
     height: 100%;
     min-height: 0;
-    gap: clamp(28px, 4vh, 56px);
+    gap: clamp(22px, 2.6vh, 30px);
   }
 
   .platform-page .platform-hero-copy-foot {
@@ -9111,12 +9111,12 @@ a.nav-btn-outline-block {
 }
 
 .inventory-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .inventory-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -10117,12 +10117,12 @@ a.nav-btn-outline-block {
 }
 
 .mach-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .mach-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -10913,12 +10913,12 @@ a.nav-btn-outline-block {
 }
 
 .supplier-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .supplier-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -11111,7 +11111,7 @@ a.nav-btn-outline-block {
     align-self: stretch;
     height: 100%;
     min-height: 0;
-    gap: clamp(28px, 4vh, 56px);
+    gap: clamp(22px, 2.6vh, 30px);
   }
 
   .supplier-page .supplier-hero-copy-foot {
@@ -12038,12 +12038,12 @@ a.nav-btn-outline-block {
 }
 
 .configurator-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .configurator-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -12205,7 +12205,7 @@ a.nav-btn-outline-block {
     align-self: stretch;
     height: 100%;
     min-height: 0;
-    gap: clamp(28px, 4vh, 56px);
+    gap: clamp(22px, 2.6vh, 30px);
   }
 
   .configurator-page .cfg-hero-copy-foot {
@@ -13316,12 +13316,12 @@ a.nav-btn-outline-block {
 }
 
 .packaging-page section {
-  padding: 112px 0;
+  padding: 80px 0;
 }
 
 @media(max-width:768px) {
   .packaging-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -14140,12 +14140,12 @@ a.nav-btn-outline-block {
 }
 
 .sales-room-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .sales-room-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -14326,7 +14326,7 @@ a.nav-btn-outline-block {
     align-self: stretch;
     height: 100%;
     min-height: 0;
-    gap: clamp(28px, 4vh, 56px);
+    gap: clamp(22px, 2.6vh, 30px);
   }
 
   .sales-room-page .sales-room-hero-copy-foot {
@@ -14885,9 +14885,10 @@ a.nav-btn-outline-block {
   color: var(--muted);
 }
 
-/* steps */
+/* steps — How stays white so Dives (purple) → How (white) → UseCases (purple) can alternate.
+   Purple bands are driven by component `purple` props, not this unlayered rule. */
 .sales-room-page .how {
-  background: var(--surface);
+  background: transparent;
 }
 
 .sales-room-page .steps {
@@ -15160,12 +15161,12 @@ a.nav-btn-outline-block {
 }
 
 .gifting-page section {
-  padding: 112px 0;
+  padding: 80px 0;
 }
 
 @media(max-width:768px) {
   .gifting-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -15977,12 +15978,12 @@ a.nav-btn-outline-block {
 }
 
 .solution-partner-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media(max-width:768px) {
   .solution-partner-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -18123,7 +18124,7 @@ a.nav-btn-outline-block {
     align-self: stretch;
     height: 100%;
     min-height: 0;
-    gap: clamp(28px, 4vh, 56px);
+    gap: clamp(22px, 2.6vh, 30px);
   }
 
   .home-page .home-hero-copy-foot {
@@ -18682,12 +18683,12 @@ a.nav-btn-outline-block {
 }
 
 .order-management-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media (max-width: 768px) {
   .order-management-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -18818,7 +18819,7 @@ a.nav-btn-outline-block {
     align-self: stretch;
     height: 100%;
     min-height: 0;
-    gap: clamp(28px, 4vh, 56px);
+    gap: clamp(22px, 2.6vh, 30px);
   }
 
   .order-management-page .om-hero-copy-foot {
@@ -19384,12 +19385,12 @@ a.nav-btn-outline-block {
 }
 
 .about-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media (max-width: 768px) {
   .about-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 
@@ -19821,12 +19822,12 @@ a.nav-btn-outline-block {
 }
 
 .margin-page section {
-  padding: 104px 0;
+  padding: 72px 0;
 }
 
 @media (max-width: 768px) {
   .margin-page section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 }
 

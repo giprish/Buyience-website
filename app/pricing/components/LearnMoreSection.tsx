@@ -11,7 +11,7 @@ export default function LearnMoreSection() {
       description:
         "The API-first B2B commerce platform behind Buyience — built on MACH architecture (Microservices, API-first, Cloud-native, Headless) with the AI Quote Engine at its core.",
       linkText: "Platform overview →",
-      linkHref: "/solutions",
+      linkHref: "/nova-core",
     },
     {
       title: "Solutions",

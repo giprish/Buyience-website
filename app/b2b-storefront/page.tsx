@@ -16,6 +16,7 @@ export default function B2BStorefrontPage() {
       capsule="Capabilities"
       title="A B2B storefront customers actually use"
       description="Give every account their own pricing, catalogs, and reorder flows. Self-service by day — sales-assisted when deals get complex."
+      contentPurple
     >
       <div className="space-y-8">
         {[

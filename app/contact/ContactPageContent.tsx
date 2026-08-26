@@ -26,6 +26,7 @@ export default function ContactPageContent() {
           href: "https://app.buyience.com/register",
           variant: "primary",
         },
+        purple: true,
       }}
     >
       <ContactHero selectedReason={selectedReason} onSelectReason={setSelectedReason} />

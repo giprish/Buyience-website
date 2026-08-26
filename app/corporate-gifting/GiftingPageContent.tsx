@@ -29,12 +29,13 @@ export default function GiftingPageContent() {
           href: "/request-a-demo",
           variant: "primary",
         },
+        purple: true,
       }}
     >
       <GiftingHero />
       <GiftingProblem />
       <GiftingCapabilities />
-      <GiftingDivesSection />
+      <GiftingDivesSection purple />
       <GiftingHowItWorks />
       <GiftingIntegrations />
       <GiftingPricing />

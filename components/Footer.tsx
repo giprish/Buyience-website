@@ -8,7 +8,7 @@ export default function Footer() {
     {
       title: "Core Platform",
       links: [
-        { label: "NOVA Core", href: "/platform-overview" },
+        { label: "NOVA Core", href: "/nova-core" },
         { label: "AI Quote Engine", href: "/ai-quote-engine" },
         { label: "CPQ Configurator", href: "/cpq-configurator" },
         { label: "Order Management", href: "/order-management" },
@@ -19,12 +19,12 @@ export default function Footer() {
     {
       title: "Capabilities",
       links: [
-        { label: "Platform Overview", href: "/platform" },
+        { label: "Platform Overview", href: "/platform-overview" },
         { label: "MACH Architecture", href: "/mach-architecture" },
         { label: "Digital Sales Room", href: "/digital-sales-room" },
         { label: "Pricing & Margin Control", href: "/pricing-and-margin-control" },
         { label: "Wordpress Plugin", href: "/wordpress-plugin-buyience-novacore-b2b-quote-engine" },
-        { label: "Integrations", href: "/integrations" },
+        // { label: "Integrations", href: "/integrations" },
       ],
     },
     {
@@ -34,8 +34,8 @@ export default function Footer() {
         { label: "Solutions", href: "/solutions" },
         { label: "Pricing", href: "/pricing" },
         { label: "Contact", href: "/contact" },
-        { label: "Become a Solution Partner", href: "/solutions" },
-        { label: "Become a Technology Partner", href: "/become-a-technology-partner" },
+        // { label: "Become a Solution Partner", href: "/become-a-solution-partner" },
+        // { label: "Become a Technology Partner", href: "/become-a-technology-partner" },
       ],
     },
     {

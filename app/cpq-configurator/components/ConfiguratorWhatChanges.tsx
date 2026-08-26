@@ -30,6 +30,12 @@ const items: WhatChangesCardItem[] = [
   },
 ];
 
-export default function ConfiguratorWhatChanges() {
-  return <WhatChangesCardsSection heading="What changes when products configure themselves." items={items} />;
+export default function ConfiguratorWhatChanges({ purple = false }: { purple?: boolean }) {
+  return (
+    <WhatChangesCardsSection
+      heading="What changes when products configure themselves."
+      items={items}
+      purple={purple}
+    />
+  );
 }

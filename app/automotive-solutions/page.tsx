@@ -17,6 +17,7 @@ export default function AutomotiveSolutionsPage() {
       title="Automotive distribution, modernized"
       description="Parts complexity, OEM catalogs, and dealer-specific pricing demand more than a generic storefront. Nova Core is built for automotive wholesale motion."
       secondaryCta={{ label: "All Solutions", href: "/solutions" }}
+      contentPurple
     >
       <div className="space-y-6">
         <p>

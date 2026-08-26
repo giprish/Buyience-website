@@ -10,6 +10,7 @@ const STATIC_ROUTES = [
   "/blog",
   "/solutions",
   "/platform-overview",
+  "/nova-core",
   "/automotive-solutions",
   "/mro-solutions",
   "/integrations",

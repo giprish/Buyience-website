@@ -141,7 +141,7 @@ const LEARN_MORE = [
     title: "Nova Core",
     description:
       "API-first B2B commerce powered by the AI Quote Engine. Built on MACH architecture for unlimited scalability and flexibility.",
-    href: "/platform-overview",
+    href: "/nova-core",
     linkLabel: "Platform overview →",
     icon: <Layers size={20} strokeWidth={2} />,
   },

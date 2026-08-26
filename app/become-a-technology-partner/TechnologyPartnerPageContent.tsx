@@ -46,6 +46,7 @@ export default function TechnologyPartnerPageContent() {
           variant: "primary",
         },
         trust: null,
+        purple: true,
       }}
     >
       <PartnerHero />

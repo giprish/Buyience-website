@@ -34,7 +34,6 @@ export default function PlatformFAQ() {
       eyebrow="QUESTIONS"
       title="Platform FAQs"
       items={faqs}
-      purple={true}
       card
     />
   );

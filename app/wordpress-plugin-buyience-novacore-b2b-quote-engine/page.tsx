@@ -18,6 +18,7 @@ export default function WordpressPluginPage() {
       description="Keep the WordPress front end your team knows. Add B2B quoting, customer-specific pricing, and wholesale workflows through Buyience Nova Core."
       primaryCta={{ label: "Request a Demo", href: "/request-a-demo" }}
       secondaryCta={{ label: "See Integrations", href: "/integrations" }}
+      contentPurple
     >
       <div className="space-y-8">
         {[

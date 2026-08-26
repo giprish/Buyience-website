@@ -56,6 +56,7 @@ export default function PricingPageContent() {
           href: "/request-a-demo",
           variant: "primary",
         },
+        purple: true,
       }}
     >
       <PricingHero
