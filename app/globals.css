@@ -16753,7 +16753,8 @@ a.nav-btn-outline-block {
   .gifting-page .cta-row,
   .solution-partner-page .cta-row,
   .tech-partner-page .cta-row,
-  .contact-page .cta-row {
+  .contact-page .cta-row,
+  .margin-page .cta-row {
     flex-wrap: wrap;
     gap: 10px;
   }
@@ -16787,7 +16788,9 @@ a.nav-btn-outline-block {
   .tech-partner-page .cta-row>a,
   .tech-partner-page .cta-row>button,
   .contact-page .cta-row>a,
-  .contact-page .cta-row>button {
+  .contact-page .cta-row>button,
+  .margin-page .cta-row>a,
+  .margin-page .cta-row>button {
     flex: 1 1 auto;
     min-width: min(100%, 160px);
     justify-content: center;
@@ -20002,15 +20005,21 @@ a.nav-btn-outline-block {
     padding-bottom: clamp(20px, 3vh, 36px);
   }
 
-  /* Capsule on its own row; copy and card share the next row, so the card
-     starts on the "Price every" line and both columns end together. */
+  /* Capsule on its own row; copy stack and card share the next row, so the
+     card starts on the "Price every" line and both columns end together.
+     display:contents lifts capsule + stack into the hero grid — mobile keeps
+     them nested inside .margin-hero-copy (same rhythm as .home-hero-copy). */
+  .margin-page .margin-hero-copy {
+    display: contents;
+  }
+
   .margin-page .margin-hero-capsule {
     grid-column: 1;
     grid-row: 1;
     padding-bottom: 16px;
   }
 
-  .margin-page .margin-hero-copy {
+  .margin-page .margin-hero-copy-stack {
     grid-column: 1;
     grid-row: 2;
     display: flex;
