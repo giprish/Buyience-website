@@ -49,7 +49,7 @@ export default function GiftingHero() {
             probability before you hit send.
           </p>
           <div className="cta-row">
-            <Button variant="primary" size="lg" href="/contact">
+            <Button variant="primary" size="lg" href="https://app.buyience.com/register">
               Start free trial
             </Button>
             <Button variant="ghost" size="lg" href="/contact">

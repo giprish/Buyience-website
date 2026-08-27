@@ -54,7 +54,7 @@ export default function PricingPageContent() {
         secondaryAction: {
           label: "Request demo",
           href: "/request-a-demo",
-          variant: "primary",
+          variant: "ghost",
         },
         purple: true,
       }}

@@ -27,7 +27,7 @@ export default function GiftingPageContent() {
         secondaryAction: {
           label: "Book a demo",
           href: "/request-a-demo",
-          variant: "primary",
+          variant: "ghost",
         },
         purple: true,
       }}

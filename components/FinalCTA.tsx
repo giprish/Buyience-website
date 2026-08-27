@@ -90,7 +90,7 @@ export default function FinalCTA({
 
             <div className="final-card-actions">
               <Button
-                variant={primaryAction.variant ?? "ghost"}
+                variant={primaryAction.variant ?? "primary"}
                 size="lg"
                 href={primaryAction.href}
                 onClick={primaryAction.onClick}

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import SectionCapsule from "@/components/SectionCapsule";
+import { submitLead } from "@/lib/leads/submit";
 
 export default function PartnerHero() {
   const [first, setFirst] = useState("");
@@ -11,8 +12,10 @@ export default function PartnerHero() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
+  const [locationOther, setLocationOther] = useState("");
   const [company, setCompany] = useState("");
   const [itype, setItype] = useState("");
+  const [itypeOther, setItypeOther] = useState("");
   const [site, setSite] = useState("");
   const [plans, setPlans] = useState("");
   const [honeypot, setHoneypot] = useState("");
@@ -21,43 +24,104 @@ export default function PartnerHero() {
     first: false,
     email: false,
     location: false,
+    locationOther: false,
     company: false,
     itype: false,
+    itypeOther: false,
     site: false,
   });
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const focusFirstInvalid = (next: typeof errors) => {
+    const order = ["first", "email", "location", "locationOther", "company", "itype", "itypeOther", "site"] as const;
+    const firstKey = order.find((key) => next[key]);
+    if (!firstKey) return;
+    const idMap = {
+      location: "loc",
+      locationOther: "locationOther",
+      itype: "itype",
+      itypeOther: "itypeOther",
+      site: "site",
+      first: "first",
+      email: "email",
+      company: "company",
+    } as const;
+    const el = document.getElementById(idMap[firstKey]);
+    el?.scrollIntoView({ behavior: "smooth", block: "center" });
+    el?.focus();
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
 
-    if (honeypot) return;
+    if (honeypot) {
+      setIsSuccess(true);
+      return;
+    }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isFirstErr = first.trim().length === 0;
-    const isEmailErr = !emailRegex.test(email.trim());
-    const isLocErr = location.trim().length === 0;
-    const isCompErr = company.trim().length === 0;
-    const isTypeErr = itype.trim().length === 0;
-    const isSiteErr = site.trim().length === 0;
+    const nextErrors = {
+      first: first.trim().length === 0,
+      email: !emailRegex.test(email.trim()),
+      location: location.trim().length === 0,
+      locationOther: location === "Other" && locationOther.trim().length === 0,
+      company: company.trim().length === 0,
+      itype: itype.trim().length === 0,
+      itypeOther: itype === "Other" && itypeOther.trim().length === 0,
+      site: site.trim().length === 0,
+    };
 
-    setErrors({
-      first: isFirstErr,
-      email: isEmailErr,
-      location: isLocErr,
-      company: isCompErr,
-      itype: isTypeErr,
-      site: isSiteErr,
+    setErrors(nextErrors);
+
+    if (Object.values(nextErrors).some(Boolean)) {
+      setSubmitError("Please fill in the required fields.");
+      focusFirstInvalid(nextErrors);
+      return;
+    }
+
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const result = await submitLead("technology-partner", {
+      first,
+      last,
+      email,
+      phone,
+      location,
+      locationOther,
+      company,
+      itype,
+      itypeOther,
+      site,
+      plans,
+      website2: honeypot,
     });
 
-    if (isFirstErr || isEmailErr || isLocErr || isCompErr || isTypeErr || isSiteErr) {
+    if (!result.ok) {
+      if (result.fields) {
+        const fieldErrors = {
+          first: Boolean(result.fields.first),
+          email: Boolean(result.fields.email),
+          location: Boolean(result.fields.location),
+          locationOther: Boolean(result.fields.locationOther),
+          company: Boolean(result.fields.company),
+          itype: Boolean(result.fields.itype),
+          itypeOther: Boolean(result.fields.itypeOther),
+          site: Boolean(result.fields.site),
+        };
+        setErrors(fieldErrors);
+        focusFirstInvalid(fieldErrors);
+      }
+      setSubmitError(result.message);
+      setSubmitting(false);
       return;
     }
 
     setIsSuccess(true);
-    const formElement = document.getElementById("tSuccess");
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    setSubmitting(false);
   };
 
   const benefits = [
@@ -124,7 +188,7 @@ export default function PartnerHero() {
       <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
       <div className="container hero-grid relative z-10">
         {/* Left Side Info */}
-        <div className="flex flex-col text-left">
+        <div className="flex flex-col text-left self-start">
           <SectionCapsule>Technology Partner Program</SectionCapsule>
           <h1>
             Integrate your software with <span className="grad-text">an AI-native B2B commerce platform.</span>
@@ -134,7 +198,7 @@ export default function PartnerHero() {
             you build — while the integration directory is small enough that yours is the one they see.
           </p>
 
-          <div className="mt-6">
+          <div className="mt-2">
             {benefits.map((b, idx) => (
               <div key={idx} className="benefit">
                 <span className="ic" aria-hidden="true">
@@ -189,17 +253,21 @@ export default function PartnerHero() {
               {/* Row: First and Last Name */}
               <div className="row2">
                 <div className={`f ${errors.first ? "invalid" : ""}`} id="fFirst">
-                  <label htmlFor="first">First name *</label>
+                  <label htmlFor="first">
+                    First name <span className="req text-[#D14343]">*</span>
+                  </label>
                   <input
                     type="text"
                     id="first"
                     autoComplete="given-name"
-                    placeholder="e.g. Alex"
+                    placeholder="e.g. Jordan"
                     value={first}
                     onChange={(e) => {
                       setFirst(e.target.value);
                       setErrors((prev) => ({ ...prev, first: false }));
+                      setSubmitError(null);
                     }}
+                    aria-invalid={errors.first || undefined}
                   />
                   <span className="err">Required.</span>
                 </div>
@@ -211,26 +279,33 @@ export default function PartnerHero() {
                     type="text"
                     id="last"
                     autoComplete="family-name"
-                    placeholder="e.g. Sharma"
+                    placeholder="e.g. Carter"
                     value={last}
-                    onChange={(e) => setLast(e.target.value)}
+                    onChange={(e) => {
+                      setLast(e.target.value);
+                      setSubmitError(null);
+                    }}
                   />
                 </div>
               </div>
 
               {/* Email */}
               <div className={`f ${errors.email ? "invalid" : ""}`} id="fEmail">
-                <label htmlFor="email">Business email *</label>
+                <label htmlFor="email">
+                  Business email <span className="req text-[#D14343]">*</span>
+                </label>
                 <input
                   type="email"
                   id="email"
                   autoComplete="email"
-                  placeholder="e.g. alex@acme.com"
+                  placeholder="e.g. jordan@acme.com"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
                     setErrors((prev) => ({ ...prev, email: false }));
+                    setSubmitError(null);
                   }}
+                  aria-invalid={errors.email || undefined}
                 />
                 <span className="err">Please enter a valid email.</span>
               </div>
@@ -245,46 +320,78 @@ export default function PartnerHero() {
                     type="text"
                     id="phone"
                     autoComplete="tel"
-                    placeholder="e.g. +44 20 1234 5678"
+                    placeholder="e.g. +1 (415) 555-0132"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                      setSubmitError(null);
+                    }}
                   />
                 </div>
                 <div className={`f ${errors.location ? "invalid" : ""}`} id="fLoc">
-                  <label htmlFor="loc">Location *</label>
+                  <label htmlFor="loc">
+                    Location <span className="req text-[#D14343]">*</span>
+                  </label>
                   <select
                     id="loc"
                     value={location}
                     onChange={(e) => {
-                      setLocation(e.target.value);
-                      setErrors((prev) => ({ ...prev, location: false }));
+                      const value = e.target.value;
+                      setLocation(value);
+                      if (value !== "Other") setLocationOther("");
+                      setErrors((prev) => ({ ...prev, location: false, locationOther: false }));
+                      setSubmitError(null);
                     }}
+                    aria-invalid={errors.location || undefined}
                   >
                     <option value="">Select…</option>
-                    <option>United Kingdom</option>
-                    <option>United States</option>
-                    <option>India</option>
-                    <option>Canada</option>
-                    <option>Australia</option>
-                    <option>Germany</option>
-                    <option>France</option>
-                    <option>Netherlands</option>
-                    <option>Ireland</option>
-                    <option>Spain</option>
-                    <option>Italy</option>
-                    <option>United Arab Emirates</option>
-                    <option>Singapore</option>
-                    <option>New Zealand</option>
-                    <option>South Africa</option>
-                    <option>Other</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="United States">United States</option>
+                    <option value="India">India</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Italy">Italy</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Other">Other</option>
                   </select>
                   <span className="err">Required.</span>
                 </div>
               </div>
 
+              {location === "Other" ? (
+                <div className={`f ${errors.locationOther ? "invalid" : ""}`}>
+                  <label htmlFor="locationOther">
+                    Please specify your location <span className="req text-[#D14343]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="locationOther"
+                    value={locationOther}
+                    onChange={(e) => {
+                      setLocationOther(e.target.value);
+                      setErrors((prev) => ({ ...prev, locationOther: false }));
+                      setSubmitError(null);
+                    }}
+                    placeholder="e.g. Austin, TX"
+                    aria-invalid={errors.locationOther || undefined}
+                  />
+                  <span className="err">Required.</span>
+                </div>
+              ) : null}
+
               {/* Company / Product Name */}
               <div className={`f ${errors.company ? "invalid" : ""}`} id="fCompany">
-                <label htmlFor="company">Company / product name *</label>
+                <label htmlFor="company">
+                  Company / product name <span className="req text-[#D14343]">*</span>
+                </label>
                 <input
                   type="text"
                   id="company"
@@ -294,7 +401,9 @@ export default function PartnerHero() {
                   onChange={(e) => {
                     setCompany(e.target.value);
                     setErrors((prev) => ({ ...prev, company: false }));
+                    setSubmitError(null);
                   }}
+                  aria-invalid={errors.company || undefined}
                 />
                 <span className="err">Required.</span>
               </div>
@@ -302,29 +411,37 @@ export default function PartnerHero() {
               {/* Row: Integration Type and Website */}
               <div className="row2">
                 <div className={`f ${errors.itype ? "invalid" : ""}`} id="fType">
-                  <label htmlFor="itype">Integration type *</label>
+                  <label htmlFor="itype">
+                    Integration type <span className="req text-[#D14343]">*</span>
+                  </label>
                   <select
                     id="itype"
                     value={itype}
                     onChange={(e) => {
-                      setItype(e.target.value);
-                      setErrors((prev) => ({ ...prev, itype: false }));
+                      const value = e.target.value;
+                      setItype(value);
+                      if (value !== "Other") setItypeOther("");
+                      setErrors((prev) => ({ ...prev, itype: false, itypeOther: false }));
+                      setSubmitError(null);
                     }}
+                    aria-invalid={errors.itype || undefined}
                   >
                     <option value="">Select…</option>
-                    <option>ERP system</option>
-                    <option>Payment gateway</option>
-                    <option>Shipping &amp; logistics</option>
-                    <option>Accounting software</option>
-                    <option>Warehouse management</option>
-                    <option>CRM</option>
-                    <option>PIM / product data</option>
-                    <option>Other</option>
+                    <option value="ERP system">ERP system</option>
+                    <option value="Payment gateway">Payment gateway</option>
+                    <option value="Shipping & logistics">Shipping &amp; logistics</option>
+                    <option value="Accounting software">Accounting software</option>
+                    <option value="Warehouse management">Warehouse management</option>
+                    <option value="CRM">CRM</option>
+                    <option value="PIM / product data">PIM / product data</option>
+                    <option value="Other">Other</option>
                   </select>
                   <span className="err">Required.</span>
                 </div>
                 <div className={`f ${errors.site ? "invalid" : ""}`} id="fSite">
-                  <label htmlFor="site">Product website *</label>
+                  <label htmlFor="site">
+                    Product website <span className="req text-[#D14343]">*</span>
+                  </label>
                   <input
                     type="url"
                     id="site"
@@ -333,11 +450,34 @@ export default function PartnerHero() {
                     onChange={(e) => {
                       setSite(e.target.value);
                       setErrors((prev) => ({ ...prev, site: false }));
+                      setSubmitError(null);
                     }}
+                    aria-invalid={errors.site || undefined}
                   />
                   <span className="err">Required.</span>
                 </div>
               </div>
+
+              {itype === "Other" ? (
+                <div className={`f ${errors.itypeOther ? "invalid" : ""}`}>
+                  <label htmlFor="itypeOther">
+                    Please specify integration type <span className="req text-[#D14343]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="itypeOther"
+                    value={itypeOther}
+                    onChange={(e) => {
+                      setItypeOther(e.target.value);
+                      setErrors((prev) => ({ ...prev, itypeOther: false }));
+                      setSubmitError(null);
+                    }}
+                    placeholder="e.g. Tax automation"
+                    aria-invalid={errors.itypeOther || undefined}
+                  />
+                  <span className="err">Required.</span>
+                </div>
+              ) : null}
 
               {/* Plans */}
               <div className="f">
@@ -348,14 +488,22 @@ export default function PartnerHero() {
                   id="plans"
                   placeholder="e.g. Sync orders from Nova Core into our ERP, and a shared customer is already asking."
                   value={plans}
-                  onChange={(e) => setPlans(e.target.value)}
+                  onChange={(e) => {
+                    setPlans(e.target.value);
+                    setSubmitError(null);
+                  }}
                 ></textarea>
               </div>
 
               {/* Submit */}
+              {submitError ? (
+                <p className="form-error" role="alert">
+                  {submitError}
+                </p>
+              ) : null}
               <div className="submit-row">
-                <button type="submit" className="btn btn-primary">
-                  Submit application
+                <button type="submit" className="btn btn-primary" disabled={submitting}>
+                  {submitting ? "Submitting…" : "Submit application"}
                 </button>
                 <p className="fine">We only use your details to talk to you about the partnership.</p>
               </div>
@@ -365,8 +513,8 @@ export default function PartnerHero() {
               <div className="tick">✓</div>
               <h3>Application received.</h3>
               <p>
-                It goes straight to the engineering team. If there's a fit, you'll hear from a person who can actually
-                answer API questions.
+                It goes straight to the engineering team. If there&apos;s a fit, you&apos;ll hear from a person who can
+                actually answer API questions.
               </p>
             </div>
           )}

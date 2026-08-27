@@ -260,20 +260,20 @@ export default function ComparisonTable() {
         <div className="cmp-mobile-ctas">
           <div className="cmp-mobile-cta">
             <span className="cmp-name">Grow</span>
-            <Button variant="ghost" size="sm" href="#trial" className="cmp-cta">
+            <Button variant="ghost" size="sm" href="https://app.buyience.com/register" className="cmp-cta">
               Try free
             </Button>
           </div>
           <div className="cmp-mobile-cta rec">
             <span className="cmp-pill">Recommended</span>
             <span className="cmp-name">Pro</span>
-            <Button variant="primary" size="sm" href="#trial" className="cmp-cta">
+            <Button variant="primary" size="sm" href="https://app.buyience.com/register" className="cmp-cta">
               Try free
             </Button>
           </div>
           <div className="cmp-mobile-cta">
             <span className="cmp-name">Enterprise</span>
-            <Button variant="ghost" size="sm" href="/request-a-demo" className="cmp-cta">
+            <Button variant="ghost" size="sm" href="/contact" className="cmp-cta">
               Contact
             </Button>
           </div>
@@ -302,7 +302,7 @@ export default function ComparisonTable() {
                   <th scope="col">
                     <span className="cmp-head">
                       <span className="cmp-name">Grow</span>
-                      <Button variant="ghost" size="sm" href="#trial" className="cmp-cta">
+                      <Button variant="ghost" size="sm" href="https://app.buyience.com/register" className="cmp-cta">
                         Start free trial
                       </Button>
                     </span>
@@ -311,7 +311,7 @@ export default function ComparisonTable() {
                     <span className="cmp-head">
                       <span className="cmp-pill">Recommended</span>
                       <span className="cmp-name">Pro</span>
-                      <Button variant="primary" size="sm" href="#trial" className="cmp-cta">
+                      <Button variant="primary" size="sm" href="https://app.buyience.com/register" className="cmp-cta">
                         Start free trial
                       </Button>
                     </span>
@@ -319,7 +319,7 @@ export default function ComparisonTable() {
                   <th scope="col">
                     <span className="cmp-head">
                       <span className="cmp-name">Enterprise</span>
-                      <Button variant="ghost" size="sm" href="/request-a-demo" className="cmp-cta">
+                      <Button variant="ghost" size="sm" href="/contact" className="cmp-cta">
                         Contact sales
                       </Button>
                     </span>

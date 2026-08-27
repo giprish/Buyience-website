@@ -423,24 +423,6 @@ export default function Navbar() {
                                 <span className="block text-[12px] text-slate-600 font-semibold mt-0.5 leading-relaxed">One platform for the whole operation</span>
                               </div>
                             </Link>
-                            <Link href="/ai-quote-engine" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
-                              <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-blue-50 text-blue-600 group-hover/item:bg-blue-100 transition-colors">
-                                {icons.bolt}
-                              </span>
-                              <div>
-                                <span className="block text-sm font-medium text-slate-900 group-hover/item:text-violet-600 transition-colors">AI Quote Engine</span>
-                                <span className="block text-[12px] text-slate-600 font-semibold mt-0.5 leading-relaxed">Agent-drafted quotes, scored before send</span>
-                              </div>
-                            </Link>
-                            <Link href="/digital-sales-room" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
-                              <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-pink-50 text-pink-600 group-hover/item:bg-pink-100 transition-colors">
-                                {icons.chat}
-                              </span>
-                              <div>
-                                <span className="block text-sm font-medium text-slate-900 group-hover/item:text-violet-600 transition-colors">Digital Sales Room</span>
-                                <span className="block text-[12px] text-slate-600 font-semibold mt-0.5 leading-relaxed">One live link for the whole committee</span>
-                              </div>
-                            </Link>
                             <Link href="/pricing-and-margin-control" className="flex gap-3 items-start p-2.5 rounded-2xl hover:bg-slate-50 transition-colors group/item">
                               <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-emerald-50 text-emerald-600 group-hover/item:bg-emerald-100 transition-colors">
                                 {icons.shield}
@@ -634,20 +616,20 @@ export default function Navbar() {
               >
                 Login
               </Button>
-              <Link
-                href="/request-a-demo"
-                className="nav-btn-outline"
-              >
-                Request Demo
-              </Link>
               <Button
                 variant="primary"
                 size="sm"
-                href="https://app.buyience.com/register"
+                href="/request-a-demo"
                 className="!border-0 !px-[18px] !py-[9px] !text-[13px] !font-bold"
               >
-                Start free trial
+                Request Demo
               </Button>
+              <Link
+                href="https://app.buyience.com/register"
+                className="nav-btn-outline"
+              >
+                Start free trial
+              </Link>
             </div>
 
             {/* Mobile Menu Burger Button */}
@@ -768,8 +750,6 @@ export default function Navbar() {
                       >
                         <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase font-mono mt-2">By Capability</div>
                         <Link href="/solutions" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Unified B2B Commerce</Link>
-                        <Link href="/ai-quote-engine" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>AI Quote Engine</Link>
-                        <Link href="/digital-sales-room" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Digital Sales Room</Link>
                         <Link href="/pricing-and-margin-control" className="text-sm font-semibold text-slate-700 hover:text-violet-600 block py-1" onClick={() => setIsDrawerOpen(false)}>Pricing &amp; Margin Control</Link>
                         
                         <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase font-mono mt-2">By Industry</div>
@@ -829,18 +809,18 @@ export default function Navbar() {
               <div className="flex flex-col gap-3 mt-8">
                 <Button
                   variant="primary"
-                  href="/pricing"
+                  href="/request-a-demo"
                   className="w-full justify-center font-bold py-3.5"
                   onClick={() => setIsDrawerOpen(false)}
                 >
-                  Start free trial
+                  Request Demo
                 </Button>
                 <Link
-                  href="/request-a-demo"
+                  href="https://app.buyience.com/register"
                   className="nav-btn-outline nav-btn-outline-block"
                   onClick={() => setIsDrawerOpen(false)}
                 >
-                  Request Demo
+                  Start free trial
                 </Link>
               </div>
             </motion.div>

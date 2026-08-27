@@ -5,35 +5,56 @@ import { useRouter } from "next/navigation";
 import MarketingLayout from "@/components/MarketingLayout";
 import SectionCapsule from "@/components/SectionCapsule";
 import Button from "@/components/Button";
+import { submitLead } from "@/lib/leads/submit";
 
 export default function RequestDemoPage() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting) return;
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
     setSubmitting(true);
-    // Client-side redirect to thank-you until backend form wiring exists
-    setTimeout(() => {
-      router.push("/thank-you");
-    }, 400);
+    setSubmitError(null);
+
+    const result = await submitLead("demo", {
+      firstName: String(data.get("firstName") ?? ""),
+      lastName: String(data.get("lastName") ?? ""),
+      email: String(data.get("email") ?? ""),
+      company: String(data.get("company") ?? ""),
+      message: String(data.get("message") ?? ""),
+      website2: "",
+    });
+
+    if (!result.ok) {
+      setSubmitError(result.message);
+      setSubmitting(false);
+      return;
+    }
+
+    router.push("/thank-you");
   }
 
   return (
     <MarketingLayout cta={false}>
       <section className="relative overflow-hidden bg-hero-grid">
           <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
-          <div className="relative z-10 mx-auto grid max-w-[var(--w-max,1200px)] gap-12 px-5 py-16 md:grid-cols-2 sm:px-8 md:py-24 lg:gap-16">
+          <div className="relative z-10 mx-auto grid max-w-[var(--w-max,1200px)] gap-6 px-4 py-8 sm:gap-10 sm:px-6 sm:py-12 md:grid-cols-2 md:gap-12 md:px-8 md:py-20 lg:gap-16">
             <div>
               <SectionCapsule>Request a Demo</SectionCapsule>
-              <h1 className="mt-6 text-4xl font-extrabold tracking-normal text-[#1B1033] sm:text-5xl">
+              <h1 className="mt-3 text-[1.75rem] font-extrabold leading-tight tracking-normal text-[#1B1033] sm:mt-5 sm:text-4xl md:text-5xl">
                 See Nova Core in action
               </h1>
-              <p className="mt-4 text-[17px] leading-relaxed text-[#5A4B7C]">
+              <p className="mt-3 text-[15px] leading-snug text-[#5A4B7C] sm:mt-4 sm:text-[17px] sm:leading-relaxed">
                 Book a personalized 30-minute walkthrough. We&apos;ll show AI quoting, inventory management, and the B2B
                 storefront — tailored to how your team sells.
               </p>
-              <ul className="mt-8 space-y-3 text-[15px] text-[#4A3B6B]">
+              <ul className="mt-4 space-y-2 text-[14px] text-[#4A3B6B] sm:mt-6 sm:space-y-3 sm:text-[15px]">
                 {[
                   "AI Quote Engine with margin protection",
                   "Digital Sales Room negotiations",
@@ -50,66 +71,71 @@ export default function RequestDemoPage() {
 
             <form
               onSubmit={handleSubmit}
-              className="rounded-3xl border border-[#E8E4F4] bg-white p-6 shadow-[0_12px_40px_rgba(23,18,65,0.08)] sm:p-8"
+              className="rounded-2xl border border-[#E8E4F4] bg-white p-4 shadow-[0_12px_40px_rgba(23,18,65,0.08)] sm:rounded-3xl sm:p-6 md:p-8"
             >
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="block text-left text-sm font-semibold text-[#1B1033]">
-                  First name
+              <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+                <label className="block text-left text-[13px] font-semibold text-[#1B1033] sm:text-sm">
+                  First name <span className="req text-[#D14343]">*</span>
                   <input
                     required
                     name="firstName"
-                    placeholder="e.g. Alex"
-                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
+                    placeholder="e.g. Jordan"
+                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3 py-2.5 text-[16px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20 sm:px-3.5 sm:text-[15px]"
                   />
                 </label>
-                <label className="block text-left text-sm font-semibold text-[#1B1033]">
-                  Last name
+                <label className="block text-left text-[13px] font-semibold text-[#1B1033] sm:text-sm">
+                  Last name <span className="req text-[#D14343]">*</span>
                   <input
                     required
                     name="lastName"
-                    placeholder="e.g. Sharma"
-                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
+                    placeholder="e.g. Carter"
+                    className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3 py-2.5 text-[16px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20 sm:px-3.5 sm:text-[15px]"
                   />
                 </label>
               </div>
-              <label className="mt-4 block text-left text-sm font-semibold text-[#1B1033]">
-                Work email
+              <label className="mt-3 block text-left text-[13px] font-semibold text-[#1B1033] sm:mt-4 sm:text-sm">
+                Work email <span className="req text-[#D14343]">*</span>
                 <input
                   required
                   type="email"
                   name="email"
-                  placeholder="e.g. alex@acme.com"
-                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
+                  placeholder="e.g. jordan@acme.com"
+                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3 py-2.5 text-[16px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20 sm:px-3.5 sm:text-[15px]"
                 />
               </label>
-              <label className="mt-4 block text-left text-sm font-semibold text-[#1B1033]">
-                Company
+              <label className="mt-3 block text-left text-[13px] font-semibold text-[#1B1033] sm:mt-4 sm:text-sm">
+                Company <span className="req text-[#D14343]">*</span>
                 <input
                   required
                   name="company"
-                  placeholder="e.g. Acme Distribution Pvt Ltd"
-                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
+                  placeholder="e.g. Acme Distribution Inc."
+                  className="mt-1.5 w-full rounded-xl border border-[#D7D0EC] px-3 py-2.5 text-[16px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20 sm:px-3.5 sm:text-[15px]"
                 />
               </label>
-              <label className="mt-4 block text-left text-sm font-semibold text-[#1B1033]">
+              <label className="mt-3 block text-left text-[13px] font-semibold text-[#1B1033] sm:mt-4 sm:text-sm">
                 What are you looking to solve?
                 <textarea
                   name="message"
-                  rows={4}
+                  rows={3}
                   placeholder="e.g. We want faster quote approvals and better inventory visibility."
-                  className="mt-1.5 w-full resize-y rounded-xl border border-[#D7D0EC] px-3.5 py-2.5 text-[15px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20"
+                  className="mt-1.5 w-full resize-y rounded-xl border border-[#D7D0EC] px-3 py-2.5 text-[16px] font-medium text-[#1B1033] placeholder:font-normal placeholder:text-[#9B90BA] outline-none focus:border-[#6E2CF4] focus:ring-2 focus:ring-[#6E2CF4]/20 sm:px-3.5 sm:text-[15px]"
                 />
               </label>
+              {submitError ? (
+                <p className="mt-3 text-center text-sm text-red-600 sm:mt-4" role="alert">
+                  {submitError}
+                </p>
+              ) : null}
               <Button
                 type="submit"
                 variant="primary"
                 size="lg"
-                className="mt-6 w-full"
+                className="mt-4 w-full sm:mt-6"
                 disabled={submitting}
               >
                 {submitting ? "Submitting…" : "Book My Demo"}
               </Button>
-              <p className="mt-3 text-center text-xs text-slate-400">
+              <p className="mt-2.5 text-center text-xs text-slate-400 sm:mt-3">
                 We typically respond within one business day.
               </p>
             </form>

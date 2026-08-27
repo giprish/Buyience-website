@@ -71,10 +71,10 @@ export default function MachHero() {
             Every layer engineered for performance, flexibility, and scalable growth.
           </p>
           <div className="cta-row">
-            <Button variant="primary" size="lg" href="/contact">
+            <Button variant="primary" size="lg" href="https://app.buyience.com/register">
               Start Free Trial
             </Button>
-            <Button variant="ghost" size="lg" href="/contact">
+            <Button variant="ghost" size="lg" href="/request-a-demo">
               Request Demo
             </Button>
           </div>

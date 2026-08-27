@@ -93,7 +93,7 @@ export default function Versus() {
               </p>
             </div>
           </div>
-          <Button variant="lime" href="#pricing" className="callout-cta">
+          <Button variant="lime" href="/pricing" className="callout-cta">
             See pricing
           </Button>
         </motion.div>

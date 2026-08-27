@@ -43,7 +43,7 @@ export default function PackagingPricing() {
               <b className="mt-2 block">AI Quote Engine</b> available as a {format(prices.aiQuoteAddon)}/mo add-on.
             </div>
             <div className="mt-8">
-              <Button variant="ghost" className="w-full" href="/contact">
+              <Button variant="ghost" className="w-full" href="https://app.buyience.com/register">
                 Start free trial
               </Button>
             </div>
@@ -69,7 +69,7 @@ export default function PackagingPricing() {
               <b className="mt-2 block">AI Quote Engine included</b> — win probability, agents, negotiation assistant.
             </div>
             <div className="mt-8">
-              <Button variant="primary" className="w-full" href="/contact">
+              <Button variant="primary" className="w-full" href="https://app.buyience.com/register">
                 Start free trial
               </Button>
             </div>

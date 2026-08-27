@@ -106,7 +106,7 @@ export default function InventoryLocationDives() {
               management page.
             </p>
           </div>
-          <Button variant="primary" href="/solutions#capabilities">
+          <Button variant="primary" href="/supplier-management">
             Supplier management
           </Button>
         </motion.div>

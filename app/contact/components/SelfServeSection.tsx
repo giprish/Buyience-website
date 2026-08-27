@@ -11,7 +11,7 @@ export default function SelfServeSection() {
       description:
         "14 days, no card required. Your storefront is generated on signup — you'll learn more in an hour than we could tell you in a call.",
       linkText: "Start free trial →",
-      linkHref: "/pricing",
+      linkHref: "https://app.buyience.com/register",
     },
     {
       title: "Pricing & plan comparison",

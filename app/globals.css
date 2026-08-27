@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Required-field asterisk on all lead forms (label .req only — not .byo-card.req) */
+label .req {
+  color: #d14343;
+  font-weight: 700;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #1B1033;
@@ -1674,6 +1680,7 @@ a.nav-btn-outline-block {
   align-items: center;
   height: 1.12em;
   line-height: 1.12;
+  white-space: nowrap;
 }
 
 @keyframes quote-rot-words {
@@ -5150,9 +5157,9 @@ a.nav-btn-outline-block {
   color: var(--muted);
 }
 
-/* comparison table — white card on purple section */
+/* comparison table */
 .pricing-page .compare {
-  background: var(--surface);
+  background: #fff;
 }
 
 .pricing-page .compare-intro {
@@ -6872,7 +6879,7 @@ a.nav-btn-outline-block {
 
 @media(max-width:560px) {
   .contact-page .card {
-    padding: 24px;
+    padding: 16px;
   }
 }
 
@@ -6960,6 +6967,17 @@ a.nav-btn-outline-block {
 
 .contact-page .f.invalid .err {
   display: block;
+}
+
+.contact-page .form-error {
+  display: block;
+  font-size: 13px;
+  color: var(--red);
+  background: color-mix(in srgb, var(--red) 8%, #fff);
+  border: 1px solid color-mix(in srgb, var(--red) 28%, #fff);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 4px 0 14px;
 }
 
 .contact-page .row2 {
@@ -7386,36 +7404,36 @@ a.nav-btn-outline-block {
 
 /* hero */
 .tech-partner-page .hero {
-  padding: 80px 0 96px;
+  padding: 56px 0 64px;
 }
 
 .tech-partner-page .hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: stretch;
+  gap: 40px;
+  align-items: start;
 }
 
 @media(max-width:920px) {
   .tech-partner-page .hero-grid {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 36px;
   }
 }
 
 .tech-partner-page .hero h1 {
-  margin: 16px 0 18px;
+  margin: 12px 0 12px;
 }
 
 .tech-partner-page .hero .lede {
   max-width: 33rem;
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 }
 
 .tech-partner-page .benefit {
   display: flex;
-  gap: 13px;
-  padding: 13px 0;
+  gap: 10px;
+  padding: 8px 0;
   border-top: 1px solid var(--border);
   text-align: left;
 }
@@ -7426,26 +7444,27 @@ a.nav-btn-outline-block {
 
 .tech-partner-page .benefit .ic {
   flex-shrink: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   background: var(--violet-tint);
   color: var(--violet-deep);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .tech-partner-page .benefit b {
   display: block;
-  font-size: 15px;
-  margin-bottom: 2px;
+  font-size: 14.5px;
+  margin-bottom: 1px;
 }
 
 .tech-partner-page .benefit p {
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--muted);
+  line-height: 1.45;
 }
 
 .tech-partner-page .benefit p a {
@@ -7453,7 +7472,7 @@ a.nav-btn-outline-block {
 }
 
 .tech-partner-page .ideal {
-  margin-top: 24px;
+  margin-top: 16px;
   text-align: left;
 }
 
@@ -7462,34 +7481,38 @@ a.nav-btn-outline-block {
   font-size: 10.5px;
   letter-spacing: .14em;
   color: var(--muted);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .tech-partner-page .chips {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .tech-partner-page .chips span {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--ink-soft);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 99px;
-  padding: 7px 15px;
+  padding: 5px 12px;
 }
 
-/* form card */
+/* form card — height follows content */
 .tech-partner-page .card {
   background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-2);
-  padding: 32px;
+  padding: 24px 28px;
   position: sticky;
   top: 92px;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  align-self: start;
   text-align: left;
 }
 
@@ -7501,7 +7524,7 @@ a.nav-btn-outline-block {
 
 @media(max-width:560px) {
   .tech-partner-page .card {
-    padding: 24px;
+    padding: 16px;
   }
 }
 
@@ -7515,11 +7538,11 @@ a.nav-btn-outline-block {
 .tech-partner-page .card .card-sub {
   font-size: 14px;
   color: var(--muted);
-  margin-bottom: 22px;
+  margin-bottom: 16px;
 }
 
 .tech-partner-page .f {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .tech-partner-page .f label {
@@ -7533,6 +7556,11 @@ a.nav-btn-outline-block {
   font-weight: 400;
   color: var(--muted);
   font-size: 12px;
+}
+
+.tech-partner-page .f label .req {
+  color: var(--red);
+  font-weight: 700;
 }
 
 .tech-partner-page .f input,
@@ -7551,7 +7579,7 @@ a.nav-btn-outline-block {
 }
 
 .tech-partner-page .f textarea {
-  min-height: 84px;
+  min-height: 72px;
   resize: vertical;
 }
 
@@ -7585,6 +7613,17 @@ a.nav-btn-outline-block {
   display: block;
 }
 
+.tech-partner-page .form-error {
+  display: block;
+  font-size: 13px;
+  color: var(--red);
+  background: color-mix(in srgb, var(--red) 8%, #fff);
+  border: 1px solid color-mix(in srgb, var(--red) 28%, #fff);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 4px 0 14px;
+}
+
 .tech-partner-page .row2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -7611,6 +7650,45 @@ a.nav-btn-outline-block {
 
 .tech-partner-page .submit-row .btn {
   width: 100%;
+}
+
+.tech-partner-page .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 13px 24px;
+  border-radius: var(--radius-btn);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.tech-partner-page .btn-primary {
+  background: var(--violet);
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(110, 44, 244, .34);
+}
+
+.tech-partner-page .btn-primary:hover:not(:disabled) {
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.tech-partner-page .btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+.tech-partner-page .btn-primary:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
 }
 
 .tech-partner-page .fine {
@@ -9255,6 +9333,7 @@ a.nav-btn-outline-block {
   align-items: center;
   height: 1.12em;
   line-height: 1.12;
+  white-space: nowrap;
 }
 
 @keyframes inventory-rot-words {
@@ -11039,6 +11118,7 @@ a.nav-btn-outline-block {
   align-items: center;
   height: 1.12em;
   line-height: 1.12;
+  white-space: nowrap;
 }
 
 @keyframes supplier-rot-words {
@@ -16068,36 +16148,38 @@ a.nav-btn-outline-block {
 
 /* hero: copy + form */
 .solution-partner-page .hero {
-  padding: 80px 0 96px;
+  padding: 56px 0 64px;
 }
 
 .solution-partner-page .hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: stretch;
+  gap: 40px;
+  align-items: start;
 }
 
 @media(max-width:920px) {
   .solution-partner-page .hero-grid {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 36px;
   }
 }
 
 .solution-partner-page .hero h1 {
-  margin: 16px 0 18px;
+  margin: 12px 0 12px;
 }
 
 .solution-partner-page .hero .lede {
   max-width: 33rem;
-  margin-bottom: 28px;
+  margin-bottom: 16px;
+  font-size: 16.5px;
+  line-height: 1.55;
 }
 
 .solution-partner-page .benefit {
   display: flex;
-  gap: 13px;
-  padding: 13px 0;
+  gap: 10px;
+  padding: 8px 0;
   border-top: 1px solid var(--border);
   text-align: left;
 }
@@ -16108,30 +16190,31 @@ a.nav-btn-outline-block {
 
 .solution-partner-page .benefit .ic {
   flex-shrink: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   background: var(--violet-tint);
   color: var(--violet-deep);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .solution-partner-page .benefit b {
   display: block;
-  font-size: 15px;
-  margin-bottom: 2px;
+  font-size: 14.5px;
+  margin-bottom: 1px;
 }
 
 .solution-partner-page .benefit p {
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--muted);
+  line-height: 1.45;
 }
 
 .solution-partner-page .ideal {
-  margin-top: 24px;
+  margin-top: 16px;
   text-align: left;
 }
 
@@ -16140,34 +16223,38 @@ a.nav-btn-outline-block {
   font-size: 10.5px;
   letter-spacing: .14em;
   color: var(--muted);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .solution-partner-page .chips {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .solution-partner-page .chips span {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--ink-soft);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 99px;
-  padding: 7px 15px;
+  padding: 5px 12px;
 }
 
-/* form card */
+/* form card — height follows content, not stretched to match left column */
 .solution-partner-page .card {
   background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-2);
-  padding: 32px;
+  padding: 24px 28px;
   position: sticky;
   top: 92px;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  align-self: start;
   text-align: left;
 }
 
@@ -16179,7 +16266,7 @@ a.nav-btn-outline-block {
 
 @media(max-width:560px) {
   .solution-partner-page .card {
-    padding: 24px;
+    padding: 16px;
   }
 }
 
@@ -16193,11 +16280,11 @@ a.nav-btn-outline-block {
 .solution-partner-page .card .card-sub {
   font-size: 14px;
   color: var(--muted);
-  margin-bottom: 22px;
+  margin-bottom: 16px;
 }
 
 .solution-partner-page .f {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .solution-partner-page .f label {
@@ -16211,6 +16298,11 @@ a.nav-btn-outline-block {
   font-weight: 400;
   color: var(--muted);
   font-size: 12px;
+}
+
+.solution-partner-page .f label .req {
+  color: var(--red);
+  font-weight: 700;
 }
 
 .solution-partner-page .f input,
@@ -16229,7 +16321,7 @@ a.nav-btn-outline-block {
 }
 
 .solution-partner-page .f textarea {
-  min-height: 84px;
+  min-height: 72px;
   resize: vertical;
 }
 
@@ -16263,6 +16355,17 @@ a.nav-btn-outline-block {
   display: block;
 }
 
+.solution-partner-page .form-error {
+  display: block;
+  font-size: 13px;
+  color: var(--red);
+  background: color-mix(in srgb, var(--red) 8%, #fff);
+  border: 1px solid color-mix(in srgb, var(--red) 28%, #fff);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 4px 0 14px;
+}
+
 .solution-partner-page .row2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -16289,6 +16392,45 @@ a.nav-btn-outline-block {
 
 .solution-partner-page .submit-row .btn {
   width: 100%;
+}
+
+.solution-partner-page .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 13px 24px;
+  border-radius: var(--radius-btn);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.solution-partner-page .btn-primary {
+  background: var(--violet);
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(110, 44, 244, .34);
+}
+
+.solution-partner-page .btn-primary:hover:not(:disabled) {
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.solution-partner-page .btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+.solution-partner-page .btn-primary:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
 }
 
 .solution-partner-page .fine {
@@ -16646,6 +16788,257 @@ a.nav-btn-outline-block {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* ===== LEAD FORM PAGES — COMPACT RESPONSIVE ===== */
+@media (max-width: 920px) {
+  .solution-partner-page .hero-grid,
+  .tech-partner-page .hero-grid {
+    gap: 32px;
+  }
+
+  .contact-page .form-grid {
+    gap: 28px;
+  }
+
+  .solution-partner-page .card,
+  .tech-partner-page .card {
+    position: static;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .solution-partner-page .hero,
+  .tech-partner-page .hero {
+    padding: 32px 0 40px;
+  }
+
+  .contact-page .hero {
+    padding: 32px 0 28px;
+  }
+
+  .contact-page .form-wrap {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+
+  .solution-partner-page .hero-grid,
+  .tech-partner-page .hero-grid,
+  .contact-page .form-grid {
+    gap: 24px;
+  }
+
+  .solution-partner-page .hero h1,
+  .tech-partner-page .hero h1,
+  .contact-page .hero h1 {
+    font-size: clamp(1.7rem, 7.2vw, 2.2rem);
+    margin: 8px 0 10px;
+    line-height: 1.08;
+  }
+
+  .solution-partner-page .hero .lede,
+  .tech-partner-page .hero .lede,
+  .contact-page .hero .lede {
+    font-size: 14.5px;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+
+  .contact-page .form-wrap h2 {
+    font-size: clamp(1.4rem, 5.5vw, 1.85rem);
+    margin: 8px 0 14px !important;
+  }
+
+  .solution-partner-page .benefit,
+  .tech-partner-page .benefit {
+    gap: 8px;
+    padding: 6px 0;
+  }
+
+  .solution-partner-page .benefit .ic,
+  .tech-partner-page .benefit .ic {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+  }
+
+  .solution-partner-page .benefit b,
+  .tech-partner-page .benefit b {
+    font-size: 13.5px;
+  }
+
+  .solution-partner-page .benefit p,
+  .tech-partner-page .benefit p {
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+
+  .solution-partner-page .ideal,
+  .tech-partner-page .ideal {
+    margin-top: 12px;
+  }
+
+  .solution-partner-page .ideal .h,
+  .tech-partner-page .ideal .h {
+    margin-bottom: 6px;
+  }
+
+  .solution-partner-page .chips,
+  .tech-partner-page .chips {
+    gap: 5px;
+  }
+
+  .solution-partner-page .chips span,
+  .tech-partner-page .chips span {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .solution-partner-page .card,
+  .tech-partner-page .card,
+  .contact-page .card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .solution-partner-page .card .card-h,
+  .tech-partner-page .card .card-h,
+  .contact-page .card-h {
+    font-size: 1.05rem;
+  }
+
+  .solution-partner-page .card .card-sub,
+  .tech-partner-page .card .card-sub,
+  .contact-page .card-sub {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .solution-partner-page .f,
+  .tech-partner-page .f,
+  .contact-page .f {
+    margin-bottom: 10px;
+  }
+
+  .solution-partner-page .f label,
+  .tech-partner-page .f label,
+  .contact-page .f label {
+    font-size: 12.5px;
+    margin-bottom: 4px;
+  }
+
+  .solution-partner-page .f input,
+  .solution-partner-page .f select,
+  .solution-partner-page .f textarea,
+  .tech-partner-page .f input,
+  .tech-partner-page .f select,
+  .tech-partner-page .f textarea,
+  .contact-page .f input,
+  .contact-page .f select,
+  .contact-page .f textarea {
+    font-size: 16px; /* avoid iOS zoom on focus */
+    padding: 10px 12px;
+    border-radius: 9px;
+  }
+
+  .solution-partner-page .f textarea,
+  .tech-partner-page .f textarea {
+    min-height: 64px;
+  }
+
+  .contact-page .f textarea {
+    min-height: 88px;
+  }
+
+  .solution-partner-page .row2,
+  .tech-partner-page .row2,
+  .contact-page .row2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .solution-partner-page .submit-row,
+  .tech-partner-page .submit-row,
+  .contact-page .submit-row {
+    margin-top: 12px;
+  }
+
+  .solution-partner-page .btn,
+  .tech-partner-page .btn,
+  .contact-page .btn {
+    font-size: 15px;
+    padding: 12px 18px;
+  }
+
+  .solution-partner-page .fine,
+  .tech-partner-page .fine,
+  .contact-page .fine {
+    font-size: 11.5px;
+    margin-top: 8px;
+  }
+
+  .contact-page .info-block {
+    margin-bottom: 18px;
+  }
+
+  .contact-page .info-block .mail {
+    font-size: 17px;
+  }
+
+  .contact-page .sla {
+    padding: 12px 14px;
+  }
+
+  .contact-page .sla-row {
+    font-size: 13px;
+    padding: 7px 0;
+  }
+
+  .contact-page .who-we-are {
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+
+  .contact-page .who-we-are p {
+    font-size: 13.5px;
+  }
+
+  .contact-page .hero .routes {
+    padding-top: 18px;
+  }
+
+  .contact-page .route {
+    padding: 12px 14px;
+  }
+
+  .contact-page .route b {
+    font-size: 14px;
+  }
+
+  .contact-page .route p {
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .solution-partner-page .hero,
+  .tech-partner-page .hero,
+  .contact-page .hero {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  .solution-partner-page .card,
+  .tech-partner-page .card,
+  .contact-page .card {
+    padding: 14px 12px;
+  }
+
+  .solution-partner-page .benefit p,
+  .tech-partner-page .benefit p {
+    font-size: 12px;
   }
 }
 
@@ -18218,6 +18611,7 @@ a.nav-btn-outline-block {
   align-items: center;
   height: 1.12em;
   line-height: 1.12;
+  white-space: nowrap;
 }
 
 @keyframes home-rot-words {
@@ -19968,6 +20362,7 @@ a.nav-btn-outline-block {
   align-items: center;
   height: 1.12em;
   line-height: 1.12;
+  white-space: nowrap;
 }
 
 @keyframes margin-rot-words {

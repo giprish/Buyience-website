@@ -98,7 +98,7 @@ export default function SolutionsHero() {
 
           <motion.div variants={itemVariants} className="flex flex-col gap-4">
             <div className="cta-row !justify-start">
-              <Button variant="primary" size="lg" href="#trial">
+              <Button variant="primary" size="lg" href="https://app.buyience.com/register">
                 Start free trial
               </Button>
               <Button variant="ghost" size="lg" href="#industries">

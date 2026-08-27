@@ -86,10 +86,10 @@ export default function InventoryHero() {
             between warehouses in a few clicks. Real-time updates, zero spreadsheet chaos.
           </p>
           <div className="cta-row">
-            <Button variant="primary" size="lg" href="/contact">
+            <Button variant="primary" size="lg" href="https://app.buyience.com/register">
               Start Free Trial
             </Button>
-            <Button variant="ghost" size="lg" href="/contact">
+            <Button variant="ghost" size="lg" href="/request-a-demo">
               Request Demo
             </Button>
           </div>

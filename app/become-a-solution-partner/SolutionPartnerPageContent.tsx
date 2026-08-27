@@ -24,7 +24,7 @@ export default function SolutionPartnerPageContent() {
         description: "Apply in two minutes — applications go straight to the founding team.",
         primaryAction: {
           label: "Apply now",
-          variant: "ghost",
+          variant: "primary",
           onClick: () => {
             const firstInput = document.getElementById("first");
             if (firstInput) {
@@ -36,7 +36,7 @@ export default function SolutionPartnerPageContent() {
         secondaryAction: {
           label: "Explore the platform",
           href: "/platform-overview",
-          variant: "primary",
+          variant: "ghost",
         },
         trust: null,
       }}

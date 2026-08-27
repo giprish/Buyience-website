@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import Button from "@/components/Button";
+import { submitLead } from "@/lib/leads/submit";
 
 interface ContactFormSectionProps {
   selectedReason: string;
@@ -21,6 +20,8 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
   // Validation & Submission state
   const [errors, setErrors] = useState({ name: false, email: false, message: false });
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Configuration for adaptative placeholder and hints based on contact reason
   const config: Record<
@@ -69,11 +70,15 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
 
   const currentConfig = config[selectedReason] || config.other;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
 
-    // Spambot honeypot check
-    if (honeypot) return;
+    // Spambot honeypot check (client soft-exit; server also soft-succeeds)
+    if (honeypot) {
+      setIsSuccess(true);
+      return;
+    }
 
     // Validate inputs
     const isNameError = name.trim().length === 0;
@@ -91,8 +96,27 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
       return;
     }
 
-    // Success Mockup Transition
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const result = await submitLead("contact", {
+      reason: selectedReason,
+      name,
+      email,
+      company,
+      phone,
+      message,
+      website2: honeypot,
+    });
+
+    if (!result.ok) {
+      setSubmitError(result.message);
+      setSubmitting(false);
+      return;
+    }
+
     setIsSuccess(true);
+    setSubmitting(false);
     const formContainer = document.getElementById("form");
     if (formContainer) {
       formContainer.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -189,13 +213,13 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
               <div className="row2">
                 <div className={`f ${errors.name ? "invalid" : ""}`} id="fName">
                   <label htmlFor="name">
-                    Name <span className="req">*</span>
+                    Name <span className="req text-[#D14343]">*</span>
                   </label>
                   <input
                     type="text"
                     id="name"
                     autoComplete="name"
-                    placeholder="e.g. Alex Sharma"
+                    placeholder="e.g. Jordan Carter"
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
@@ -206,13 +230,13 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
                 </div>
                 <div className={`f ${errors.email ? "invalid" : ""}`} id="fEmail">
                   <label htmlFor="email">
-                    Work email <span className="req">*</span>
+                    Work email <span className="req text-[#D14343]">*</span>
                   </label>
                   <input
                     type="email"
                     id="email"
                     autoComplete="email"
-                    placeholder="e.g. alex@acme.com"
+                    placeholder="e.g. jordan@acme.com"
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -233,7 +257,7 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
                     type="text"
                     id="company"
                     autoComplete="organization"
-                    placeholder="e.g. Acme Distribution Pvt Ltd"
+                    placeholder="e.g. Acme Distribution Inc."
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                   />
@@ -246,7 +270,7 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
                     type="text"
                     id="phone"
                     autoComplete="tel"
-                    placeholder="e.g. +44 20 1234 5678"
+                    placeholder="e.g. +1 (415) 555-0132"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
@@ -256,7 +280,7 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
               {/* Message Block */}
               <div className={`f ${errors.message ? "invalid" : ""}`} id="fMsg">
                 <label htmlFor="msg">
-                  Your message <span className="req">*</span>
+                  Your message <span className="req text-[#D14343]">*</span>
                 </label>
                 <textarea
                   id="msg"
@@ -271,11 +295,16 @@ export default function ContactFormSection({ selectedReason, onSelectReason }: C
               </div>
 
               {/* Submit Buttons */}
+              {submitError ? (
+                <p className="form-error" role="alert">
+                  {submitError}
+                </p>
+              ) : null}
               <div className="submit-row">
-                <button type="submit" className="btn btn-primary">
-                  Send message
+                <button type="submit" className="btn btn-primary" disabled={submitting}>
+                  {submitting ? "Sending…" : "Send message"}
                 </button>
-                <p className="fine">We'll only use your details to reply to you.</p>
+                <p className="fine">We&apos;ll only use your details to reply to you.</p>
               </div>
             </form>
           ) : (

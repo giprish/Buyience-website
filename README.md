@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Buyience website
+
+Next.js marketing site for Buyience / Nova Core.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
+cp .env.example .env.local
+# Fill in DATABASE_URL from your Neon project
+npm run db:push
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Lead forms → Neon
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Four forms POST to Next.js API routes that store rows in Neon Postgres (via Drizzle):
 
-## Learn More
+| Form page | API |
+|-----------|-----|
+| `/request-a-demo` | `POST /api/leads/demo` |
+| `/contact` | `POST /api/leads/contact` |
+| `/become-a-solution-partner` | `POST /api/leads/solution-partner` |
+| `/become-a-technology-partner` | `POST /api/leads/technology-partner` |
 
-To learn more about Next.js, take a look at the following resources:
+### Environment variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Copy [`.env.example`](.env.example) to `.env.local`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **`DATABASE_URL`** (required for local Neon mode) — Neon connection string. Also set this in the Vercel project → Settings → Environment Variables for Production / Preview.
+- **`LEADS_BACKEND_URL`** (optional) — When set, `/api/leads/*` proxies to `{LEADS_BACKEND_URL}/api/leads/{path}` instead of writing to Neon. Leave unset until the real backend APIs exist.
+
+### Database commands
+
+```bash
+npm run db:push      # apply schema to Neon (dev / first setup)
+npm run db:generate  # generate SQL migrations under ./drizzle
+npm run db:studio    # open Drizzle Studio
+```
+
+After creating a Neon database, run `npm run db:push` once against that `DATABASE_URL`, then redeploy (or restart `npm run dev`).
+
+### Switch to external backend later
+
+1. Ship backend endpoints with the same paths and JSON contracts.
+2. Set `LEADS_BACKEND_URL=https://your-api.example.com` on Vercel (no trailing slash).
+3. Forms keep calling `/api/leads/*`; Next proxies through. No frontend rewrite required.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Add `DATABASE_URL` in Vercel env.
+2. Run `npm run db:push` locally (or CI) against that same DB once.
+3. Deploy as usual — Vercel Platform docs: https://nextjs.org/docs/app/building-your-application/deploying

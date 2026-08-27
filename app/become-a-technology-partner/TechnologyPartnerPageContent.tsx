@@ -37,13 +37,13 @@ export default function TechnologyPartnerPageContent() {
         primaryAction: {
           label: "Apply now",
           href: "#tForm",
-          variant: "ghost",
+          variant: "primary",
           onClick: handleScrollToForm,
         },
         secondaryAction: {
           label: "Explore the API & architecture",
           href: "/solutions",
-          variant: "primary",
+          variant: "ghost",
         },
         trust: null,
         purple: true,

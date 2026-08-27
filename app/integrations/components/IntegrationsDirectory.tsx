@@ -78,7 +78,7 @@ export default function IntegrationsDirectory() {
               Don't see your tool?
               <br />
               Requests shape what ships next.
-              <a href="#contact" className="text-violet-600 block mt-1.5 font-bold hover:underline">
+              <a href="/contact" className="text-violet-600 block mt-1.5 font-bold hover:underline">
                 Request an integration →
               </a>
             </div>
@@ -195,7 +195,7 @@ export default function IntegrationsDirectory() {
                   Tell us what you need connected. Integration requests from customers directly shape what we ship next
                   — this directory grows in the order you ask for it.
                 </p>
-                <a href="#contact" className="text-violet-600 font-bold hover:underline">
+                <a href="/contact" className="text-violet-600 font-bold hover:underline">
                   Request an integration →
                 </a>
               </motion.div>

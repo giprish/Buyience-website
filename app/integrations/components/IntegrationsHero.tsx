@@ -33,7 +33,7 @@ export default function IntegrationsHero() {
               <Button variant="primary" size="lg" href="#directory">
                 Browse integrations
               </Button>
-              <Button variant="ghost" size="lg" href="#trial">
+              <Button variant="ghost" size="lg" href="https://app.buyience.com/register">
                 Start free trial
               </Button>
             </div>

@@ -86,7 +86,7 @@ export default function PricingPlans({ billingPeriod, currency }: PricingPlansPr
               </AnimatePresence>
             </div>
 
-            <Button variant="primary" href="#trial">
+            <Button variant="primary" href="https://app.buyience.com/register">
               Start free trial
             </Button>
             <p className="trust-micro">⚡ 14-day free trial · no card required</p>
@@ -182,7 +182,7 @@ export default function PricingPlans({ billingPeriod, currency }: PricingPlansPr
               </AnimatePresence>
             </div>
 
-            <Button variant="primary" href="#trial">
+            <Button variant="primary" href="https://app.buyience.com/register">
               Start free trial
             </Button>
             <p className="trust-micro">⚡ 14-day free trial · no card required</p>
@@ -243,7 +243,7 @@ export default function PricingPlans({ billingPeriod, currency }: PricingPlansPr
               <div className="price-sub">Volume-based pricing, tailored to your needs</div>
             </div>
 
-            <Button variant="ghost" href="#contact">
+            <Button variant="ghost" href="/contact">
               Contact sales
             </Button>
             <p className="trust-micro">Talk to the founders</p>

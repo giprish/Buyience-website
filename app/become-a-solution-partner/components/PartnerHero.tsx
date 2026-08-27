@@ -1,8 +1,27 @@
 "use client";
 
 import React, { useState } from "react";
-import Button from "@/components/Button";
 import SectionCapsule from "@/components/SectionCapsule";
+import { submitLead } from "@/lib/leads/submit";
+
+const LOCATION_OPTIONS = [
+  "United Kingdom",
+  "United States",
+  "India",
+  "Canada",
+  "Australia",
+  "Germany",
+  "France",
+  "Netherlands",
+  "Ireland",
+  "Spain",
+  "Italy",
+  "United Arab Emirates",
+  "Singapore",
+  "New Zealand",
+  "South Africa",
+  "Other",
+] as const;
 
 export default function PartnerHero() {
   const [formData, setFormData] = useState({
@@ -11,26 +30,52 @@ export default function PartnerHero() {
     email: "",
     phone: "",
     loc: "",
+    locOther: "",
     company: "",
     ptype: "",
+    ptypeOther: "",
     about: "",
     website2: "", // honeypot
   });
 
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
-    setErrors((prev) => ({ ...prev, [id]: false }));
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+      ...(id === "loc" && value !== "Other" ? { locOther: "" } : {}),
+      ...(id === "ptype" && value !== "Other" ? { ptypeOther: "" } : {}),
+    }));
+    setErrors((prev) => ({
+      ...prev,
+      [id]: false,
+      ...(id === "loc" ? { locOther: false } : {}),
+      ...(id === "ptype" ? { ptypeOther: false } : {}),
+    }));
+    setSubmitError(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const focusFirstInvalid = (fieldErrors: Record<string, boolean>) => {
+    const order = ["first", "email", "loc", "locOther", "company", "ptype", "ptypeOther"] as const;
+    const firstKey = order.find((key) => fieldErrors[key]);
+    if (!firstKey) return;
+    const el = document.getElementById(firstKey);
+    el?.scrollIntoView({ behavior: "smooth", block: "center" });
+    el?.focus();
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
 
     // Honeypot check
     if (formData.website2) {
+      setSubmitted(true);
       return;
     }
 
@@ -40,16 +85,39 @@ export default function PartnerHero() {
       newErrors.email = true;
     }
     if (!formData.loc) newErrors.loc = true;
+    if (formData.loc === "Other" && !formData.locOther.trim()) newErrors.locOther = true;
     if (!formData.company.trim()) newErrors.company = true;
     if (!formData.ptype) newErrors.ptype = true;
+    if (formData.ptype === "Other" && !formData.ptypeOther.trim()) newErrors.ptypeOther = true;
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      setSubmitError("Please fill in the required fields.");
+      focusFirstInvalid(newErrors);
       return;
     }
 
-    // Success state
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const result = await submitLead("solution-partner", { ...formData });
+
+    if (!result.ok) {
+      if (result.fields) {
+        const fieldErrors: Record<string, boolean> = {};
+        for (const key of Object.keys(result.fields)) {
+          fieldErrors[key] = true;
+        }
+        setErrors(fieldErrors);
+        focusFirstInvalid(fieldErrors);
+      }
+      setSubmitError(result.message);
+      setSubmitting(false);
+      return;
+    }
+
     setSubmitted(true);
+    setSubmitting(false);
   };
 
   const benefits = [
@@ -96,7 +164,7 @@ export default function PartnerHero() {
     <header className="hero relative overflow-hidden bg-hero-grid">
       <div className="pointer-events-none absolute inset-0 bg-hero-glows" aria-hidden="true" />
       <div className="container hero-grid relative z-10">
-        <div className="flex flex-col text-left">
+        <div className="flex flex-col text-left self-start">
           <SectionCapsule>Buyience Partner Program</SectionCapsule>
           <h1>
             Become a Nova Core solution partner. <span className="grad-text">Grow your business with us.</span>
@@ -134,7 +202,7 @@ export default function PartnerHero() {
           {!submitted ? (
             <form onSubmit={handleSubmit} noValidate>
               <p className="card-h">Apply to the partner program</p>
-              <p className="card-sub">Tell us about your business and we'll be in touch.</p>
+              <p className="card-sub">Tell us about your business and we&apos;ll be in touch.</p>
 
               {/* Honeypot field */}
               <div className="hp" aria-hidden="true">
@@ -153,14 +221,17 @@ export default function PartnerHero() {
 
               <div className="row2">
                 <div className={`f ${errors.first ? "invalid" : ""}`}>
-                  <label htmlFor="first">First name *</label>
+                  <label htmlFor="first">
+                    First name <span className="req text-[#D14343]">*</span>
+                  </label>
                   <input
                     type="text"
                     id="first"
                     value={formData.first}
                     onChange={handleChange}
                     autoComplete="given-name"
-                    placeholder="e.g. Alex"
+                    placeholder="e.g. Jordan"
+                    aria-invalid={errors.first || undefined}
                   />
                   <span className="err">Required.</span>
                 </div>
@@ -174,20 +245,23 @@ export default function PartnerHero() {
                     value={formData.last}
                     onChange={handleChange}
                     autoComplete="family-name"
-                    placeholder="e.g. Sharma"
+                    placeholder="e.g. Carter"
                   />
                 </div>
               </div>
 
               <div className={`f ${errors.email ? "invalid" : ""}`}>
-                <label htmlFor="email">Business email *</label>
+                <label htmlFor="email">
+                  Business email <span className="req text-[#D14343]">*</span>
+                </label>
                 <input
                   type="email"
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
                   autoComplete="email"
-                  placeholder="e.g. alex@agency.com"
+                  placeholder="e.g. jordan@northwind.com"
+                  aria-invalid={errors.email || undefined}
                 />
                 <span className="err">Please enter a valid email.</span>
               </div>
@@ -203,36 +277,51 @@ export default function PartnerHero() {
                     value={formData.phone}
                     onChange={handleChange}
                     autoComplete="tel"
-                    placeholder="e.g. +44 20 1234 5678"
+                    placeholder="e.g. +1 (415) 555-0132"
                   />
                 </div>
                 <div className={`f ${errors.loc ? "invalid" : ""}`}>
-                  <label htmlFor="loc">Location *</label>
-                  <select id="loc" value={formData.loc} onChange={handleChange}>
+                  <label htmlFor="loc">
+                    Location <span className="req text-[#D14343]">*</span>
+                  </label>
+                  <select
+                    id="loc"
+                    value={formData.loc}
+                    onChange={handleChange}
+                    aria-invalid={errors.loc || undefined}
+                  >
                     <option value="">Select…</option>
-                    <option>United Kingdom</option>
-                    <option>United States</option>
-                    <option>India</option>
-                    <option>Canada</option>
-                    <option>Australia</option>
-                    <option>Germany</option>
-                    <option>France</option>
-                    <option>Netherlands</option>
-                    <option>Ireland</option>
-                    <option>Spain</option>
-                    <option>Italy</option>
-                    <option>United Arab Emirates</option>
-                    <option>Singapore</option>
-                    <option>New Zealand</option>
-                    <option>South Africa</option>
-                    <option>Other</option>
+                    {LOCATION_OPTIONS.map((loc) => (
+                      <option key={loc} value={loc}>
+                        {loc}
+                      </option>
+                    ))}
                   </select>
                   <span className="err">Required.</span>
                 </div>
               </div>
 
+              {formData.loc === "Other" ? (
+                <div className={`f ${errors.locOther ? "invalid" : ""}`}>
+                  <label htmlFor="locOther">
+                    Please specify your location <span className="req text-[#D14343]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="locOther"
+                    value={formData.locOther}
+                    onChange={handleChange}
+                    placeholder="e.g. Austin, TX"
+                    aria-invalid={errors.locOther || undefined}
+                  />
+                  <span className="err">Required.</span>
+                </div>
+              ) : null}
+
               <div className={`f ${errors.company ? "invalid" : ""}`}>
-                <label htmlFor="company">Company *</label>
+                <label htmlFor="company">
+                  Company <span className="req text-[#D14343]">*</span>
+                </label>
                 <input
                   type="text"
                   id="company"
@@ -240,13 +329,21 @@ export default function PartnerHero() {
                   onChange={handleChange}
                   autoComplete="organization"
                   placeholder="e.g. Northwind Digital"
+                  aria-invalid={errors.company || undefined}
                 />
                 <span className="err">Required.</span>
               </div>
 
               <div className={`f ${errors.ptype ? "invalid" : ""}`}>
-                <label htmlFor="ptype">Partner type *</label>
-                <select id="ptype" value={formData.ptype} onChange={handleChange}>
+                <label htmlFor="ptype">
+                  Partner type <span className="req text-[#D14343]">*</span>
+                </label>
+                <select
+                  id="ptype"
+                  value={formData.ptype}
+                  onChange={handleChange}
+                  aria-invalid={errors.ptype || undefined}
+                >
                   <option value="">Select partner type</option>
                   <option value="Digital agency">Digital agency</option>
                   <option value="B2B consultant / integrator">B2B consultant / integrator</option>
@@ -256,6 +353,23 @@ export default function PartnerHero() {
                 </select>
                 <span className="err">Required.</span>
               </div>
+
+              {formData.ptype === "Other" ? (
+                <div className={`f ${errors.ptypeOther ? "invalid" : ""}`}>
+                  <label htmlFor="ptypeOther">
+                    Please specify partner type <span className="req text-[#D14343]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="ptypeOther"
+                    value={formData.ptypeOther}
+                    onChange={handleChange}
+                    placeholder="e.g. Industry consultant"
+                    aria-invalid={errors.ptypeOther || undefined}
+                  />
+                  <span className="err">Required.</span>
+                </div>
+              ) : null}
 
               <div className="f">
                 <label htmlFor="about">
@@ -269,9 +383,14 @@ export default function PartnerHero() {
                 ></textarea>
               </div>
 
+              {submitError ? (
+                <p className="form-error" role="alert">
+                  {submitError}
+                </p>
+              ) : null}
               <div className="submit-row">
-                <button type="submit" className="btn btn-primary">
-                  Submit application
+                <button type="submit" className="btn btn-primary" disabled={submitting}>
+                  {submitting ? "Submitting…" : "Submit application"}
                 </button>
                 <p className="fine">We only use your details to talk to you about the partner program.</p>
               </div>
@@ -280,7 +399,7 @@ export default function PartnerHero() {
             <div className="success show" role="status">
               <div className="tick">✓</div>
               <h3>Application received.</h3>
-              <p>You'll hear from us directly — applications go to the founding team, not a queue.</p>
+              <p>You&apos;ll hear from us directly — applications go to the founding team, not a queue.</p>
             </div>
           )}
         </div>
